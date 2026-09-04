@@ -1,0 +1,8 @@
+# Pixagram Witness Status
+
+> Live technical status of Pixagram (Hive fork) witnesses: approving stake, missed blocks, price feeds, versions, block schedule and recent block production, plus a "network progressing" verdict.
+
+- [Rules for bots and AI agents](https://pixagram.com/witness-status/AGENT.md): the exact JSON-RPC calls against https://api.pixagram.com, every formula, health thresholds and the snapshot schema
+- [Aggregated snapshot JSON](https://raw.githubusercontent.com/pixagram-blockchain/witness-status/data/status.json): regenerated every 10 minutes by a cron job; `health.level` and `model.network.status` are the headline fields
+- [Dashboard](https://pixagram.com/witness-status/): the human view, auto-refreshing every 30 s by default
+- [Source and CLI](https://github.com/pixagram-blockchain/witness-status): `npx github:pixagram-blockchain/witness-status --check`

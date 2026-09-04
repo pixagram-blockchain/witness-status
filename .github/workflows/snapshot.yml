@@ -1,0 +1,35 @@
+# Publishes an aggregated witness/network snapshot to the `data` branch every 10 minutes,
+# so bots can fetch https://raw.githubusercontent.com/pixagram-blockchain/witness-status/data/status.json
+# without running anything. The branch is overwritten each run (single orphan commit) to avoid history growth.
+name: snapshot
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch the previous snapshot (enables block-rate and missed-block deltas)
+        run: curl -fsSL -o prev.json "https://raw.githubusercontent.com/${{ github.repository }}/data/status.json" || echo '{}' > prev.json
+      - name: Build the snapshot
+        run: node bin/witness-status.mjs --previous prev.json --window 300 --out out
+      - name: Publish to the data branch
+        run: |
+          cd out
+          git init -q -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "snapshot $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" data
