@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixagram Witness Status</title>
+<meta name="description" content="Live technical status of Pixagram witnesses: stake, missed blocks, price feeds, versions, schedule and block production.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0d0d'/%3E%3Crect x='3' y='9' width='2' height='4' fill='%233987e5'/%3E%3Crect x='7' y='5' width='2' height='8' fill='%233987e5'/%3E%3Crect x='11' y='3' width='2' height='10' fill='%230ca30c'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Pixagram Witness Status</h1>
+    <span class="sub">live technical view of the block producers on the Pixagram chain</span>
+  </div>
+  <div class="controls">
+    <label>Node <input id="node" type="url" spellcheck="false" size="26" title="Any CORS-enabled Hive-compatible JSON-RPC endpoint (Enter to apply)"></label>
+    <label>Refresh <select id="interval"></select> <input id="interval-custom" type="number" min="0" max="3600" step="1" hidden title="seconds (0 = paused)"></label>
+    <button id="refresh" type="button" title="Refresh now">↻ <span id="countdown">–</span></button>
+    <span id="status" class="pill busy">loading…</span>
+  </div>
+</header>
+<main id="main">
+  <section id="network" class="banner" aria-live="polite"></section>
+  <section id="tiles" class="tiles"></section>
+  <section class="panel">
+    <div class="panel-head"><h2>Schedule</h2><span id="schedule-meta" class="muted"></span></div>
+    <div id="schedule"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><h2>Recent blocks</h2><span id="blocks-meta" class="muted"></span><label class="right">Window <select id="window"></select></label></div>
+    <div id="blocks"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Witnesses</h2><span id="witnesses-meta" class="muted"></span>
+      <div class="right toolbar">
+        <input id="q" type="search" placeholder="filter by name" size="14">
+        <label><input id="hide-disabled" type="checkbox"> hide disabled</label>
+        <details id="columns"><summary>columns</summary><div id="columns-menu" class="menu"></div></details>
+      </div>
+    </div>
+    <div class="scroll"><table id="tbl" class="tbl"><thead></thead><tbody></tbody></table></div>
+  </section>
+</main>
+<footer>
+  <div id="footer-meta"></div>
+  <div>
+    Data straight from the node via <code>condenser_api</code>, <code>database_api</code> and <code>block_api</code> ·
+    <a href="AGENT.md">rules for bots &amp; AI agents</a> ·
+    <a href="https://raw.githubusercontent.com/pixagram-blockchain/witness-status/data/status.json">aggregated JSON snapshot</a> ·
+    <a href="https://github.com/pixagram-blockchain/witness-status">source</a> ·
+    <a href="https://github.com/pixagram-blockchain/witness">run a witness</a> ·
+    <button id="copy-json" type="button" class="linkish">copy model JSON</button>
+  </div>
+</footer>
+<div id="tip" class="tip" hidden></div>
+<script type="module" src="src/ui/main.js"></script>
+</body>
+</html>
