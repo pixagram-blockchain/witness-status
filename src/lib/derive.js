@@ -181,9 +181,13 @@ export function derive(raw, { now = Date.now(), prev = null, history = null, ses
     maxBlockSize: dgp.maximum_block_size, pxsPrintRate: dgp.pxs_print_rate, pxsInterestRate: dgp.pxs_interest_rate,
   };
 
+  // hived reshuffles every HIVE_MAX_WITNESSES blocks regardless of how many witnesses are scheduled;
+  // the object's next_shuffle_block_num is "shuffle block + num_scheduled_witnesses" and misleads below 21.
+  const maxW = cfg.maxWitnesses || 21;
+  const nextShuffleBlock = (Math.floor(headBlock / maxW) + 1) * maxW;
   const scheduleModel = {
     shuffled, n, currentIndex: n ? currentAslot % n : null, nextIndex: n ? (currentAslot + 1) % n : null,
-    nextShuffleBlock: schedule.next_shuffle_block_num, blocksToShuffle: schedule.next_shuffle_block_num - headBlock,
+    nextShuffleBlock, blocksToShuffle: nextShuffleBlock - headBlock, nextShuffleBlockRaw: schedule.next_shuffle_block_num,
     maxVoted: schedule.max_voted_witnesses, maxRunner: schedule.max_runner_witnesses, maxMiner: schedule.max_miner_witnesses,
     electedWeight: schedule.elected_weight, timeshareWeight: schedule.timeshare_weight,
   };

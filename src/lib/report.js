@@ -73,13 +73,13 @@ export function textReport(model, health, now = Date.now()) {
     `aslot ${fmtInt(net.currentAslot)} missed-slots ${fmtInt(net.missedSlotsTotal)}`, `participation ${fmtPct(net.participationPct)} (${net.participationCount}/128)`);
   if (net.rate) netBits.push(`rate ${net.rate.observed.toFixed(3)} blk/s (${(net.rate.ratio * 100).toFixed(0)}% of expected, ${net.rate.headDelta} blocks in ${fmtDuration(net.rate.elapsedSec)})`);
   lines.push(`NETWORK  ${netBits.join('  ')}`);
-  lines.push(`CHAIN    hived ${ch.nodeVersion}  majority ${ch.majorityVersion}  HF ${ch.hfCurrent} (next ${ch.hfNext}${ch.hfNextTime ? ' at ' + ch.hfNextTime : ''})  ` +
+  lines.push(`CHAIN    hived ${ch.nodeVersion}  majority ${ch.majorityVersion}  HF ${ch.hfCurrent}${ch.hfNext && ch.hfNext !== '0.0.0' && ch.hfNext !== ch.hfCurrent ? ` (next ${ch.hfNext}${ch.hfNextTime ? ' at ' + ch.hfNextTime : ''})` : ''}  ` +
     `median feed ${fmtNum(ch.medianFeed.price)} PIXA/PXS (${ch.feedCount} feeds, min ${fmtNum(ch.minFeed)} max ${fmtNum(ch.maxFeed)})  ` +
     `VESTS:PIXA ${fmtNum(ch.vestingRatio, 6)}  scheduled ${model.schedule.n}/${ch.maxWitnesses}  ` +
     `witnesses ${model.counts.total} (${model.counts.active} active, ${model.counts.standby} standby, ${model.counts.disabled} disabled)`);
   const b = model.blocks;
   lines.push(`BLOCKS   window ${b.windowSize}` + (b.windowSize ? ` (#${fmtInt(b.first)}–#${fmtInt(b.last)}, ${fmtDuration(b.spanSec)})  txs ${fmtInt(b.txTotal)}  missed slots in window ${fmtInt(b.missedSlotsInWindow)}` : ''));
-  lines.push(`SCHEDULE ${model.schedule.shuffled.map((w, i) => (i === model.schedule.currentIndex ? `[${w}]` : i === model.schedule.nextIndex ? `>${w}` : w)).join(' ')}  (shuffle in ${model.schedule.blocksToShuffle} blocks)`);
+  lines.push(`SCHEDULE ${model.schedule.shuffled.map((w, i) => (i === model.schedule.currentIndex ? `[${w}]` : i === model.schedule.nextIndex ? `>${w}` : w)).join(' ')}  (reshuffle every ${ch.maxWitnesses} blocks, next at #${fmtInt(model.schedule.nextShuffleBlock)} in ${model.schedule.blocksToShuffle})`);
   lines.push(`HEALTH   ${health.level.toUpperCase()} (exit ${health.exitCode})`);
   for (const f of health.network) lines.push(`  - [${f.level}] ${f.code}: ${f.message}`);
   if (model.errors.length) lines.push(`ERRORS   ${model.errors.join(' | ')}`);

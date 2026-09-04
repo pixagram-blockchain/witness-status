@@ -58,7 +58,7 @@ Shape (`schema: 1`):
                "medianFeed": { "price", "base", "quote" }, "minFeed", "maxFeed", "feedCount",
                "medianProps": { "accountCreationFee", "maxBlockSize", "pxsInterestRate", "subsidyBudget", "subsidyDecay" },
                "supply": { "pixa", "pxs", "virtual" } },
-    "schedule": { "shuffled": [ "owner", ... ], "n", "currentIndex", "nextIndex", "nextShuffleBlock", "blocksToShuffle" },
+    "schedule": { "shuffled": [ "owner", ... ], "n", "currentIndex", "nextIndex", "nextShuffleBlock", "blocksToShuffle", "nextShuffleBlockRaw" },
     "counts": { "total", "active", "standby", "disabled", "reported" },
     "witnesses": [ { /* see §4.2; sorted by rank */ } ],
     "blocks": { "window": [ { "num", "timestamp", "witness", "txCount", "gapBefore" } ], "perWitness": { "<owner>": n },
@@ -143,6 +143,7 @@ Parsing rules:
 | **network status** | `not_started` if head = 0; else `stalled` if head age > 60 s or (elapsed ≥ 15 s and head unchanged); else `lagging` if head age > 3 × block interval (9 s) or (elapsed ≥ 30 s and ratio < 0.8); else `progressing` |
 | scheduled witnesses | `sched.num_scheduled_witnesses`; the round is `sched.current_shuffled_witnesses` with empty strings removed |
 | current / next slot | `shuffled[current_aslot mod n]`, `shuffled[(current_aslot + 1) mod n]` |
+| next reshuffle block | `(floor(head / HIVE_MAX_WITNESSES) + 1) × HIVE_MAX_WITNESSES`. hived reshuffles every 21 blocks regardless of `n`; the object's `next_shuffle_block_num` equals "shuffle block + n" and is misleading below 21 witnesses (verified on chain: it stayed at 43 until head 63, then became 64) |
 | median feed (PIXA per PXS) | `feed_history.current_median_history.quote ÷ base` (e.g. 102.000 PIXA / 1.000 PXS = 102) |
 | VESTS : PIXA | `dgp.total_vesting_fund_pixa ÷ dgp.total_vesting_shares` (1.0 at genesis; stays ~flat by design) |
 | majority version | `sched.majority_version` |

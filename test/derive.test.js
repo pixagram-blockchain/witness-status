@@ -191,8 +191,17 @@ test('derive reports schedule indices from the current aslot', () => {
   assert.equal(m.schedule.n, 3);
   assert.equal(m.schedule.currentIndex, 1);
   assert.equal(m.schedule.nextIndex, 2);
-  assert.equal(m.schedule.nextShuffleBlock, 9);
-  assert.equal(m.schedule.blocksToShuffle, 2);
+  assert.equal(m.schedule.nextShuffleBlockRaw, 9);
+  assert.equal(m.schedule.nextShuffleBlock, 21);
+  assert.equal(m.schedule.blocksToShuffle, 14);
+});
+
+test('derive schedules the next reshuffle at the next multiple of maxWitnesses, not at next_shuffle_block_num', () => {
+  // verified on chain 2026-09-04: with 1 witness next_shuffle_block_num stayed at 43 until head 63, where it became 64
+  const at = (head) => derive(fx.raw({ dgp: { head_block_number: head, current_aslot: head, time: '2026-09-04T12:59:58' }, schedule: { next_shuffle_block_num: 43 } }), { now: NOW }).schedule;
+  assert.deepEqual([at(62).nextShuffleBlock, at(62).blocksToShuffle], [63, 1]);
+  assert.deepEqual([at(63).nextShuffleBlock, at(63).blocksToShuffle], [84, 21]);
+  assert.equal(at(62).nextShuffleBlockRaw, 43);
 });
 
 test('derive counts voters, maps accounts and tolerates missing extras', () => {

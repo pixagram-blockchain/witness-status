@@ -60,7 +60,7 @@ export function renderTiles(m) {
     tile('Scheduled', `${s.n} <small>/ ${c.maxWitnesses}</small>`, `${s.maxVoted} voted + ${s.maxRunner} timeshare + ${s.maxMiner} miner slots`),
     tile('Missed slots', fmtInt(n.missedSlotsTotal), `all time · aslot ${fmtInt(n.currentAslot)} vs head #${fmtInt(n.headBlock)}`),
     tile('Median feed', `${fmtNum(c.medianFeed.price)} <small>PIXA/PXS</small>`, `${plural(c.feedCount, 'feed')} in window · min ${fmtNum(c.minFeed)} · max ${fmtNum(c.maxFeed)}`),
-    tile('Versions', esc(c.majorityVersion), `majority · node ${esc(c.nodeVersion)} (${esc(String(c.nodeRevision).slice(0, 8))}) · HF ${esc(c.hfCurrent)}${c.hfNext && c.hfNext !== '0.0.0' ? ' → ' + esc(c.hfNext) : ''}`),
+    tile('Versions', esc(c.majorityVersion), `majority · node ${esc(c.nodeVersion)} (${esc(String(c.nodeRevision).slice(0, 8))}) · HF ${esc(c.hfCurrent)}${c.hfNext && c.hfNext !== '0.0.0' && c.hfNext !== c.hfCurrent ? ' → ' + esc(c.hfNext) : ''}`),
     tile('VESTS : PIXA', fmtNum(c.vestingRatio, 6), `${fmtCompact(c.totalVests)} VESTS ↔ ${fmtCompact(c.totalVestingFundPixa)} PIXA vested`),
     tile('Median props', `${fmtNum(c.medianProps.accountCreationFee)} <small>PIXA fee</small>`, `max block ${fmtBytes(c.medianProps.maxBlockSize)} · subsidy ${c.medianProps.subsidyBudget}/${c.medianProps.subsidyDecay} · PXS interest ${c.medianProps.pxsInterestRate / 100}%`),
     tile('Supply', `${fmtCompact(c.supply.pixa)} <small>PIXA</small>`, `${fmtCompact(c.supply.pxs)} PXS · virtual ${fmtCompact(c.supply.virtual)} PIXA`),
@@ -77,7 +77,7 @@ export function renderSchedule(m) {
     return `<span class="chip ${cur ? 'cur' : next ? 'next' : ''}"><span class="slot">${i}</span>${esc(w)}${cur ? '<span class="tag">now</span>' : next ? '<span class="tag">next</span>' : ''}</span>`;
   }).join('')}</div>`;
 }
-export const scheduleMeta = (m) => `${m.schedule.n} of ${m.chain.maxWitnesses} slots filled · producer = shuffled[aslot mod ${m.schedule.n}] · reshuffle at #${fmtInt(m.schedule.nextShuffleBlock)} (in ${m.schedule.blocksToShuffle} block${m.schedule.blocksToShuffle === 1 ? '' : 's'})`;
+export const scheduleMeta = (m) => `${m.schedule.n} of ${m.chain.maxWitnesses} slots filled · producer = shuffled[aslot mod ${m.schedule.n}] · reshuffle every ${m.chain.maxWitnesses} blocks, next at #${fmtInt(m.schedule.nextShuffleBlock)} (in ${m.schedule.blocksToShuffle} block${m.schedule.blocksToShuffle === 1 ? '' : 's'})`;
 
 export function renderBlocks(m, colorOf) {
   const b = m.blocks;
