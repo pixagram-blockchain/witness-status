@@ -6,7 +6,7 @@
   "private": true,
   "bin": { "witness-status": "bin/witness-status.mjs" },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/*.test.js",
     "smoke": "node scripts/smoke.mjs",
     "serve": "python3 -m http.server 8000"
   },
