@@ -65,6 +65,8 @@ main.busy { opacity: .7; }
 /* strips: participation (status) and recent blocks (identity) */
 .strip { display: inline-flex; gap: 1px; height: 14px; align-items: flex-end; }
 .strip i { display: block; width: 3px; height: 100%; background: var(--sother); border-radius: 1px; }
+.strip.part { display: flex; flex: 1 1 240px; min-width: 0; max-width: 520px; }
+.strip.part i { flex: 1 1 0; width: auto; min-width: 1px; }
 .strip.part i.ok { background: var(--ink-2); opacity: .5; }
 .strip.part i.miss { background: var(--crit); }
 .strip.blocks { display: flex; flex-wrap: wrap; gap: 2px; height: auto; padding: 4px 0; }
