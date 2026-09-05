@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Witness Status Diagnostics</title>
+<style>
+  body { margin: 0; padding: 16px; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: #0d0d0d; color: #fff; }
+  h1 { font-size: 16px; margin: 0 0 8px; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #1a1a19; border: 1px solid rgba(255,255,255,.1); border-radius: 6px; padding: 12px; font: 12px/1.5 ui-monospace, Menlo, monospace; }
+  .ok { color: #0ca30c; } .bad { color: #e66767; } button { font: inherit; padding: 6px 12px; }
+</style>
+</head>
+<body>
+<h1>Pixagram Witness Status diagnostics</h1>
+<p>Runs a few probes in this browser and prints the results below. Nothing is sent anywhere; copy or screenshot the block.</p>
+<button id="copy">Copy report</button>
+<pre id="out">starting…</pre>
+<script>
+(function () {
+  var out = document.getElementById('out');
+  var lines = [];
+  function log(s) { lines.push(s); out.textContent = lines.join('\n'); }
+  function t() { return new Date().toISOString().slice(11, 19); }
+  log('time  ' + new Date().toISOString());
+  log('ua    ' + navigator.userAgent);
+  log('view  ' + window.innerWidth + 'x' + window.innerHeight + ' dpr ' + (window.devicePixelRatio || 1) + ' online=' + navigator.onLine);
+  log('page  ' + location.href);
+  var feats = { 'BigInt literal': 'return 1n', 'optional chaining': 'var a; return a?.b', 'nullish ??': 'return null ?? 1', 'class fields': 'class A { x = 1 } return new A().x', 'arrow/spread': 'return [...[1,2]].map(x => x)', 'Promise.allSettled': 'return typeof Promise.allSettled', 'AbortController': 'return typeof AbortController', 'fetch': 'return typeof fetch', 'URLSearchParams': 'return typeof URLSearchParams', 'ES modules (dynamic import)': 'return typeof import' };
+  for (var k in feats) { try { new Function(feats[k]); log('feat  ' + k + ': ok'); } catch (e) { log('feat  ' + k + ': FAIL ' + e.message); } }
+  try { localStorage.setItem('witness-status:diag', '1'); localStorage.removeItem('witness-status:diag'); log('store localStorage: ok'); } catch (e) { log('store localStorage: FAIL ' + e.message); }
+  window.addEventListener('error', function (e) { log('error ' + (e.message || e.type) + (e.filename ? ' @ ' + e.filename.split('/').pop() + ':' + e.lineno : '')); });
+  window.addEventListener('unhandledrejection', function (e) { log('reject ' + (e.reason && e.reason.message || e.reason)); });
+  function probe(url, label) {
+    var t0 = performance.now();
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{"jsonrpc":"2.0","method":"condenser_api.get_dynamic_global_properties","params":[],"id":1}' })
+      .then(function (r) { return r.text().then(function (x) { var ms = Math.round(performance.now() - t0); var head = (x.match(/"head_block_number":(\d+)/) || [])[1]; log('fetch ' + label + ': HTTP ' + r.status + ' in ' + ms + ' ms, head ' + head); }); })
+      .catch(function (e) { log('fetch ' + label + ': FAIL after ' + Math.round(performance.now() - t0) + ' ms: ' + e.message); });
+  }
+  function proto(host) {
+    try { var es = performance.getEntriesByType('resource').filter(function (e) { return e.name.indexOf(host) >= 0; }); return es.map(function (e) { return (e.nextHopProtocol || '?') + ':' + Math.round(e.duration) + 'ms'; }).join(' '); } catch (e) { return '?'; }
+  }
+  probe('https://api.pixagram.com', 'api.pixagram.com #1')
+    .then(function () { return probe('https://api.pixagram.com', 'api.pixagram.com #2'); })
+    .then(function () { return probe('https://api.pixagram.com', 'api.pixagram.com #3'); })
+    .then(function () { log('proto api.pixagram.com: ' + proto('api.pixagram.com')); })
+    .then(function () { return probe('https://blockforge.lol', 'blockforge.lol'); })
+    .then(function () { log('proto blockforge.lol: ' + proto('blockforge.lol')); })
+    .then(function () {
+      var t0 = performance.now();
+      return new Function("return import('./src/lib/derive.js')")()
+        .then(function (m) { log('module import src/lib/derive.js: ok (' + Object.keys(m).length + ' exports, ' + Math.round(performance.now() - t0) + ' ms)'); })
+        .catch(function (e) { log('module import src/lib/derive.js: FAIL ' + e.message); });
+    })
+    .then(function () {
+      var t0 = performance.now();
+      return new Function("return import('./src/ui/main.js')")()
+        .then(function () { log('module import src/ui/main.js: ok (' + Math.round(performance.now() - t0) + ' ms); dashboard status: ' + (document.getElementById('status') ? document.getElementById('status').textContent : 'n/a (no dashboard DOM here)')); })
+        .catch(function (e) { log('module import src/ui/main.js: FAIL ' + e.message); });
+    })
+    .then(function () { log('done  ' + t()); });
+  document.getElementById('copy').onclick = function () { try { navigator.clipboard.writeText(lines.join('\n')); this.textContent = 'copied'; } catch (e) { this.textContent = 'select the text manually'; } };
+})();
+</script>
+</body>
+</html>

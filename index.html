@@ -56,6 +56,13 @@
   </div>
 </footer>
 <div id="tip" class="tip" hidden></div>
+<script>
+// Surface module load or parse failures (old browsers, blocked scripts) instead of an endless "loading…".
+window.addEventListener('error', function (e) {
+  var el = document.getElementById('status');
+  if (el && /loading/.test(el.textContent)) { el.textContent = 'error: ' + (e.message || 'script failed to load') + ' (see diag.html)'; el.className = 'pill err'; }
+});
+</script>
 <script type="module" src="src/ui/main.js"></script>
 </body>
 </html>
