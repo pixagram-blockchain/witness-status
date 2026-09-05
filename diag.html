@@ -26,7 +26,7 @@
   log('ua    ' + navigator.userAgent);
   log('view  ' + window.innerWidth + 'x' + window.innerHeight + ' dpr ' + (window.devicePixelRatio || 1) + ' online=' + navigator.onLine);
   log('page  ' + location.href);
-  var feats = { 'BigInt literal': 'return 1n', 'optional chaining': 'var a; return a?.b', 'nullish ??': 'return null ?? 1', 'class fields': 'class A { x = 1 } return new A().x', 'arrow/spread': 'return [...[1,2]].map(x => x)', 'Promise.allSettled': 'return typeof Promise.allSettled', 'AbortController': 'return typeof AbortController', 'fetch': 'return typeof fetch', 'URLSearchParams': 'return typeof URLSearchParams', 'ES modules (dynamic import)': 'return typeof import' };
+  var feats = { 'BigInt literal': 'return 1n', 'optional chaining': 'var a; return a?.b', 'nullish ??': 'return null ?? 1', 'class fields': 'class A { x = 1 } return new A().x', 'arrow/spread': 'return [...[1,2]].map(x => x)', 'Promise.allSettled': 'return typeof Promise.allSettled', 'AbortController': 'return typeof AbortController', 'fetch': 'return typeof fetch', 'URLSearchParams': 'return typeof URLSearchParams' };
   for (var k in feats) { try { new Function(feats[k]); log('feat  ' + k + ': ok'); } catch (e) { log('feat  ' + k + ': FAIL ' + e.message); } }
   try { localStorage.setItem('witness-status:diag', '1'); localStorage.removeItem('witness-status:diag'); log('store localStorage: ok'); } catch (e) { log('store localStorage: FAIL ' + e.message); }
   window.addEventListener('error', function (e) { log('error ' + (e.message || e.type) + (e.filename ? ' @ ' + e.filename.split('/').pop() + ':' + e.lineno : '')); });
@@ -54,9 +54,9 @@
     })
     .then(function () {
       var t0 = performance.now();
-      return new Function("return import('./src/ui/main.js')")()
-        .then(function () { log('module import src/ui/main.js: ok (' + Math.round(performance.now() - t0) + ' ms); dashboard status: ' + (document.getElementById('status') ? document.getElementById('status').textContent : 'n/a (no dashboard DOM here)')); })
-        .catch(function (e) { log('module import src/ui/main.js: FAIL ' + e.message); });
+      return new Function("return import('./src/ui/render.js')")()
+        .then(function (m) { log('module import src/ui/render.js: ok (' + Object.keys(m).length + ' exports, ' + Math.round(performance.now() - t0) + ' ms)'); })
+        .catch(function (e) { log('module import src/ui/render.js: FAIL ' + e.message); });
     })
     .then(function () { log('done  ' + t()); });
   document.getElementById('copy').onclick = function () { try { navigator.clipboard.writeText(lines.join('\n')); this.textContent = 'copied'; } catch (e) { this.textContent = 'select the text manually'; } };
