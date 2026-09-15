@@ -1,0 +1,17 @@
+Pixagram witness status  https://api.pixagram.com  2026-09-15 23:53:43 UTC  (rpc 540 ms)
+NETWORK  PROGRESSING  head #330,108 (4s ago)  LIB #330,087 (lag 21)  producer initminer  aslot 331,073 missed-slots 965  participation 100.0% (128/128)  rate 0.333 blk/s (100% of expected, 2416 blocks in 2h 0m)
+CHAIN    hived 1.28.7  majority 0.0.0  HF 1.28.0  median feed 51.833 PIXA/PXS (84 feeds, min 51.833 max 51.833)  VESTS:PIXA 1.000000  scheduled 8/21  witnesses 8 (8 active, 0 standby, 0 disabled)
+BLOCKS   window 300 (#329,809–#330,108, 14m 57s)  txs 4  missed slots in window 0
+SCHEDULE matus [initminer] >blockforge nodeprime chainguard boitata rex merlion  (reshuffle every 21 blocks, next at #330,120 in 12)
+HEALTH   OK (exit 0)
+WITNESSES
+  #  witness     status  votes(M)   ≈PIXA  share  missed  Δprev  produced  last block          feed    feed age  version  flags
+  1  blockforge  active     0.018  17,601  12.5%     233     +0        37  #330,101 (21s ago)  51.833  17m 7s    1.28.7   -    
+  2  boitata     active     0.018  17,601  12.5%     113     +0        38  #330,104 (12s ago)  51.833  15m 16s   1.28.7   -    
+  3  chainguard  active     0.018  17,601  12.5%       6     +0        37  #330,103 (15s ago)  51.833  44m 31s   1.28.7   -    
+  4  initminer*  active     0.018  17,601  12.5%       7     +0        42  #330,108 (0s ago)   51.833  14m 49s   1.28.7   -    
+  5  matus       active     0.018  17,601  12.5%     228     +0        35  #330,107 (3s ago)   51.833  17m 10s   1.28.7   -    
+  6  merlion     active     0.018  17,601  12.5%     165     +0        36  #330,106 (6s ago)   51.833  15m 28s   1.28.7   -    
+  7  nodeprime   active     0.018  17,601  12.5%      72     +0        36  #330,102 (18s ago)  51.833  17m 4s    1.28.7   -    
+  8  rex         active     0.018  17,601  12.5%       4     +0        39  #330,105 (9s ago)   51.833  14m 37s   1.28.7   -    
+  (* = current producer; Δprev = blocks missed since the previous snapshot)
