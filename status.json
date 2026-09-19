@@ -1,0 +1,2996 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-09-19T15:49:50.697Z",
+  "node": "https://api.pixagram.com",
+  "health": {
+    "level": "ok",
+    "exitCode": 0,
+    "network": [],
+    "witnesses": {
+      "blockforge": [],
+      "boitata": [],
+      "chainguard": [],
+      "initminer": [],
+      "matus": [],
+      "merlion": [],
+      "nodeprime": [],
+      "rex": []
+    }
+  },
+  "model": {
+    "fetchedAt": 1789832988241,
+    "node": "https://api.pixagram.com",
+    "latencyMs": 788,
+    "network": {
+      "status": "progressing",
+      "rate": {
+        "observed": 0.33329881956301166,
+        "expected": 0.3333333333333333,
+        "ratio": 0.999896458689035,
+        "headDelta": 4542,
+        "elapsedSec": 13627.411
+      },
+      "headBlock": 435601,
+      "headBlockId": "0006a591fe8a74f8a9a0c5a6daca03ae5f54aa29",
+      "headTime": "2026-09-19T15:49:48",
+      "headAgeSec": 2.696,
+      "lib": 435580,
+      "libLag": 21,
+      "currentWitness": "blockforge",
+      "currentAslot": 436596,
+      "missedSlotsTotal": 995,
+      "participationCount": 128,
+      "participationPct": 100,
+      "recentSlots": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "genesisTime": "2026-09-04T12:00:00",
+      "genesisInSec": null
+    },
+    "chain": {
+      "blockInterval": 3,
+      "maxWitnesses": 21,
+      "shutdownThreshold": 28800,
+      "maxFeedAgeSec": 604800,
+      "addressPrefix": "PIX",
+      "nodeVersion": "1.29.0",
+      "nodeRevision": "c9f032d81286eee77bdcc09a1c544ffd42dc9ea6",
+      "chainId": "706978616772616d000000000000000000000000000000000000000000000000",
+      "majorityVersion": "1.29.0",
+      "hfCurrent": "1.29.0",
+      "hfLast": 29,
+      "hfNext": "1.29.0",
+      "hfNextTime": "2026-09-18T12:00:00",
+      "hardforkRequiredWitnesses": 7,
+      "vestingRatio": 1.0000000023406304,
+      "totalVests": 98153046.88326,
+      "totalVestingFundPixa": 98153047.113,
+      "medianFeed": {
+        "price": 51.833,
+        "base": {
+          "amount": 1,
+          "symbol": "PXS"
+        },
+        "quote": {
+          "amount": 51.833,
+          "symbol": "PIXA"
+        }
+      },
+      "marketMedian": 51.833,
+      "minFeed": 51.833,
+      "maxFeed": 51.833,
+      "feedCount": 84,
+      "medianProps": {
+        "accountCreationFee": 20,
+        "maxBlockSize": 2097152,
+        "pxsInterestRate": 0,
+        "subsidyBudget": 797,
+        "subsidyDecay": 347321
+      },
+      "supply": {
+        "pixa": 100450272.812,
+        "pxs": 246039.788,
+        "virtual": 113203253.143
+      },
+      "maxBlockSize": 2097152,
+      "pxsPrintRate": 10000,
+      "pxsInterestRate": 0
+    },
+    "schedule": {
+      "shuffled": [
+        "boitata",
+        "merlion",
+        "initminer",
+        "nodeprime",
+        "blockforge",
+        "rex",
+        "chainguard",
+        "matus"
+      ],
+      "n": 8,
+      "currentIndex": 4,
+      "nextIndex": 5,
+      "nextShuffleBlock": 435603,
+      "blocksToShuffle": 2,
+      "nextShuffleBlockRaw": 435590,
+      "maxVoted": 20,
+      "maxRunner": 1,
+      "maxMiner": 0,
+      "electedWeight": 1,
+      "timeshareWeight": 5
+    },
+    "counts": {
+      "total": 8,
+      "active": 8,
+      "standby": 0,
+      "disabled": 0,
+      "reported": 8
+    },
+    "witnesses": [
+      {
+        "owner": "blockforge",
+        "id": 3,
+        "rank": 1,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": true,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 3,
+        "votersTruncated": false,
+        "totalMissed": 239,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435601,
+        "blocksSinceConfirmed": 0,
+        "secondsSinceConfirmed": 0,
+        "shutdownRisk": false,
+        "lastAslot": 436596,
+        "slotsSinceLast": 0,
+        "producedInWindow": 39,
+        "windowShare": 0.13,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:36:45",
+          "ageSec": 785.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX658BQQbHk6y8BoVvfkLbK7E4PMCms2uddZKEyWWVEfaAxAYQ5C",
+        "url": "https://blockforge.lol",
+        "created": "2026-09-04T12:51:27",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9366310,
+        "account": {
+          "vests": 22482.060623,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:05:57"
+        }
+      },
+      {
+        "owner": "boitata",
+        "id": 5,
+        "rank": 2,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 114,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435597,
+        "blocksSinceConfirmed": 4,
+        "secondsSinceConfirmed": 12,
+        "shutdownRisk": false,
+        "lastAslot": 436592,
+        "slotsSinceLast": 4,
+        "producedInWindow": 37,
+        "windowShare": 0.12333333333333334,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:38:27",
+          "ageSec": 683.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6qMDRD9NUAx3tWPVBaiN2Cf23VRrMzGzTbYPLPvg42ZxsUenME",
+        "url": "https://boitata.quest",
+        "created": "2026-09-05T10:57:18",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9177538,
+        "account": {
+          "vests": 19289.03767,
+          "delegatedVests": 0,
+          "receivedVests": 1100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-05T10:02:45"
+        }
+      },
+      {
+        "owner": "chainguard",
+        "id": 7,
+        "rank": 3,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 2,
+        "votersTruncated": false,
+        "totalMissed": 7,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435595,
+        "blocksSinceConfirmed": 6,
+        "secondsSinceConfirmed": 18,
+        "shutdownRisk": false,
+        "lastAslot": 436590,
+        "slotsSinceLast": 6,
+        "producedInWindow": 33,
+        "windowShare": 0.11,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:09:12",
+          "ageSec": 2438.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX4xUyVYosxiYRscrXPxM42sUsVFobziw8e5bADwQXFEBCJNtwuc",
+        "url": "https://pixagram.com/witness-status/",
+        "created": "2026-09-06T05:11:15",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 8214121,
+        "account": {
+          "vests": 17887.356674,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:06:06"
+        }
+      },
+      {
+        "owner": "initminer",
+        "id": 0,
+        "rank": 4,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 3,
+        "votersTruncated": false,
+        "totalMissed": 11,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435599,
+        "blocksSinceConfirmed": 2,
+        "secondsSinceConfirmed": 6,
+        "shutdownRisk": false,
+        "lastAslot": 436594,
+        "slotsSinceLast": 2,
+        "producedInWindow": 38,
+        "windowShare": 0.12666666666666668,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:38:54",
+          "ageSec": 656.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX7J9nSaLkdSgcXufXmdn8Gm686rhbt9P8nJDzpePykUHSqZmw7Y",
+        "url": "https://pixagram.com/witness-status/",
+        "created": null,
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9367896,
+        "account": {
+          "vests": 25037.931697,
+          "delegatedVests": 2600,
+          "receivedVests": 0,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:00:00"
+        }
+      },
+      {
+        "owner": "matus",
+        "id": 2,
+        "rank": 5,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 3,
+        "votersTruncated": false,
+        "totalMissed": 234,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435596,
+        "blocksSinceConfirmed": 5,
+        "secondsSinceConfirmed": 15,
+        "shutdownRisk": false,
+        "lastAslot": 436591,
+        "slotsSinceLast": 5,
+        "producedInWindow": 38,
+        "windowShare": 0.12666666666666668,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:36:42",
+          "ageSec": 788.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6Ee3LPfGKktEa7bhVEuVbRY7Mg9HLQQVjLHwkodPhyMr9m3PSb",
+        "url": "https://pixagram.com/witness-status/",
+        "created": "2026-09-04T12:45:39",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9366048,
+        "account": {
+          "vests": 2019256.722015,
+          "delegatedVests": 50,
+          "receivedVests": 1000,
+          "pixa": 363207.767,
+          "pxs": 0,
+          "witnessesVotedFor": 8,
+          "proxy": "",
+          "created": "2026-09-04T12:05:54"
+        }
+      },
+      {
+        "owner": "merlion",
+        "id": 1,
+        "rank": 6,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 165,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435598,
+        "blocksSinceConfirmed": 3,
+        "secondsSinceConfirmed": 9,
+        "shutdownRisk": false,
+        "lastAslot": 436593,
+        "slotsSinceLast": 3,
+        "producedInWindow": 36,
+        "windowShare": 0.12,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:38:15",
+          "ageSec": 695.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5D4hSCFsMvtguFaumscPSijQLY6hrcsyJowFxdRdZoaGTyVffW",
+        "url": "https://merlion.surf",
+        "created": "2026-09-04T12:43:00",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9364867,
+        "account": {
+          "vests": 22576.032608,
+          "delegatedVests": 0,
+          "receivedVests": 1000,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:31:36"
+        }
+      },
+      {
+        "owner": "nodeprime",
+        "id": 6,
+        "rank": 7,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 3,
+        "votersTruncated": false,
+        "totalMissed": 82,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435600,
+        "blocksSinceConfirmed": 1,
+        "secondsSinceConfirmed": 3,
+        "shutdownRisk": false,
+        "lastAslot": 436595,
+        "slotsSinceLast": 1,
+        "producedInWindow": 41,
+        "windowShare": 0.13666666666666666,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:36:48",
+          "ageSec": 782.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5BgiXYPHG4syCumdLFeNDDsjzoYhVVLn7uRydnYroFqNXVWLVu",
+        "url": "https://pixa-dubai.xyz",
+        "created": "2026-09-05T17:11:06",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 8986871,
+        "account": {
+          "vests": 18738.86071,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:06:00"
+        }
+      },
+      {
+        "owner": "rex",
+        "id": 4,
+        "rank": 8,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 22484489709,
+        "votesVests": 22484.489709,
+        "votesPixa": 22484.48976162788,
+        "voteShare": 0.125,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 6,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 435594,
+        "blocksSinceConfirmed": 7,
+        "secondsSinceConfirmed": 21,
+        "shutdownRisk": false,
+        "lastAslot": 436589,
+        "slotsSinceLast": 7,
+        "producedInWindow": 38,
+        "windowShare": 0.12666666666666668,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-09-19T15:39:06",
+          "ageSec": 644.696,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.29.0",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.29.0",
+          "time": "2026-09-18T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX7tYd1gj5SeZSXZNy22t9CqgHkzq96YL9jq8NZSh2CjqkZQBfCP",
+        "url": "https://pixarex.net",
+        "created": "2026-09-04T14:05:18",
+        "virtual": {
+          "lastUpdate": "537872455689908309813701699175691",
+          "position": "0",
+          "scheduledTime": "537887589783290451260729601264887"
+        },
+        "availableSubsidies": 9365803,
+        "account": {
+          "vests": 22328.496655,
+          "delegatedVests": 100,
+          "receivedVests": 100,
+          "pixa": 9979.999,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:31:03"
+        }
+      }
+    ],
+    "blocks": {
+      "window": [
+        {
+          "num": 435302,
+          "timestamp": "2026-09-19T15:34:51",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435303,
+          "timestamp": "2026-09-19T15:34:54",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435304,
+          "timestamp": "2026-09-19T15:34:57",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435305,
+          "timestamp": "2026-09-19T15:35:00",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435306,
+          "timestamp": "2026-09-19T15:35:03",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435307,
+          "timestamp": "2026-09-19T15:35:06",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435308,
+          "timestamp": "2026-09-19T15:35:09",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435309,
+          "timestamp": "2026-09-19T15:35:12",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435310,
+          "timestamp": "2026-09-19T15:35:15",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435311,
+          "timestamp": "2026-09-19T15:35:18",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435312,
+          "timestamp": "2026-09-19T15:35:21",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435313,
+          "timestamp": "2026-09-19T15:35:24",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435314,
+          "timestamp": "2026-09-19T15:35:27",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435315,
+          "timestamp": "2026-09-19T15:35:30",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435316,
+          "timestamp": "2026-09-19T15:35:33",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435317,
+          "timestamp": "2026-09-19T15:35:36",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435318,
+          "timestamp": "2026-09-19T15:35:39",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435319,
+          "timestamp": "2026-09-19T15:35:42",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435320,
+          "timestamp": "2026-09-19T15:35:45",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435321,
+          "timestamp": "2026-09-19T15:35:48",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435322,
+          "timestamp": "2026-09-19T15:35:51",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435323,
+          "timestamp": "2026-09-19T15:35:54",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435324,
+          "timestamp": "2026-09-19T15:35:57",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435325,
+          "timestamp": "2026-09-19T15:36:00",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435326,
+          "timestamp": "2026-09-19T15:36:03",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435327,
+          "timestamp": "2026-09-19T15:36:06",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435328,
+          "timestamp": "2026-09-19T15:36:09",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435329,
+          "timestamp": "2026-09-19T15:36:12",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435330,
+          "timestamp": "2026-09-19T15:36:15",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435331,
+          "timestamp": "2026-09-19T15:36:18",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435332,
+          "timestamp": "2026-09-19T15:36:21",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435333,
+          "timestamp": "2026-09-19T15:36:24",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435334,
+          "timestamp": "2026-09-19T15:36:27",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435335,
+          "timestamp": "2026-09-19T15:36:30",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435336,
+          "timestamp": "2026-09-19T15:36:33",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435337,
+          "timestamp": "2026-09-19T15:36:36",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435338,
+          "timestamp": "2026-09-19T15:36:39",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435339,
+          "timestamp": "2026-09-19T15:36:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435340,
+          "timestamp": "2026-09-19T15:36:45",
+          "witness": "boitata",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435341,
+          "timestamp": "2026-09-19T15:36:48",
+          "witness": "initminer",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435342,
+          "timestamp": "2026-09-19T15:36:51",
+          "witness": "matus",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435343,
+          "timestamp": "2026-09-19T15:36:54",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435344,
+          "timestamp": "2026-09-19T15:36:57",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435345,
+          "timestamp": "2026-09-19T15:37:00",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435346,
+          "timestamp": "2026-09-19T15:37:03",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435347,
+          "timestamp": "2026-09-19T15:37:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435348,
+          "timestamp": "2026-09-19T15:37:09",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435349,
+          "timestamp": "2026-09-19T15:37:12",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435350,
+          "timestamp": "2026-09-19T15:37:15",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435351,
+          "timestamp": "2026-09-19T15:37:18",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435352,
+          "timestamp": "2026-09-19T15:37:21",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435353,
+          "timestamp": "2026-09-19T15:37:24",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435354,
+          "timestamp": "2026-09-19T15:37:27",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435355,
+          "timestamp": "2026-09-19T15:37:30",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435356,
+          "timestamp": "2026-09-19T15:37:33",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435357,
+          "timestamp": "2026-09-19T15:37:36",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435358,
+          "timestamp": "2026-09-19T15:37:39",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435359,
+          "timestamp": "2026-09-19T15:37:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435360,
+          "timestamp": "2026-09-19T15:37:45",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435361,
+          "timestamp": "2026-09-19T15:37:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435362,
+          "timestamp": "2026-09-19T15:37:51",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435363,
+          "timestamp": "2026-09-19T15:37:54",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435364,
+          "timestamp": "2026-09-19T15:37:57",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435365,
+          "timestamp": "2026-09-19T15:38:00",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435366,
+          "timestamp": "2026-09-19T15:38:03",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435367,
+          "timestamp": "2026-09-19T15:38:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435368,
+          "timestamp": "2026-09-19T15:38:09",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435369,
+          "timestamp": "2026-09-19T15:38:12",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435370,
+          "timestamp": "2026-09-19T15:38:15",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435371,
+          "timestamp": "2026-09-19T15:38:18",
+          "witness": "blockforge",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435372,
+          "timestamp": "2026-09-19T15:38:21",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435373,
+          "timestamp": "2026-09-19T15:38:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435374,
+          "timestamp": "2026-09-19T15:38:27",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435375,
+          "timestamp": "2026-09-19T15:38:30",
+          "witness": "nodeprime",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435376,
+          "timestamp": "2026-09-19T15:38:33",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435377,
+          "timestamp": "2026-09-19T15:38:36",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435378,
+          "timestamp": "2026-09-19T15:38:39",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435379,
+          "timestamp": "2026-09-19T15:38:42",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435380,
+          "timestamp": "2026-09-19T15:38:45",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435381,
+          "timestamp": "2026-09-19T15:38:48",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435382,
+          "timestamp": "2026-09-19T15:38:51",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435383,
+          "timestamp": "2026-09-19T15:38:54",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435384,
+          "timestamp": "2026-09-19T15:38:57",
+          "witness": "merlion",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435385,
+          "timestamp": "2026-09-19T15:39:00",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435386,
+          "timestamp": "2026-09-19T15:39:03",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435387,
+          "timestamp": "2026-09-19T15:39:06",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435388,
+          "timestamp": "2026-09-19T15:39:09",
+          "witness": "chainguard",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 435389,
+          "timestamp": "2026-09-19T15:39:12",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435390,
+          "timestamp": "2026-09-19T15:39:15",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435391,
+          "timestamp": "2026-09-19T15:39:18",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435392,
+          "timestamp": "2026-09-19T15:39:21",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435393,
+          "timestamp": "2026-09-19T15:39:24",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435394,
+          "timestamp": "2026-09-19T15:39:27",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435395,
+          "timestamp": "2026-09-19T15:39:30",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435396,
+          "timestamp": "2026-09-19T15:39:33",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435397,
+          "timestamp": "2026-09-19T15:39:36",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435398,
+          "timestamp": "2026-09-19T15:39:39",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435399,
+          "timestamp": "2026-09-19T15:39:42",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435400,
+          "timestamp": "2026-09-19T15:39:45",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435401,
+          "timestamp": "2026-09-19T15:39:48",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435402,
+          "timestamp": "2026-09-19T15:39:51",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435403,
+          "timestamp": "2026-09-19T15:39:54",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435404,
+          "timestamp": "2026-09-19T15:39:57",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435405,
+          "timestamp": "2026-09-19T15:40:00",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435406,
+          "timestamp": "2026-09-19T15:40:03",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435407,
+          "timestamp": "2026-09-19T15:40:06",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435408,
+          "timestamp": "2026-09-19T15:40:09",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435409,
+          "timestamp": "2026-09-19T15:40:12",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435410,
+          "timestamp": "2026-09-19T15:40:15",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435411,
+          "timestamp": "2026-09-19T15:40:18",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435412,
+          "timestamp": "2026-09-19T15:40:21",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435413,
+          "timestamp": "2026-09-19T15:40:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435414,
+          "timestamp": "2026-09-19T15:40:27",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435415,
+          "timestamp": "2026-09-19T15:40:30",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435416,
+          "timestamp": "2026-09-19T15:40:33",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435417,
+          "timestamp": "2026-09-19T15:40:36",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435418,
+          "timestamp": "2026-09-19T15:40:39",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435419,
+          "timestamp": "2026-09-19T15:40:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435420,
+          "timestamp": "2026-09-19T15:40:45",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435421,
+          "timestamp": "2026-09-19T15:40:48",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435422,
+          "timestamp": "2026-09-19T15:40:51",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435423,
+          "timestamp": "2026-09-19T15:40:54",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435424,
+          "timestamp": "2026-09-19T15:40:57",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435425,
+          "timestamp": "2026-09-19T15:41:00",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435426,
+          "timestamp": "2026-09-19T15:41:03",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435427,
+          "timestamp": "2026-09-19T15:41:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435428,
+          "timestamp": "2026-09-19T15:41:09",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435429,
+          "timestamp": "2026-09-19T15:41:12",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435430,
+          "timestamp": "2026-09-19T15:41:15",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435431,
+          "timestamp": "2026-09-19T15:41:18",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435432,
+          "timestamp": "2026-09-19T15:41:21",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435433,
+          "timestamp": "2026-09-19T15:41:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435434,
+          "timestamp": "2026-09-19T15:41:27",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435435,
+          "timestamp": "2026-09-19T15:41:30",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435436,
+          "timestamp": "2026-09-19T15:41:33",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435437,
+          "timestamp": "2026-09-19T15:41:36",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435438,
+          "timestamp": "2026-09-19T15:41:39",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435439,
+          "timestamp": "2026-09-19T15:41:42",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435440,
+          "timestamp": "2026-09-19T15:41:45",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435441,
+          "timestamp": "2026-09-19T15:41:48",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435442,
+          "timestamp": "2026-09-19T15:41:51",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435443,
+          "timestamp": "2026-09-19T15:41:54",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435444,
+          "timestamp": "2026-09-19T15:41:57",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435445,
+          "timestamp": "2026-09-19T15:42:00",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435446,
+          "timestamp": "2026-09-19T15:42:03",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435447,
+          "timestamp": "2026-09-19T15:42:06",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435448,
+          "timestamp": "2026-09-19T15:42:09",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435449,
+          "timestamp": "2026-09-19T15:42:12",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435450,
+          "timestamp": "2026-09-19T15:42:15",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435451,
+          "timestamp": "2026-09-19T15:42:18",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435452,
+          "timestamp": "2026-09-19T15:42:21",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435453,
+          "timestamp": "2026-09-19T15:42:24",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435454,
+          "timestamp": "2026-09-19T15:42:27",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435455,
+          "timestamp": "2026-09-19T15:42:30",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435456,
+          "timestamp": "2026-09-19T15:42:33",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435457,
+          "timestamp": "2026-09-19T15:42:36",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435458,
+          "timestamp": "2026-09-19T15:42:39",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435459,
+          "timestamp": "2026-09-19T15:42:42",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435460,
+          "timestamp": "2026-09-19T15:42:45",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435461,
+          "timestamp": "2026-09-19T15:42:48",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435462,
+          "timestamp": "2026-09-19T15:42:51",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435463,
+          "timestamp": "2026-09-19T15:42:54",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435464,
+          "timestamp": "2026-09-19T15:42:57",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435465,
+          "timestamp": "2026-09-19T15:43:00",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435466,
+          "timestamp": "2026-09-19T15:43:03",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435467,
+          "timestamp": "2026-09-19T15:43:06",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435468,
+          "timestamp": "2026-09-19T15:43:09",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435469,
+          "timestamp": "2026-09-19T15:43:12",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435470,
+          "timestamp": "2026-09-19T15:43:15",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435471,
+          "timestamp": "2026-09-19T15:43:18",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435472,
+          "timestamp": "2026-09-19T15:43:21",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435473,
+          "timestamp": "2026-09-19T15:43:24",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435474,
+          "timestamp": "2026-09-19T15:43:27",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435475,
+          "timestamp": "2026-09-19T15:43:30",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435476,
+          "timestamp": "2026-09-19T15:43:33",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435477,
+          "timestamp": "2026-09-19T15:43:36",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435478,
+          "timestamp": "2026-09-19T15:43:39",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435479,
+          "timestamp": "2026-09-19T15:43:42",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435480,
+          "timestamp": "2026-09-19T15:43:45",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435481,
+          "timestamp": "2026-09-19T15:43:48",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435482,
+          "timestamp": "2026-09-19T15:43:51",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435483,
+          "timestamp": "2026-09-19T15:43:54",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435484,
+          "timestamp": "2026-09-19T15:43:57",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435485,
+          "timestamp": "2026-09-19T15:44:00",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435486,
+          "timestamp": "2026-09-19T15:44:03",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435487,
+          "timestamp": "2026-09-19T15:44:06",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435488,
+          "timestamp": "2026-09-19T15:44:09",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435489,
+          "timestamp": "2026-09-19T15:44:12",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435490,
+          "timestamp": "2026-09-19T15:44:15",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435491,
+          "timestamp": "2026-09-19T15:44:18",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435492,
+          "timestamp": "2026-09-19T15:44:21",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435493,
+          "timestamp": "2026-09-19T15:44:24",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435494,
+          "timestamp": "2026-09-19T15:44:27",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435495,
+          "timestamp": "2026-09-19T15:44:30",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435496,
+          "timestamp": "2026-09-19T15:44:33",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435497,
+          "timestamp": "2026-09-19T15:44:36",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435498,
+          "timestamp": "2026-09-19T15:44:39",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435499,
+          "timestamp": "2026-09-19T15:44:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435500,
+          "timestamp": "2026-09-19T15:44:45",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435501,
+          "timestamp": "2026-09-19T15:44:48",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435502,
+          "timestamp": "2026-09-19T15:44:51",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435503,
+          "timestamp": "2026-09-19T15:44:54",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435504,
+          "timestamp": "2026-09-19T15:44:57",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435505,
+          "timestamp": "2026-09-19T15:45:00",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435506,
+          "timestamp": "2026-09-19T15:45:03",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435507,
+          "timestamp": "2026-09-19T15:45:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435508,
+          "timestamp": "2026-09-19T15:45:09",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435509,
+          "timestamp": "2026-09-19T15:45:12",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435510,
+          "timestamp": "2026-09-19T15:45:15",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435511,
+          "timestamp": "2026-09-19T15:45:18",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435512,
+          "timestamp": "2026-09-19T15:45:21",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435513,
+          "timestamp": "2026-09-19T15:45:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435514,
+          "timestamp": "2026-09-19T15:45:27",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435515,
+          "timestamp": "2026-09-19T15:45:30",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435516,
+          "timestamp": "2026-09-19T15:45:33",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435517,
+          "timestamp": "2026-09-19T15:45:36",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435518,
+          "timestamp": "2026-09-19T15:45:39",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435519,
+          "timestamp": "2026-09-19T15:45:42",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435520,
+          "timestamp": "2026-09-19T15:45:45",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435521,
+          "timestamp": "2026-09-19T15:45:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435522,
+          "timestamp": "2026-09-19T15:45:51",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435523,
+          "timestamp": "2026-09-19T15:45:54",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435524,
+          "timestamp": "2026-09-19T15:45:57",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435525,
+          "timestamp": "2026-09-19T15:46:00",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435526,
+          "timestamp": "2026-09-19T15:46:03",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435527,
+          "timestamp": "2026-09-19T15:46:06",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435528,
+          "timestamp": "2026-09-19T15:46:09",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435529,
+          "timestamp": "2026-09-19T15:46:12",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435530,
+          "timestamp": "2026-09-19T15:46:15",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435531,
+          "timestamp": "2026-09-19T15:46:18",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435532,
+          "timestamp": "2026-09-19T15:46:21",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435533,
+          "timestamp": "2026-09-19T15:46:24",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435534,
+          "timestamp": "2026-09-19T15:46:27",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435535,
+          "timestamp": "2026-09-19T15:46:30",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435536,
+          "timestamp": "2026-09-19T15:46:33",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435537,
+          "timestamp": "2026-09-19T15:46:36",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435538,
+          "timestamp": "2026-09-19T15:46:39",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435539,
+          "timestamp": "2026-09-19T15:46:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435540,
+          "timestamp": "2026-09-19T15:46:45",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435541,
+          "timestamp": "2026-09-19T15:46:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435542,
+          "timestamp": "2026-09-19T15:46:51",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435543,
+          "timestamp": "2026-09-19T15:46:54",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435544,
+          "timestamp": "2026-09-19T15:46:57",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435545,
+          "timestamp": "2026-09-19T15:47:00",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435546,
+          "timestamp": "2026-09-19T15:47:03",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435547,
+          "timestamp": "2026-09-19T15:47:06",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435548,
+          "timestamp": "2026-09-19T15:47:09",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435549,
+          "timestamp": "2026-09-19T15:47:12",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435550,
+          "timestamp": "2026-09-19T15:47:15",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435551,
+          "timestamp": "2026-09-19T15:47:18",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435552,
+          "timestamp": "2026-09-19T15:47:21",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435553,
+          "timestamp": "2026-09-19T15:47:24",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435554,
+          "timestamp": "2026-09-19T15:47:27",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435555,
+          "timestamp": "2026-09-19T15:47:30",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435556,
+          "timestamp": "2026-09-19T15:47:33",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435557,
+          "timestamp": "2026-09-19T15:47:36",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435558,
+          "timestamp": "2026-09-19T15:47:39",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435559,
+          "timestamp": "2026-09-19T15:47:42",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435560,
+          "timestamp": "2026-09-19T15:47:45",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435561,
+          "timestamp": "2026-09-19T15:47:48",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435562,
+          "timestamp": "2026-09-19T15:47:51",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435563,
+          "timestamp": "2026-09-19T15:47:54",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435564,
+          "timestamp": "2026-09-19T15:47:57",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435565,
+          "timestamp": "2026-09-19T15:48:00",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435566,
+          "timestamp": "2026-09-19T15:48:03",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435567,
+          "timestamp": "2026-09-19T15:48:06",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435568,
+          "timestamp": "2026-09-19T15:48:09",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435569,
+          "timestamp": "2026-09-19T15:48:12",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435570,
+          "timestamp": "2026-09-19T15:48:15",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435571,
+          "timestamp": "2026-09-19T15:48:18",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435572,
+          "timestamp": "2026-09-19T15:48:21",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435573,
+          "timestamp": "2026-09-19T15:48:24",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435574,
+          "timestamp": "2026-09-19T15:48:27",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435575,
+          "timestamp": "2026-09-19T15:48:30",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435576,
+          "timestamp": "2026-09-19T15:48:33",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435577,
+          "timestamp": "2026-09-19T15:48:36",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435578,
+          "timestamp": "2026-09-19T15:48:39",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435579,
+          "timestamp": "2026-09-19T15:48:42",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435580,
+          "timestamp": "2026-09-19T15:48:45",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435581,
+          "timestamp": "2026-09-19T15:48:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435582,
+          "timestamp": "2026-09-19T15:48:51",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435583,
+          "timestamp": "2026-09-19T15:48:54",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435584,
+          "timestamp": "2026-09-19T15:48:57",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435585,
+          "timestamp": "2026-09-19T15:49:00",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435586,
+          "timestamp": "2026-09-19T15:49:03",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435587,
+          "timestamp": "2026-09-19T15:49:06",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435588,
+          "timestamp": "2026-09-19T15:49:09",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435589,
+          "timestamp": "2026-09-19T15:49:12",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435590,
+          "timestamp": "2026-09-19T15:49:15",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435591,
+          "timestamp": "2026-09-19T15:49:18",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435592,
+          "timestamp": "2026-09-19T15:49:21",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435593,
+          "timestamp": "2026-09-19T15:49:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435594,
+          "timestamp": "2026-09-19T15:49:27",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435595,
+          "timestamp": "2026-09-19T15:49:30",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435596,
+          "timestamp": "2026-09-19T15:49:33",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435597,
+          "timestamp": "2026-09-19T15:49:36",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435598,
+          "timestamp": "2026-09-19T15:49:39",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435599,
+          "timestamp": "2026-09-19T15:49:42",
+          "witness": "initminer",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435600,
+          "timestamp": "2026-09-19T15:49:45",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 435601,
+          "timestamp": "2026-09-19T15:49:48",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        }
+      ],
+      "perWitness": {
+        "initminer": 38,
+        "matus": 38,
+        "blockforge": 39,
+        "boitata": 37,
+        "rex": 38,
+        "merlion": 36,
+        "chainguard": 33,
+        "nodeprime": 41
+      },
+      "txTotal": 7,
+      "missedSlotsInWindow": 0,
+      "spanSec": 897,
+      "first": 435302,
+      "last": 435601,
+      "windowSize": 300
+    },
+    "errors": []
+  }
+}
