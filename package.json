@@ -4,12 +4,21 @@
   "description": "Live technical status of Pixagram witnesses",
   "type": "module",
   "private": true,
-  "bin": { "witness-status": "bin/witness-status.mjs" },
+  "bin": {
+    "witness-status": "bin/witness-status.mjs"
+  },
   "scripts": {
     "test": "node --test test/*.test.js",
     "smoke": "node scripts/smoke.mjs",
-    "serve": "python3 -m http.server 8000"
+    "serve": "npm run build && python3 -m http.server 8000",
+    "build": "node scripts/build.mjs",
+    "build:check": "node scripts/build.mjs --check"
   },
-  "engines": { "node": ">=20" },
-  "license": "MIT"
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
 }

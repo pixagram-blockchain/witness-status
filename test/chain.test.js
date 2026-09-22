@@ -103,7 +103,7 @@ test('fetchBlocks chunks requests at 1000 and maps block numbers', async () => {
     { starting_block_num: 1, count: 1000 }, { starting_block_num: 1001, count: 1000 }, { starting_block_num: 2001, count: 500 },
   ]);
   assert.equal(blocks.length, 2500);
-  assert.deepEqual(blocks[0], { num: 1, timestamp: fx.blockTime(1), witness: 'initminer', txCount: 2 });
+  assert.deepEqual(blocks[0], { num: 1, id: fx.blockId(1), timestamp: fx.blockTime(1), witness: 'initminer', txCount: 2 });
   assert.equal(blocks[2499].num, 2500);
 });
 
@@ -261,4 +261,128 @@ test('expanding the window fetches missing older blocks and new blocks only', as
     fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 355 } }), calls) });
   assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 56, count: 195 }, { starting_block_num: 351, count: 5 }]);
   assert.deepEqual(snap.blocks.map((b) => b.num), Array.from({ length: 300 }, (_, i) => i + 56));
+});
+
+test('onCore paints before delayed extras and blocks finish', async () => {
+  let release;
+  const gate = new Promise((r) => { release = r; });
+  const inner = fakeNode(fx.handlers({ dgp: { head_block_number: 100 } }));
+  let painted = false;
+  const fetchImpl = async (url, init) => {
+    const method = JSON.parse(init.body)[0].method;
+    if (['condenser_api.get_accounts', 'block_api.get_block_range'].includes(method)) await gate;
+    return inner(url, init);
+  };
+  const snap = await fetchSnapshot(NODE, { fetchImpl, onCore: (partial) => {
+    assert.equal(partial.core.dgp.head_block_number, 100);
+    assert.equal(partial.config.genesisTime, fx.GENESIS);
+    assert.equal(partial.extras.accounts, null);
+    painted = true;
+    release();
+  } });
+  assert.equal(painted, true);
+  assert.equal(snap.blocks.length, 100);
+  assert.equal(snap.extras.accounts.initminer.name, 'initminer');
+});
+
+test('shrinking the window reuses retained blocks without a block RPC', async () => {
+  const calls = [];
+  const prevBlocks = Array.from({ length: 300 }, (_, i) => ({ num: i + 51 }));
+  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks,
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 350 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), []);
+  assert.equal(snap.blocks.length, 100);
+  assert.equal(snap.blocks[0].num, 251);
+  assert.equal(snap.blocks.at(-1).num, 350);
+});
+
+test('snapshot emits blocks without waiting for delayed account data', async () => {
+  let release;
+  const gate = new Promise((r) => { release = r; });
+  const inner = fakeNode(fx.handlers({ dgp: { head_block_number: 100 } }));
+  const stages = [];
+  const fetchImpl = async (url, init) => {
+    if (JSON.parse(init.body).some((r) => r.method === 'condenser_api.get_accounts')) await gate;
+    return inner(url, init);
+  };
+  const timer = setTimeout(release, 100);
+  try {
+    await fetchSnapshot(NODE, { fetchImpl, onUpdate: (snapshot, stage) => {
+      stages.push(stage);
+      if (stage === 'blocks') { assert.equal(snapshot.blocks.length, 100); release(); }
+    } });
+    assert.deepEqual(stages, ['core', 'blocks', 'extras']);
+  } finally { clearTimeout(timer); }
+});
+
+test('persistent blocks require a matching live anchor and fetch only the tail', async () => {
+  const calls = [];
+  const blocks = Array.from({ length: 80 }, (_, i) => ({ num: i + 1, id: fx.blockId(i + 1), timestamp: fx.blockTime(i + 1), witness: 'initminer', txCount: 0 }));
+  const snap = await fetchSnapshot(NODE, { window: 100, blockCache: { chainId: '0'.repeat(64), blocks },
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 90 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 80, count: 21 }]);
+  assert.equal(snap.blocks.length, 100);
+});
+
+test('a changed anchor discards the persisted window', async () => {
+  const calls = [];
+  const snap = await fetchSnapshot(NODE, { window: 100, blockCache: { chainId: '0'.repeat(64), blocks: [{ num: 80, id: fx.blockId(80).slice(0, -1) + '1' }] },
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 90 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 80, count: 21 }, { starting_block_num: 1, count: 100 }]);
+  assert.equal(snap.blocks.length, 100);
+});
+
+test('refresh replaces the reversible tail even if the head number did not change', async () => {
+  const calls = [];
+  const prevBlocks = Array.from({ length: 100 }, (_, i) => ({ num: i + 1, witness: 'old-fork' }));
+  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks, irreversibleBlock: 80,
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 85 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 81, count: 20 }]);
+  assert.equal(snap.blocks.at(-1).witness, 'initminer');
+});
+
+test('snapshot emits account data before delayed blocks and preserves earlier stage snapshots', async () => {
+  let release;
+  const gate = new Promise((r) => { release = r; });
+  const inner = fakeNode(fx.handlers({ dgp: { head_block_number: 100 } }));
+  const seen = [];
+  const timer = setTimeout(release, 100);
+  try {
+    await fetchSnapshot(NODE, { fetchImpl: async (url, init) => {
+      if (JSON.parse(init.body).some((r) => r.method === 'block_api.get_block_range')) await gate;
+      return inner(url, init);
+    }, onUpdate: (snapshot, stage) => {
+      seen.push({ snapshot, stage });
+      if (stage === 'extras') { assert.equal(snapshot.extras.accounts.initminer.name, 'initminer'); release(); }
+    } });
+    assert.deepEqual(seen.map((s) => s.stage), ['core', 'extras', 'blocks']);
+    assert.equal(seen[0].snapshot.extras.accounts, null);
+    assert.equal(seen[1].snapshot.blocks.length, 0);
+    assert.equal(seen[2].snapshot.blocks.length, 100);
+  } finally { clearTimeout(timer); }
+});
+
+test('cache from another chain is ignored without spending an anchor request', async () => {
+  const calls = [];
+  const snapshot = await fetchSnapshot(NODE, { window: 100,
+    blockCache: { chainId: '1'.repeat(64), blocks: [{ num: 80, id: fx.blockId(80) }] },
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 90 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 1, count: 100 }]);
+  assert.equal(snapshot.blocks.length, 100);
+});
+
+test('failed anchor validation falls back to a fresh window', async () => {
+  const calls = [];
+  const handlers = fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 90 } });
+  const blocks = handlers['block_api.get_block_range'];
+  handlers['block_api.get_block_range'] = (p) => {
+    if (p.starting_block_num === 80) throw Error('anchor unavailable');
+    return blocks(p);
+  };
+  const snapshot = await fetchSnapshot(NODE, { window: 100,
+    blockCache: { chainId: '0'.repeat(64), blocks: [{ num: 80, id: fx.blockId(80) }] },
+    fetchImpl: fakeNode(handlers, calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 80, count: 21 }, { starting_block_num: 1, count: 100 }]);
+  assert.equal(snapshot.blocks.length, 100);
+  assert.deepEqual(snapshot.errors, []);
 });

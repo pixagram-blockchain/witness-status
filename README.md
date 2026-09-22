@@ -5,7 +5,7 @@ Live, technical status page for the witnesses (block producers) of the [Pixagram
 **Page:** <https://pixagram.com/witness-status/> · **Bot data:** [`status.json`](https://raw.githubusercontent.com/pixagram-blockchain/witness-status/data/status.json) · **Rules for agents:** [AGENT.md](AGENT.md)
 
 Everything is computed in the browser straight from the public JSON-RPC node
-(`https://api.pixagram.com`, CORS-enabled). No backend, no build step, no dependencies.
+(`https://api.pixagram.com`, CORS-enabled). No backend or runtime dependencies. The browser code is bundled and minified with esbuild (development dependency only).
 
 ## What it shows
 
@@ -28,7 +28,14 @@ Everything is computed in the browser straight from the public JSON-RPC node
 | Name filter / hide disabled | toolbar | `q=init`, `hideDisabled=1` | – |
 
 Settings persist in the URL (shareable) and in localStorage. Column visibility is in the "columns" menu.
+Network status, accounts/votes and recent blocks update independently as their requests finish.
+The status remains “fetching…” until the snapshot is complete; history and JSON export use completed snapshots.
 Relative ages tick every second; the page pauses while the tab is hidden and refreshes on return.
+
+Up to 1,000 finalized block summaries are stored per node in localStorage for up to 24 hours.
+On reload, the node's chain ID and one live block ID must match before cached summaries are reused.
+The anchor check and new/reversible tail are fetched together. Invalid or unavailable storage falls
+back to a fresh window; blocks above the previously observed irreversible block are fetched again.
 
 ## For bots and AI agents
 
@@ -46,7 +53,10 @@ Three ways to get the same aggregated data without a browser, documented in [AGE
 ## Development
 
 ```bash
-npm test            # unit tests (node --test), no dependencies
+npm ci              # install the pinned build dependency
+npm test            # unit tests (node --test)
+npm run build       # regenerate assets/app.min.js and its version in index.html
+npm run build:check # fail if the committed browser bundle is stale
 npm run serve       # http://localhost:8000
 npm run smoke       # fetch + derive against the live node, print the text report
 node scripts/e2e.mjs http://127.0.0.1:8000/ --shot=shot.png   # headless-Chrome interaction checks (needs Chrome)
@@ -56,6 +66,8 @@ Layout: `src/lib/` is environment-agnostic (RPC client → raw snapshot → pure
 Design notes live in `docs/superpowers/`.
 
 ## Deployment
+
+Commit `assets/app.min.js` and `index.html` together after source changes; CI verifies that the bundle matches source. The content-derived query version avoids serving an old bundle from the browser cache.
 
 GitHub Pages serves the `main` branch root (`.nojekyll` keeps files as-is). Because the organisation site owns `pixagram.com`, the project is reachable at `https://pixagram.com/witness-status/`.
 The snapshot workflow needs the default branch to stay active: GitHub disables cron workflows after 60 days without pushes.

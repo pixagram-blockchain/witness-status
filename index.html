@@ -8,19 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0d0d'/%3E%3Crect x='3' y='9' width='2' height='4' fill='%233987e5'/%3E%3Crect x='7' y='5' width='2' height='8' fill='%233987e5'/%3E%3Crect x='11' y='3' width='2' height='10' fill='%230ca30c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://api.pixagram.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
-<!-- The module graph is three levels deep; preloading it flattens the load to one round trip. -->
-<link rel="modulepreload" href="src/ui/main.js">
-<link rel="modulepreload" href="src/ui/render.js">
-<link rel="modulepreload" href="src/ui/settings.js">
-<link rel="modulepreload" href="src/lib/chain.js">
-<link rel="modulepreload" href="src/lib/rpc.js">
-<link rel="modulepreload" href="src/lib/assets.js">
-<link rel="modulepreload" href="src/lib/derive.js">
-<link rel="modulepreload" href="src/lib/health.js">
-<link rel="modulepreload" href="src/lib/history.js">
-<link rel="modulepreload" href="src/lib/columns.js">
-<link rel="modulepreload" href="src/lib/report.js">
-<link rel="modulepreload" href="src/lib/format.js">
+<link rel="modulepreload" href="assets/app.min.js?v=7eb5104bfb375202">
 </head>
 <body>
 <header class="topbar">
@@ -77,6 +65,6 @@ window.addEventListener('error', function (e) {
   if (el && /loading/.test(el.textContent)) { el.textContent = 'error: ' + (e.message || 'script failed to load') + ' (see diag.html)'; el.className = 'pill err'; }
 });
 </script>
-<script type="module" src="src/ui/main.js"></script>
+<script type="module" src="assets/app.min.js?v=7eb5104bfb375202"></script>
 </body>
 </html>

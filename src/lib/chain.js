@@ -111,7 +111,7 @@ export async function fetchBlocks(node, from, to, opts = {}) {
   for (let start = from; start <= to; start += PAGE) {
     const count = Math.min(PAGE, to - start + 1);
     const { blocks } = await rpcCall(node, 'block_api.get_block_range', { starting_block_num: start, count }, opts);
-    for (const b of blocks) out.push({ num: blockNumFromId(b.block_id), timestamp: b.timestamp, witness: b.witness, txCount: b.transactions.length });
+    for (const b of blocks) out.push({ num: blockNumFromId(b.block_id), id: b.block_id, timestamp: b.timestamp, witness: b.witness, txCount: b.transactions.length });
   }
   return out;
 }
@@ -121,32 +121,54 @@ const EMPTY_EXTRAS = { accounts: null, votes: null, votesTruncated: false, error
 // Start config and core together, then extras/blocks as soon as core arrives. Config does
 // not gate those requests. onCore paints with the actual config while extras/blocks finish.
 // Cached blocks are reused, including when the selected window grows or shrinks.
-export async function fetchSnapshot(node, { window = 300, prevBlocks = [], config = null, onCore = null, ...opts } = {}) {
+export async function fetchSnapshot(node, { window = 300, prevBlocks = [], irreversibleBlock = Infinity, blockCache = null, config = null, onCore = null, onUpdate = null, ...opts } = {}) {
   const errors = [];
   const configPromise = config ? Promise.resolve(config) : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; });
   const core = await fetchCore(node, opts);
   const head = core.dgp.head_block_number;
-  const kept = prevBlocks.filter((b) => b.num > head - window && b.num <= head);
+  const keep = (blocks, limit) => blocks.filter((b) => b.num > head - window && b.num <= Math.min(head, limit));
+  const kept = keep(prevBlocks, irreversibleBlock === Infinity ? Infinity : Math.min(irreversibleBlock, core.dgp.last_irreversible_block_num));
   const owners = core.witnesses.map((w) => w.owner);
   const extrasPromise = fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] }));
   // Fetch only missing contiguous ranges, including the older part of an expanded window.
   const blocksPromise = (async () => {
+    let retained = kept;
+    const anchor = blockCache?.blocks?.at(-1);
+    if (!prevBlocks.length && anchor && blockCache.chainId === core.version.chain_id
+      && anchor.num > head - window && anchor.num <= core.dgp.last_irreversible_block_num) {
+      try {
+        // Validate the anchor and fetch the new/reversible tail in the same round trip.
+        const live = await fetchBlocks(node, anchor.num, head, opts);
+        if (live[0]?.id === anchor.id) retained = keep(blockCache.blocks, core.dgp.last_irreversible_block_num).concat(live.slice(1));
+      } catch { /* Cache validation failure falls back to a fresh window. */ }
+    }
     const fresh = [];
     let from = Math.max(head - window + 1, 1);
-    for (const b of [...kept, { num: head + 1 }]) {
+    for (const b of [...retained, { num: head + 1 }]) {
       if (from < b.num) {
         try { fresh.push(...await fetchBlocks(node, from, b.num - 1, opts)); }
         catch (e) { errors.push(`get_block_range: ${e.message}`); }
       }
       from = b.num + 1;
     }
-    return kept.concat(fresh).sort((a, b) => a.num - b.num);
+    return retained.concat(fresh).sort((a, b) => a.num - b.num);
   })();
   const cfg = await configPromise;
-  if (onCore) onCore({ node, config: cfg, core, extras: EMPTY_EXTRAS, blocks: kept, errors: [...errors] });
-  const [extras, blocks] = await Promise.all([extrasPromise, blocksPromise]);
-  errors.push(...extras.errors);
-  return { node, config: cfg, core, extras, blocks, errors };
+  let snapshot = { node, config: cfg, core, extras: EMPTY_EXTRAS, blocks: kept, errors: [...errors] };
+  if (onCore) onCore(snapshot);
+  onUpdate?.(snapshot, 'core');
+  await Promise.all([
+    extrasPromise.then((extras) => {
+      errors.push(...extras.errors);
+      snapshot = { ...snapshot, extras, errors: [...errors] };
+      onUpdate?.(snapshot, 'extras');
+    }),
+    blocksPromise.then((blocks) => {
+      snapshot = { ...snapshot, blocks, errors: [...errors] };
+      onUpdate?.(snapshot, 'blocks');
+    }),
+  ]);
+  return { ...snapshot, errors: [...errors] };
 }
 
 // Voters of one witness with their approximate voting stake (own VESTS + proxied VESTS).
