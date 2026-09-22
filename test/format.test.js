@@ -60,3 +60,12 @@ test('fmtTime prints UTC', () => {
   assert.equal(fmtTime(Date.UTC(2026, 8, 4, 12, 0, 0)), '2026-09-04 12:00:00 UTC');
   assert.equal(fmtTime(null), '–');
 });
+
+test('formatters preserve locale output across precisions and edge values', () => {
+  for (const n of [-0, -1234.56789, 0, 1.005, 1234567.891234, Infinity, -Infinity]) {
+    assert.equal(fmtInt(n), Math.round(n).toLocaleString('en-US'));
+    for (const digits of [0, 2, 3, 6]) {
+      assert.equal(fmtNum(n, digits), n.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits }));
+    }
+  }
+});

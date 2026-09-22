@@ -113,33 +113,30 @@ export async function fetchBlocks(node, from, to, opts = {}) {
   return out;
 }
 
-// Full raw snapshot. `prevBlocks` lets callers keep a rolling window without refetching.
-export async function fetchSnapshot(node, { window = 300, prevBlocks = [], config = null, ...opts } = {}) {
-  const errors = [];
-  let cfg = config;
-  if (!cfg) {
-    try { cfg = await fetchConfig(node, opts); } catch (e) { errors.push(`get_config: ${e.message}`); cfg = DEFAULT_CONFIG; }
-  }
-  const core = await fetchCore(node, opts);
-  const owners = core.witnesses.map((w) => w.owner);
-  let extras;
-  try {
-    extras = await fetchExtras(node, owners, opts);
-  } catch (e) {
-    extras = { accounts: null, votes: null, votesTruncated: false, errors: [`extras: ${e.message}`] };
-  }
-  errors.push(...extras.errors);
+const EMPTY_EXTRAS = { accounts: null, votes: null, votesTruncated: false, errors: [] };
 
+// Full raw snapshot in two rounds of concurrent requests: (config + core), then (extras + blocks).
+// `prevBlocks` lets callers keep a rolling window without refetching. `onCore` is called after the
+// first round with a partial snapshot (no extras, only the kept blocks) so a UI can paint early.
+export async function fetchSnapshot(node, { window = 300, prevBlocks = [], config = null, onCore = null, ...opts } = {}) {
+  const errors = [];
+  const [cfg, core] = await Promise.all([
+    config ? config : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; }),
+    fetchCore(node, opts),
+  ]);
   const head = core.dgp.head_block_number;
-  let blocks = prevBlocks.filter((b) => b.num > head - window && b.num <= head);
-  if (head > 0) {
-    const lastKnown = blocks.length ? blocks[blocks.length - 1].num : 0;
-    const from = Math.max(lastKnown + 1, head - window + 1, 1);
-    if (from <= head) {
-      try { blocks = blocks.concat(await fetchBlocks(node, from, head, opts)); } catch (e) { errors.push(`get_block_range: ${e.message}`); }
-    }
-  }
-  return { node, config: cfg, core, extras, blocks, errors };
+  const kept = prevBlocks.filter((b) => b.num > head - window && b.num <= head);
+  if (onCore) onCore({ node, config: cfg, core, extras: EMPTY_EXTRAS, blocks: kept, errors: [...errors] });
+
+  const owners = core.witnesses.map((w) => w.owner);
+  const lastKnown = kept.length ? kept[kept.length - 1].num : 0;
+  const from = Math.max(lastKnown + 1, head - window + 1, 1);
+  const [extras, fresh] = await Promise.all([
+    fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] })),
+    head > 0 && from <= head ? fetchBlocks(node, from, head, opts).catch((e) => { errors.push(`get_block_range: ${e.message}`); return []; }) : [],
+  ]);
+  errors.push(...extras.errors);
+  return { node, config: cfg, core, extras, blocks: kept.concat(fresh), errors };
 }
 
 // Voters of one witness with their approximate voting stake (own VESTS + proxied VESTS).

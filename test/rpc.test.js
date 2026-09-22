@@ -61,3 +61,10 @@ test('rpcCall unwraps the single result', async () => {
 test('rpcCall throws RpcError kind=rpc on a JSON-RPC error', async () => {
   await assert.rejects(rpcCall('https://node', 'nope', [], { fetchImpl: fakeNode({}) }), (e) => e instanceof RpcError && e.kind === 'rpc' && e.method === 'nope');
 });
+
+test('rpcBatch posts as text/plain so browsers skip the CORS preflight', async () => {
+  let headers;
+  const fetchImpl = async (url, init) => { headers = init.headers; return new Response(JSON.stringify([{ jsonrpc: '2.0', id: 1, result: 1 }])); };
+  await rpcBatch('https://node', [call('a')], { fetchImpl });
+  assert.equal(headers['Content-Type'], 'text/plain');
+});

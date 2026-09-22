@@ -1,5 +1,5 @@
 // Browser entry point: state, refresh loop, event wiring. Rendering lives in render.js.
-import { fetchSnapshot, fetchVoters } from '../lib/chain.js';
+import { fetchSnapshot, fetchVoters, DEFAULT_CONFIG } from '../lib/chain.js';
 import { derive } from '../lib/derive.js';
 import { evaluate } from '../lib/health.js';
 import { addSample } from '../lib/history.js';
@@ -13,6 +13,8 @@ const $ = (id) => document.getElementById(id);
 const storage = (() => { try { return window.localStorage; } catch { return null; } })();
 const HIST_KEY = (node) => `witness-status:history:${node}`;
 const COLS_KEY = 'witness-status:columns';
+const CONFIG_KEY = (node) => `witness-status:config:${node}`;
+const CONFIG_TTL_MS = 86_400_000; // chain constants only change with a node upgrade; refetch daily
 
 const state = {
   settings: readSettings(location.search, storage),
@@ -35,6 +37,15 @@ function loadHistory(node) {
   } catch { return []; }
 }
 function saveHistory(node, h) { try { storage?.setItem(HIST_KEY(node), JSON.stringify(h)); } catch { /* ignore */ } }
+// get_config is the slowest call the node answers (often > 1 s) and gates the first paint, so it is cached per node.
+function loadConfig(node) {
+  try {
+    const v = JSON.parse(storage?.getItem(CONFIG_KEY(node)) ?? 'null');
+    if (v?.config?.blockInterval && Date.now() - v.savedAt < CONFIG_TTL_MS) return v.config;
+  } catch { /* fall through */ }
+  return null;
+}
+function saveConfig(node, config) { try { storage?.setItem(CONFIG_KEY(node), JSON.stringify({ savedAt: Date.now(), config })); } catch { /* ignore */ } }
 function persistSettings() {
   writeSettings(state.settings, storage);
   const q = settingsToQuery(state.settings).toString();
@@ -68,10 +79,21 @@ async function refresh() {
   setStatus('fetching…', 'busy');
   renderCountdown();
   const node = state.settings.node;
+  const opts = { window: state.settings.window, prevBlocks: state.blocks, config: state.config ?? loadConfig(node) };
+  // First load: paint the network banner, tiles, schedule and table as soon as the core round
+  // is in, without waiting for the (much larger) accounts, votes and block-range responses.
+  if (!state.model) {
+    opts.onCore = (partial) => {
+      if (node !== state.settings.node || state.model) return;
+      const m = derive(partial, { prev: null, history: state.history, sessionBase: null });
+      render(m, evaluate(m), { partial: true });
+    };
+  }
   try {
-    const raw = await fetchSnapshot(node, { window: state.settings.window, prevBlocks: state.blocks, config: state.config });
+    const raw = await fetchSnapshot(node, opts);
     if (node === state.settings.node) {
       state.config = raw.config;
+      if (raw.config !== DEFAULT_CONFIG && !opts.config) saveConfig(node, raw.config);
       state.blocks = raw.blocks;
       if (!state.sessionBase) state.sessionBase = Object.fromEntries(raw.core.witnesses.map((w) => [w.owner, w.total_missed]));
       const model = derive(raw, { prev: state.model, history: state.history, sessionBase: state.sessionBase });
@@ -123,11 +145,12 @@ const view = () => ({
   hidden: state.hidden, expanded: state.expanded, voters: state.voters,
 });
 
-function render() {
-  const m = state.model;
-  const h = state.health;
-  if (state.lastError) setStatus(`error: ${state.lastError.message}${m ? ` — showing data from ${fmtTime(m.fetchedAt)}` : ''}`, 'err');
-  else if (m) setStatus(`ok · ${m.latencyMs} ms${m.errors.length ? ` · ${m.errors.length} partial error(s)` : ''}`, m.errors.length ? 'warn' : 'ok');
+// `partial` renders the early first paint; the status pill then keeps saying "fetching…" until the full snapshot is in.
+function render(m = state.model, h = state.health, { partial = false } = {}) {
+  if (!partial) {
+    if (state.lastError) setStatus(`error: ${state.lastError.message}${m ? ` — showing data from ${fmtTime(m.fetchedAt)}` : ''}`, 'err');
+    else if (m) setStatus(`ok · ${m.latencyMs} ms${m.errors.length ? ` · ${m.errors.length} partial error(s)` : ''}`, m.errors.length ? 'warn' : 'ok');
+  }
   if (!m) {
     $('network').innerHTML = `<div class="net crit"><div class="net-main"><span class="net-icon">✖</span><span class="net-label">NO DATA</span><span class="net-detail">${R.esc(state.lastError?.message ?? '')} — check the node URL (it must allow CORS) and try again.</span></div></div>`;
     return;
@@ -138,16 +161,15 @@ function render() {
   $('schedule-meta').textContent = R.scheduleMeta(m);
   $('blocks').innerHTML = R.renderBlocks(m, colorOf);
   $('blocks-meta').textContent = R.blocksMeta(m);
-  renderTable();
+  renderTable(m, h);
   $('footer-meta').innerHTML = `Last refresh ${R.ageSpan(m.fetchedAt)} (${fmtTime(m.fetchedAt)}) · chain time ${R.esc(m.network.headTime)} UTC · partial errors: ${m.errors.length ? R.esc(m.errors.join('; ')) : 'none'}`;
 }
 
-function renderTable() {
-  const m = state.model;
+function renderTable(m = state.model, h = state.health) {
   if (!m) return;
   const v = view();
   $('tbl').querySelector('thead').innerHTML = R.renderTableHead(v);
-  $('tbl').querySelector('tbody').innerHTML = R.renderTableBody(m, state.health, v);
+  $('tbl').querySelector('tbody').innerHTML = R.renderTableBody(m, h, v);
   const shown = R.visibleRows(m, v).length;
   $('witnesses-meta').textContent = `${shown} of ${m.counts.total} shown · sorted by ${state.settings.sort} ${state.settings.dir} · click a header to sort, a row for details`;
 }

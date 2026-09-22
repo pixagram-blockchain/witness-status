@@ -190,3 +190,77 @@ test('fetchVoters caps the accounts it loads at limit', async () => {
   assert.equal(r.total, 5);
   assert.equal(r.voters.length, 2);
 });
+
+// Answers a request only once every method in `together` has been requested, so code that
+// issues them one after the other deadlocks; the timer turns that deadlock into a failure.
+function concurrentNode(handlers, together, calls = []) {
+  const inner = fakeNode(handlers, calls);
+  const seen = new Set();
+  let release;
+  const all = new Promise((r) => { release = r; });
+  return async (url, init) => {
+    const methods = JSON.parse(init.body).map((r) => r.method);
+    for (const m of methods) if (together.includes(m)) seen.add(m);
+    if (seen.size === together.length) release();
+    if (methods.some((m) => together.includes(m))) {
+      let timer;
+      await Promise.race([all, new Promise((_, rej) => { timer = setTimeout(() => rej(new Error(`${methods.join(',')} was not requested concurrently with ${together.join(', ')}`)), 300); })]);
+      clearTimeout(timer);
+    }
+    return inner(url, init);
+  };
+}
+
+test('fetchSnapshot requests get_config and the core batch concurrently', async () => {
+  const fetchImpl = concurrentNode(fx.handlers(), ['condenser_api.get_config', 'condenser_api.get_dynamic_global_properties']);
+  const snap = await fetchSnapshot(NODE, { fetchImpl });
+  assert.deepEqual(snap.errors, [], 'get_config did not fall back to DEFAULT_CONFIG');
+  assert.equal(snap.config.genesisTime, fx.GENESIS);
+  assert.equal(snap.core.witnesses[0].owner, 'initminer');
+});
+
+test('fetchSnapshot requests extras and blocks concurrently', async () => {
+  const fetchImpl = concurrentNode(fx.handlers({ dgp: { head_block_number: 350 } }), ['condenser_api.get_accounts', 'block_api.get_block_range']);
+  const snap = await fetchSnapshot(NODE, { window: 300, fetchImpl });
+  assert.equal(snap.blocks.length, 300);
+  assert.equal(snap.extras.accounts.initminer.name, 'initminer');
+});
+
+test('fetchSnapshot calls onCore with a renderable partial snapshot before extras and blocks are requested', async () => {
+  const calls = [];
+  const prevBlocks = Array.from({ length: 340 }, (_, i) => ({ num: i + 1, timestamp: fx.blockTime(i + 1), witness: 'initminer', txCount: 0 }));
+  let partial = null;
+  let callsAtPartial = null;
+  const onCore = (p) => { partial = p; callsAtPartial = calls.map((c) => c.method); };
+  const snap = await fetchSnapshot(NODE, { window: 300, prevBlocks, onCore, fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 350 } }), calls) });
+  assert.ok(partial, 'onCore was called');
+  assert.ok(callsAtPartial.includes('condenser_api.get_dynamic_global_properties'));
+  assert.ok(!callsAtPartial.includes('condenser_api.get_accounts'), 'extras not yet requested');
+  assert.ok(!callsAtPartial.includes('block_api.get_block_range'), 'blocks not yet requested');
+  assert.equal(partial.config.blockInterval, 3);
+  assert.equal(partial.core.witnesses[0].owner, 'initminer');
+  assert.deepEqual(partial.extras, { accounts: null, votes: null, votesTruncated: false, errors: [] });
+  assert.equal(partial.blocks.length, 290, 'the kept part of the rolling window is available for the first paint');
+  assert.equal(partial.blocks[0].num, 51);
+  assert.equal(snap.blocks.length, 300);
+  assert.equal(snap.extras.accounts.initminer.name, 'initminer');
+});
+
+test('a slow config does not block requests for accounts and blocks', async () => {
+  const fetchImpl = concurrentNode(fx.handlers({ dgp: { head_block_number: 350 } }),
+    ['condenser_api.get_config', 'condenser_api.get_accounts', 'block_api.get_block_range']);
+  const snap = await fetchSnapshot(NODE, { fetchImpl });
+  assert.deepEqual(snap.errors, []);
+  assert.equal(snap.config.genesisTime, fx.GENESIS);
+  assert.equal(snap.blocks.length, 300);
+  assert.equal(snap.extras.accounts.initminer.name, 'initminer');
+});
+
+test('expanding the window fetches missing older blocks and new blocks only', async () => {
+  const calls = [];
+  const prevBlocks = Array.from({ length: 100 }, (_, i) => ({ num: 251 + i, timestamp: fx.blockTime(251 + i), witness: 'initminer', txCount: 0 }));
+  const snap = await fetchSnapshot(NODE, { window: 300, prevBlocks,
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 355 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 56, count: 195 }, { starting_block_num: 351, count: 5 }]);
+  assert.deepEqual(snap.blocks.map((b) => b.num), Array.from({ length: 300 }, (_, i) => i + 56));
+});

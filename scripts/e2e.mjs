@@ -46,7 +46,8 @@ await send('Page.enable');
 await send('Emulation.setDeviceMetricsOverride', { width: 1500, height: 1100, deviceScaleFactor: 1, mobile: false });
 await send('Page.navigate', { url });
 let rendered = false;
-for (let i = 0; i < 100 && !rendered; i++) { rendered = await evaluate(`!!document.querySelector('#tbl tbody tr.row')`); if (!rendered) await sleep(200); }
+// The table paints early from the core round; wait for the full snapshot (status pill "ok") before interacting.
+for (let i = 0; i < 100 && !rendered; i++) { rendered = await evaluate(`!!document.querySelector('#tbl tbody tr.row') && /^ok/.test(document.getElementById('status').textContent)`); if (!rendered) await sleep(200); }
 check('table rendered rows', rendered);
 check('network banner present', await evaluate(`document.querySelector('#network .net-label')?.textContent`));
 check('status pill ok', /^ok/.test(await evaluate(`document.getElementById('status').textContent`)), await evaluate(`document.getElementById('status').textContent`));

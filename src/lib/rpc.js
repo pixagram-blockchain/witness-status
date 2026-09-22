@@ -23,7 +23,9 @@ export async function rpcBatch(node, calls, { timeoutMs = 15000, fetchImpl = glo
   try {
     res = await fetchImpl(node, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // text/plain is a CORS-safelisted type: browsers send the POST directly instead of an
+      // OPTIONS preflight first (one round trip saved per request). hived and the proxy accept it.
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(body),
       signal: ctrl.signal,
     });

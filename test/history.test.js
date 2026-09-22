@@ -43,3 +43,16 @@ test('deltaSince returns null without samples or without the owner', () => {
   assert.equal(deltaSince([], 'a', 5, 3600, 0), null);
   assert.equal(deltaSince([s(0, { b: 1 })], 'a', 5, 3600, 3600_000), null);
 });
+
+test('deltaSince handles exact cutoffs and duplicate timestamps', () => {
+  const samples = [s(0, { a: 1 }), s(M, { a: 2 }), s(M, { a: 3 }), s(2 * M, { a: 4 })];
+  assert.deepEqual(deltaSince(samples, 'a', 10, 60, 2 * M), { delta: 7, partial: false, sinceT: M });
+  assert.deepEqual(deltaSince(samples, 'a', 10, 60, 4 * M), { delta: 6, partial: false, sinceT: 2 * M });
+});
+
+test('deltaSince searches long histories without scanning every sample', () => {
+  let reads = 0;
+  const samples = Array.from({ length: 2048 }, (_, i) => ({ get t() { reads++; return i * M; }, missed: { a: i } }));
+  assert.deepEqual(deltaSince(samples, 'a', 3000, 3600, 2048 * M), { delta: 1012, partial: false, sinceT: 1988 * M });
+  assert.ok(reads < 20, `read ${reads} timestamps`);
+});
