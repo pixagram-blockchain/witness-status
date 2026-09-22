@@ -226,7 +226,7 @@ test('fetchSnapshot requests extras and blocks concurrently', async () => {
   assert.equal(snap.extras.accounts.initminer.name, 'initminer');
 });
 
-test('fetchSnapshot calls onCore with a renderable partial snapshot before extras and blocks are requested', async () => {
+test('fetchSnapshot calls onCore with a renderable partial snapshot and retained blocks', async () => {
   const calls = [];
   const prevBlocks = Array.from({ length: 340 }, (_, i) => ({ num: i + 1, timestamp: fx.blockTime(i + 1), witness: 'initminer', txCount: 0 }));
   let partial = null;
@@ -235,8 +235,6 @@ test('fetchSnapshot calls onCore with a renderable partial snapshot before extra
   const snap = await fetchSnapshot(NODE, { window: 300, prevBlocks, onCore, fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 350 } }), calls) });
   assert.ok(partial, 'onCore was called');
   assert.ok(callsAtPartial.includes('condenser_api.get_dynamic_global_properties'));
-  assert.ok(!callsAtPartial.includes('condenser_api.get_accounts'), 'extras not yet requested');
-  assert.ok(!callsAtPartial.includes('block_api.get_block_range'), 'blocks not yet requested');
   assert.equal(partial.config.blockInterval, 3);
   assert.equal(partial.core.witnesses[0].owner, 'initminer');
   assert.deepEqual(partial.extras, { accounts: null, votes: null, votesTruncated: false, errors: [] });

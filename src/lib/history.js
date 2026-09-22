@@ -27,13 +27,16 @@ export function addSample(samples, sample) {
 export function deltaSince(samples, owner, current, windowSec, now) {
   if (!samples.length) return null;
   const cutoff = now - windowSec * 1000;
-  let pick = null;
-  for (const s of samples) {
-    if (s.t <= cutoff) pick = s;
-    else break;
+  // Samples are sorted by addSample; find the last one at or before the cutoff.
+  let lo = 0;
+  let hi = samples.length;
+  while (lo < hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (samples[mid].t <= cutoff) lo = mid + 1;
+    else hi = mid;
   }
-  const partial = pick == null;
-  if (partial) pick = samples[0];
+  const partial = lo === 0;
+  const pick = samples[partial ? 0 : lo - 1];
   if (pick.missed[owner] == null) return null;
   return { delta: current - pick.missed[owner], partial, sinceT: pick.t };
 }

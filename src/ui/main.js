@@ -1,5 +1,5 @@
 // Browser entry point: state, refresh loop, event wiring. Rendering lives in render.js.
-import { fetchSnapshot, fetchVoters, DEFAULT_CONFIG } from '../lib/chain.js';
+import { fetchSnapshot, fetchConfig, fetchVoters, DEFAULT_CONFIG, DEFAULT_NODE } from '../lib/chain.js';
 import { derive } from '../lib/derive.js';
 import { evaluate } from '../lib/health.js';
 import { addSample } from '../lib/history.js';
@@ -37,7 +37,8 @@ function loadHistory(node) {
   } catch { return []; }
 }
 function saveHistory(node, h) { try { storage?.setItem(HIST_KEY(node), JSON.stringify(h)); } catch { /* ignore */ } }
-// get_config is the slowest call the node answers (often > 1 s) and gates the first paint, so it is cached per node.
+// get_config is the slowest call the node answers (often > 1 s), so it never gates a paint: the default node
+// starts from the built-in constants and other nodes cache their answer for a day.
 function loadConfig(node) {
   try {
     const v = JSON.parse(storage?.getItem(CONFIG_KEY(node)) ?? 'null');
@@ -79,7 +80,11 @@ async function refresh() {
   setStatus('fetching…', 'busy');
   renderCountdown();
   const node = state.settings.node;
-  const opts = { window: state.settings.window, prevBlocks: state.blocks, config: state.config ?? loadConfig(node) };
+  const opts = { window: state.settings.window, prevBlocks: state.blocks, config: state.config ?? loadConfig(node) ?? (node === DEFAULT_NODE ? DEFAULT_CONFIG : null) };
+  if (!state.config && opts.config === DEFAULT_CONFIG) {
+    // Verify the built-in constants in the background; a mismatch takes effect on the next refresh.
+    fetchConfig(node).then((cfg) => { if (node === state.settings.node) { state.config = cfg; saveConfig(node, cfg); } }).catch(() => { /* keep the defaults */ });
+  }
   // First load: paint the network banner, tiles, schedule and table as soon as the core round
   // is in, without waiting for the (much larger) accounts, votes and block-range responses.
   if (!state.model) {
@@ -92,7 +97,7 @@ async function refresh() {
   try {
     const raw = await fetchSnapshot(node, opts);
     if (node === state.settings.node) {
-      state.config = raw.config;
+      if (!state.config) state.config = raw.config;
       if (raw.config !== DEFAULT_CONFIG && !opts.config) saveConfig(node, raw.config);
       state.blocks = raw.blocks;
       if (!state.sessionBase) state.sessionBase = Object.fromEntries(raw.core.witnesses.map((w) => [w.owner, w.total_missed]));
@@ -168,9 +173,13 @@ function render(m = state.model, h = state.health, { partial = false } = {}) {
 function renderTable(m = state.model, h = state.health) {
   if (!m) return;
   const v = view();
-  $('tbl').querySelector('thead').innerHTML = R.renderTableHead(v);
-  $('tbl').querySelector('tbody').innerHTML = R.renderTableBody(m, h, v);
-  const shown = R.visibleRows(m, v).length;
+  const head = $('tbl').querySelector('thead');
+  const html = R.renderTableHead(v);
+  // Keep header nodes (and keyboard focus) when only data/filter/details changed.
+  if (head._renderedHTML !== html) { head.innerHTML = html; head._renderedHTML = html; }
+  const rows = R.visibleRows(m, v);
+  $('tbl').querySelector('tbody').innerHTML = R.renderTableBody(m, h, v, rows);
+  const shown = rows.length;
   $('witnesses-meta').textContent = `${shown} of ${m.counts.total} shown · sorted by ${state.settings.sort} ${state.settings.dir} · click a header to sort, a row for details`;
 }
 
@@ -243,7 +252,7 @@ function init() {
   const win = $('window');
   win.innerHTML = WINDOWS.map((w) => `<option value="${w}">${w} blocks</option>`).join('');
   win.value = String(state.settings.window);
-  win.addEventListener('change', () => { state.settings.window = Number(win.value); state.blocks = []; persistSettings(); refresh(); });
+  win.addEventListener('change', () => { state.settings.window = Number(win.value); persistSettings(); refresh(); });
 
   $('q').value = state.settings.q;
   $('q').addEventListener('input', () => { state.settings.q = $('q').value.trim().toLowerCase().slice(0, 64); persistSettings(); renderTable(); });
@@ -302,7 +311,7 @@ function init() {
     else if (state.settings.interval && (state.nextAt == null || state.nextAt <= Date.now())) refresh();
     else arm();
   });
-  setInterval(() => { renderCountdown(); R.tickAges(document.body); }, 1000);
+  setInterval(() => { if (!document.hidden) { renderCountdown(); R.tickAges(document.body); } }, 1000);
 
   state.history = loadHistory(state.settings.node);
   refresh();

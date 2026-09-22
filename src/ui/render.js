@@ -21,7 +21,10 @@ export function ageSpan(ms) {
   return `<span class="age" data-ts="${ms}" title="${fmtTime(ms)}">${esc(fmtAge((Date.now() - ms) / 1000))}</span>`;
 }
 export function tickAges(root, now = Date.now()) {
-  for (const el of root.querySelectorAll('.age[data-ts]')) el.textContent = fmtAge((now - Number(el.dataset.ts)) / 1000);
+  for (const el of root.querySelectorAll('.age[data-ts]')) {
+    const text = fmtAge((now - Number(el.dataset.ts)) / 1000);
+    if (el.textContent !== text) el.textContent = text;
+  }
 }
 
 const flagChip = (f, withMessage) => `<span class="flag ${f.level}" title="${esc(f.message)}">${LEVEL_ICON[f.level] ?? ''} ${esc(f.code)}${withMessage ? ': ' + esc(f.message) : ''}</span>`;
@@ -148,8 +151,7 @@ export function visibleRows(m, view) {
   return sortRows(rows, view.sort, view.dir);
 }
 
-export function renderTableBody(m, h, view) {
-  const rows = visibleRows(m, view);
+export function renderTableBody(m, h, view, rows = visibleRows(m, view)) {
   const cols = COLUMNS.filter((c) => !view.hidden.has(c.key));
   const maxVotes = Math.max(0, ...m.witnesses.map((w) => w.votesVests));
   const maxProduced = Math.max(0, ...m.witnesses.map((w) => w.producedInWindow));

@@ -6,10 +6,13 @@ import { parseAsset } from './assets.js';
 export const DEFAULT_NODE = 'https://api.pixagram.com';
 const PAGE = 1000; // database_api list limit and block_api.get_block_range maximum
 
+// Pixagram's compile-time constants (condenser_api.get_config on api.pixagram.com, hived 1.29.0). They only
+// change with a new node build, so the UI uses them directly for the default node instead of waiting for
+// get_config, which is the slowest call the node answers. Other nodes are always asked.
 export const DEFAULT_CONFIG = {
   blockInterval: 3, maxWitnesses: 21, shutdownThreshold: 28800, maxFeedAgeSec: 604800, feedIntervalBlocks: 1200, minFeeds: 7,
-  hardforkRequiredWitnesses: 17, addressPrefix: 'PIX', genesisTime: null, symbols: { liquid: 'PIXA', stable: 'PXS', vests: 'VESTS' },
-  blockchainVersion: null, hardforkVersion: null, maxBlockSize: 2097152, irreversibleThreshold: 7500,
+  hardforkRequiredWitnesses: 17, addressPrefix: 'PIX', genesisTime: '2026-09-04T12:00:00', symbols: { liquid: 'PIXA', stable: 'PXS', vests: 'VESTS' },
+  blockchainVersion: '1.29.0', hardforkVersion: '1.29.0', maxBlockSize: 2097152, irreversibleThreshold: 7500,
 };
 
 export async function fetchConfig(node, opts = {}) {
@@ -115,28 +118,35 @@ export async function fetchBlocks(node, from, to, opts = {}) {
 
 const EMPTY_EXTRAS = { accounts: null, votes: null, votesTruncated: false, errors: [] };
 
-// Full raw snapshot in two rounds of concurrent requests: (config + core), then (extras + blocks).
-// `prevBlocks` lets callers keep a rolling window without refetching. `onCore` is called after the
-// first round with a partial snapshot (no extras, only the kept blocks) so a UI can paint early.
+// Start config and core together, then extras/blocks as soon as core arrives. Config does
+// not gate those requests. onCore paints with the actual config while extras/blocks finish.
+// Cached blocks are reused, including when the selected window grows or shrinks.
 export async function fetchSnapshot(node, { window = 300, prevBlocks = [], config = null, onCore = null, ...opts } = {}) {
   const errors = [];
-  const [cfg, core] = await Promise.all([
-    config ? config : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; }),
-    fetchCore(node, opts),
-  ]);
+  const configPromise = config ? Promise.resolve(config) : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; });
+  const core = await fetchCore(node, opts);
   const head = core.dgp.head_block_number;
   const kept = prevBlocks.filter((b) => b.num > head - window && b.num <= head);
-  if (onCore) onCore({ node, config: cfg, core, extras: EMPTY_EXTRAS, blocks: kept, errors: [...errors] });
-
   const owners = core.witnesses.map((w) => w.owner);
-  const lastKnown = kept.length ? kept[kept.length - 1].num : 0;
-  const from = Math.max(lastKnown + 1, head - window + 1, 1);
-  const [extras, fresh] = await Promise.all([
-    fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] })),
-    head > 0 && from <= head ? fetchBlocks(node, from, head, opts).catch((e) => { errors.push(`get_block_range: ${e.message}`); return []; }) : [],
-  ]);
+  const extrasPromise = fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] }));
+  // Fetch only missing contiguous ranges, including the older part of an expanded window.
+  const blocksPromise = (async () => {
+    const fresh = [];
+    let from = Math.max(head - window + 1, 1);
+    for (const b of [...kept, { num: head + 1 }]) {
+      if (from < b.num) {
+        try { fresh.push(...await fetchBlocks(node, from, b.num - 1, opts)); }
+        catch (e) { errors.push(`get_block_range: ${e.message}`); }
+      }
+      from = b.num + 1;
+    }
+    return kept.concat(fresh).sort((a, b) => a.num - b.num);
+  })();
+  const cfg = await configPromise;
+  if (onCore) onCore({ node, config: cfg, core, extras: EMPTY_EXTRAS, blocks: kept, errors: [...errors] });
+  const [extras, blocks] = await Promise.all([extrasPromise, blocksPromise]);
   errors.push(...extras.errors);
-  return { node, config: cfg, core, extras, blocks: kept.concat(fresh), errors };
+  return { node, config: cfg, core, extras, blocks, errors };
 }
 
 // Voters of one witness with their approximate voting stake (own VESTS + proxied VESTS).

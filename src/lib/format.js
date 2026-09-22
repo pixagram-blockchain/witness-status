@@ -1,13 +1,21 @@
 // Display formatting. Every function returns '–' for null/NaN so cells never show "undefined".
 const DASH = '–';
 const missing = (n) => n == null || Number.isNaN(n);
+const integerFormat = new Intl.NumberFormat('en-US');
+const decimalFormats = new Map();
 
 export function fmtInt(n) {
-  return missing(n) ? DASH : Math.round(n).toLocaleString('en-US');
+  return missing(n) ? DASH : integerFormat.format(Math.round(n));
 }
 
 export function fmtNum(n, digits = 3) {
-  return missing(n) ? DASH : n.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  if (missing(n)) return DASH;
+  let format = decimalFormats.get(digits);
+  if (!format) {
+    format = new Intl.NumberFormat('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    decimalFormats.set(digits, format);
+  }
+  return format.format(n);
 }
 
 export function fmtCompact(n) {
