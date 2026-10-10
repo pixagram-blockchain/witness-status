@@ -1,0 +1,18 @@
+Pixagram witness status  https://api.pixagram.com  2026-10-10 16:18:09 UTC  (rpc 577 ms)
+NETWORK  PROGRESSING  head #1,040,886 (3s ago)  LIB #1,040,886 (lag 0)  producer merlion  aslot 1,041,962 missed-slots 1,076  participation 100.0% (128/128)  rate 0.333 blk/s (100% of expected, 5946 blocks in 4h 57m)
+CHAIN    hived 1.30.0  majority 1.30.0  HF 1.30.0  median feed 51.833 PIXA/PXS (84 feeds, min 51.833 max 51.833)  VESTS:PIXA 1.000000  scheduled 8/21  witnesses 9 (8 active, 0 standby, 1 disabled)
+BLOCKS   window 300 (#1,040,587–#1,040,886, 14m 57s)  txs 4  missed slots in window 0
+SCHEDULE top.witness matus [nodeprime] >rex chainguard boitata merlion blockforge  (reshuffle every 21 blocks, next at #1,040,907 in 21)
+HEALTH   INFO (exit 0)
+WITNESSES
+  #  witness      status    votes(M)       ≈PIXA  share  missed  Δprev  produced  last block             feed    feed age  version  flags   
+  1  rex          active      12.718  12,718,319  14.3%      26     +0        39  #1,040,881 (15s ago)   51.833  25m 12s   1.30.0   -       
+  2  blockforge   active      12.679  12,678,523  14.2%     249     +0        38  #1,040,882 (12s ago)   51.833  7m 15s    1.30.0   -       
+  3  boitata      active      12.679  12,678,523  14.2%     117     +0        35  #1,040,879 (21s ago)   51.833  39m 42s   1.30.0   -       
+  4  merlion*     active      12.679  12,678,523  14.2%     168     +0        39  #1,040,886 (0s ago)    51.833  39m 54s   1.30.0   -       
+  5  nodeprime    active      12.679  12,678,523  14.2%      91     +0        40  #1,040,885 (3s ago)    51.833  7m 12s    1.30.0   -       
+  6  top.witness  active      10.949  10,948,878  12.3%       8     +0        35  #1,040,884 (6s ago)    51.833  25m 27s   1.30.0   -       
+  7  chainguard   active       4.947   4,947,396   5.5%       9     +0        35  #1,040,880 (18s ago)   51.833  8m 57s    1.30.0   -       
+  8  initminer    disabled     4.947   4,947,396   5.5%      29     +0         0  #970,717 (2d 10h ago)  51.833  2d 10h    1.30.0   disabled
+  9  matus        active       4.947   4,947,396   5.5%     242     +0        39  #1,040,883 (9s ago)    51.833  7m 18s    1.30.0   -       
+  (* = current producer; Δprev = blocks missed since the previous snapshot)
