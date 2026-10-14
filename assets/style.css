@@ -3,7 +3,7 @@
   color-scheme: dark;
   --bg: #0d0d0d; --surface: #1a1a19; --surface-2: #232322; --border: rgba(255, 255, 255, .10); --grid: #2c2c2a;
   --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
-  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --sother: #898781;
+  --s1: #3987e5; --sother: #898781;
   --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #d03b3b; --info: #3987e5;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -13,7 +13,7 @@
     color-scheme: light;
     --bg: #f9f9f7; --surface: #fcfcfb; --surface-2: #f0efec; --border: rgba(11, 11, 11, .10); --grid: #e1e0d9;
     --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
-    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+    --s1: #2a78d6;
     --info: #2a78d6;
   }
 }
@@ -69,17 +69,18 @@ main.busy { opacity: .7; }
 .strip.part i { flex: 1 1 0; width: auto; min-width: 1px; }
 .strip.part i.ok { background: var(--ink-2); opacity: .5; }
 .strip.part i.miss { background: var(--crit); }
-.strip.blocks { display: flex; flex-wrap: wrap; gap: 2px; height: auto; padding: 4px 0; }
-.strip.blocks i { width: 6px; height: 16px; border-radius: 2px; cursor: default; }
-.strip.blocks i:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
-.strip.blocks i.gap { background: transparent; border: 1px solid var(--crit); }
-.s1 { background: var(--s1) !important; } .s2 { background: var(--s2) !important; } .s3 { background: var(--s3) !important; } .s4 { background: var(--s4) !important; }
-.s5 { background: var(--s5) !important; } .s6 { background: var(--s6) !important; } .s7 { background: var(--s7) !important; } .s8 { background: var(--s8) !important; }
-.sother { background: var(--sother) !important; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; font-size: 12px; }
-.lg { display: inline-flex; align-items: center; gap: 6px; }
-.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
-.sw.gap { background: transparent; border: 1px solid var(--crit); }
+
+/* recent blocks: one lane per witness, marks positioned by slot (--i of --slots, --n slots wide) */
+.lanes { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 3px 10px; align-items: center; font-size: 12px; padding: 2px 0; }
+.lane-row { display: contents; }
+.lane-name { font-family: var(--mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 16ch; }
+.lane-row.miss .lane-name { color: var(--crit); }
+.lane { position: relative; height: 12px; background: var(--surface-2); border-radius: 2px; }
+.lane i { position: absolute; top: 0; bottom: 0; left: calc(var(--i) * 100% / var(--slots)); width: max(1px, calc(var(--n, 1) * 100% / var(--slots) - 1px)); background: var(--ink-2); border-radius: 1px; }
+.lane i::after { content: ''; position: absolute; inset: -3px -2px; } /* hit area larger than the mark */
+.lane i:hover { background: var(--ink); outline: 1px solid var(--ink); }
+.lane i.gap { background: var(--crit); }
+.lane-count { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 /* stat tiles */
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }

@@ -91,17 +91,18 @@ test('refresh paints new core and blocks before extras without committing partia
 });
 
 
-test('first staged paint assigns producer colors by witness rank', async () => {
+test('first staged paint lists block producers by witness rank, not by block order', async () => {
   const snapshot = raw({ witnesses: [witness('rank-first', { votes: '2000' }), witness('block-first', { votes: '1000' })],
-    blocks: [{ num: 1, witness: 'block-first', timestamp: '2026-09-04T12:00:03', txCount: 0 }] });
+    blocks: [{ num: 1, witness: 'block-first', timestamp: '2026-09-04T12:00:03', txCount: 0 },
+      { num: 2, witness: 'rank-first', timestamp: '2026-09-04T12:00:06', txCount: 0 }] });
   const app = controller(Promise.resolve(DEFAULT_CONFIG), { fetchSnapshot: async (node, opts) => {
     opts.onUpdate?.({ ...snapshot, blocks: [] }, 'core');
     opts.onUpdate?.(snapshot, 'blocks');
     return snapshot;
   } });
   await app.refresh();
-  assert.equal(app.state.colors.get('rank-first'), 1);
-  assert.equal(app.state.colors.get('block-first'), 2);
+  const lanes = [...app.elements.get('blocks').innerHTML.matchAll(/data-lane="([^"]+)"/g)].map((x) => x[1]);
+  assert.deepEqual(lanes, ['rank-first', 'block-first']);
 });
 
 test('switching nodes clears old block and footer content before new blocks arrive', async () => {

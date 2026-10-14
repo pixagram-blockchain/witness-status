@@ -82,18 +82,36 @@ export function renderSchedule(m) {
 }
 export const scheduleMeta = (m) => `${m.schedule.n} of ${m.chain.maxWitnesses} slots filled · producer = shuffled[aslot mod ${m.schedule.n}] · reshuffle every ${m.chain.maxWitnesses} blocks, next at #${fmtInt(m.schedule.nextShuffleBlock)} (in ${m.schedule.blocksToShuffle} block${m.schedule.blocksToShuffle === 1 ? '' : 's'})`;
 
-export function renderBlocks(m, colorOf) {
+// One lane per witness: the row label carries identity, so the panel works for any number of
+// producers (a categorical palette tops out at 8 distinguishable hues). Marks sit at their slot
+// (block time / block interval), so missed slots show as holes and a stopped producer as an empty
+// run. Missed slots get their own lane, one mark per run of consecutive misses.
+export function renderBlocks(m) {
   const b = m.blocks;
   if (!b.windowSize) return '<span class="muted">no blocks yet</span>';
-  const ticks = [];
+  const bi = m.chain.blockInterval || 3;
+  const t0 = parseUtc(b.window[0].timestamp);
+  const slotOf = (blk) => Math.max(0, Math.round((parseUtc(blk.timestamp) - t0) / 1000 / bi));
+  const marks = new Map();
+  const gaps = [];
+  let slots = 0;
   for (const blk of b.window) {
-    for (let g = 0; g < Math.min(blk.gapBefore, 50); g++) ticks.push(`<i class="gap" data-tip="missed slot before #${blk.num}"></i>`);
-    ticks.push(`<i class="s${colorOf(blk.witness)}" data-tip="#${blk.num} · ${esc(blk.witness)} · ${esc(blk.timestamp)} UTC · ${blk.txCount} tx"></i>`);
+    const slot = slotOf(blk);
+    slots = Math.max(slots, slot + 1);
+    if (blk.gapBefore) gaps.push(`<i class="gap" style="--i:${slot - blk.gapBefore};--n:${blk.gapBefore}" data-tip="${blk.gapBefore} missed slot${blk.gapBefore === 1 ? '' : 's'} before #${blk.num}"></i>`);
+    if (!marks.has(blk.witness)) marks.set(blk.witness, []);
+    marks.get(blk.witness).push(`<i style="--i:${slot}" data-tip="#${blk.num} · ${esc(blk.witness)} · ${esc(blk.timestamp)} UTC · ${blk.txCount} tx"></i>`);
   }
-  const legend = Object.entries(b.perWitness).sort((x, y) => y[1] - x[1])
-    .map(([w, c]) => `<span class="lg"><i class="sw s${colorOf(w)}"></i>${esc(w)} <b>${c}</b> <span class="muted">(${fmtPct((c / b.windowSize) * 100, 0)})</span></span>`).join('');
-  const missed = b.missedSlotsInWindow ? `<span class="lg"><i class="sw gap"></i>missed slots <b>${b.missedSlotsInWindow}</b></span>` : '';
-  return `<div class="strip blocks">${ticks.join('')}</div><div class="legend">${legend}${missed}</div>`;
+  const owners = m.witnesses.filter((w) => marks.has(w.owner) || w.status === 'active').map((w) => w.owner);
+  for (const owner of marks.keys()) if (!owners.includes(owner)) owners.push(owner);
+  const row = (lane, name, ticks, count) => `<div class="lane-row${lane === 'missed' ? ' miss' : ''}" data-lane="${esc(lane)}"><span class="lane-name">${name}</span><span class="lane">${ticks}</span><span class="lane-count">${count}</span></div>`;
+  const lanes = owners.map((owner) => {
+    const n = marks.get(owner)?.length ?? 0;
+    const count = n ? `<b>${n}</b> <span class="muted">${fmtPct((n / b.windowSize) * 100, 0)}</span>` : '<b class="warn-text">0</b> <span class="muted">scheduled, none produced</span>';
+    return row(owner, esc(owner), (marks.get(owner) ?? []).join(''), count);
+  });
+  if (gaps.length) lanes.unshift(row('missed', 'missed slots', gaps.join(''), `<b>${b.missedSlotsInWindow}</b>`));
+  return `<div class="lanes" style="--slots:${slots}">${lanes.join('')}</div>`;
 }
 export const blocksMeta = (m) => (m.blocks.windowSize
   ? `#${fmtInt(m.blocks.first)} – #${fmtInt(m.blocks.last)} · ${fmtDuration(m.blocks.spanSec)} · ${fmtInt(m.blocks.txTotal)} tx · ${m.blocks.missedSlotsInWindow} missed slot${m.blocks.missedSlotsInWindow === 1 ? '' : 's'}`

@@ -20,7 +20,7 @@ const CONFIG_TTL_MS = 86_400_000; // chain constants only change with a node upg
 const state = {
   settings: readSettings(location.search, storage),
   config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: [],
-  colors: new Map(), expanded: new Set(), voters: new Map(), hidden: new Set(loadHidden()),
+  expanded: new Set(), voters: new Map(), hidden: new Set(loadHidden()),
   timer: null, nextAt: null, fetching: false, pending: false, lastError: null,
   raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0,
 };
@@ -53,17 +53,6 @@ function persistSettings() {
   writeSettings(state.settings, storage);
   const q = settingsToQuery(state.settings).toString();
   history.replaceState(null, '', q ? `?${q}` : location.pathname);
-}
-
-// Categorical colour slots are assigned once per witness (by rank on first sight) and never reassigned.
-function colorOf(owner) {
-  if (!state.colors.has(owner)) {
-    const used = new Set(state.colors.values());
-    let slot = 'other';
-    for (let i = 1; i <= 8; i++) if (!used.has(i)) { slot = i; break; }
-    state.colors.set(owner, slot);
-  }
-  return state.colors.get(owner);
 }
 
 function setStatus(text, cls) {
@@ -101,7 +90,6 @@ async function refresh() {
       extras: ready.has('extras') ? partial.extras : state.raw?.extras ?? partial.extras,
       blocks: ready.has('blocks') ? partial.blocks : state.raw?.blocks ?? partial.blocks };
     state.displayModel = derive(display, { prev: state.model, history: state.history, sessionBase: state.sessionBase });
-    for (const w of state.displayModel.witnesses) colorOf(w.owner);
     state.displayHealth = evaluate(state.displayModel);
     render(state.displayModel, state.displayHealth, { partial: true, section: stage });
   };
@@ -118,7 +106,6 @@ async function refresh() {
       saveBlockCache(storage, node, raw);
       if (!state.sessionBase) state.sessionBase = Object.fromEntries(raw.core.witnesses.map((w) => [w.owner, w.total_missed]));
       const model = derive(raw, { prev: state.model, history: state.history, sessionBase: state.sessionBase });
-      for (const w of model.witnesses) colorOf(w.owner);
       state.prev = state.model;
       state.model = model;
       state.health = evaluate(model);
@@ -184,7 +171,7 @@ function render(m = state.displayModel ?? state.model, h = state.displayHealth ?
     $('schedule-meta').textContent = R.scheduleMeta(m);
   }
   if (section === 'all' || section === 'blocks') {
-    $('blocks').innerHTML = R.renderBlocks(m, colorOf);
+    $('blocks').innerHTML = R.renderBlocks(m);
     $('blocks-meta').textContent = R.blocksMeta(m);
   }
   renderTable(m, h);
@@ -248,7 +235,7 @@ function setNode(url) {
   state.settings.node = url;
   state.generation++;
   persistSettings();
-  Object.assign(state, { config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: loadHistory(url), colors: new Map(), expanded: new Set(), voters: new Map(), lastError: null,
+  Object.assign(state, { config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: loadHistory(url), expanded: new Set(), voters: new Map(), lastError: null,
     raw: null, displayModel: null, displayHealth: null, blockCache: loadBlockCache(storage, url) });
   for (const id of ['network', 'tiles', 'schedule', 'blocks']) $(id).innerHTML = '';
   for (const id of ['schedule-meta', 'blocks-meta', 'witnesses-meta', 'footer-meta']) $(id).textContent = '';
