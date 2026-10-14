@@ -324,21 +324,46 @@ test('persistent blocks require a matching live anchor and fetch only the tail',
   assert.equal(snap.blocks.length, 100);
 });
 
-test('a changed anchor discards the persisted window', async () => {
+test('a changed anchor discards the persisted window but keeps the blocks it just fetched', async () => {
   const calls = [];
   const snap = await fetchSnapshot(NODE, { window: 100, blockCache: { chainId: '0'.repeat(64), blocks: [{ num: 80, id: fx.blockId(80).slice(0, -1) + '1' }] },
     fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 90 } }), calls) });
-  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 80, count: 21 }, { starting_block_num: 1, count: 100 }]);
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 80, count: 21 }, { starting_block_num: 1, count: 79 }]);
+  assert.deepEqual(snap.blocks.map((b) => b.num), Array.from({ length: 100 }, (_, i) => i + 1));
+  assert.equal(snap.blocks[79].id, fx.blockId(80));
+});
+
+const chainBlocks = (from, to, o = {}) => Array.from({ length: to - from + 1 }, (_, i) => ({ num: from + i, id: fx.blockId(from + i), timestamp: fx.blockTime(from + i), witness: 'initminer', txCount: 0, ...o }));
+
+test('a refresh validates the previous window with one overlapping block, even while LIB is stalled', async () => {
+  const calls = [];
+  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks: chainBlocks(1, 100),
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 101, last_irreversible_block_num: 0 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 100, count: 2 }]);
+  assert.deepEqual(snap.blocks.map((b) => b.num), Array.from({ length: 100 }, (_, i) => i + 2));
+});
+
+test('a fork under the previous head replaces the previous window', async () => {
+  const calls = [];
+  const prevBlocks = [...chainBlocks(1, 80), ...chainBlocks(81, 100, { witness: 'old-fork' }).map((b) => ({ ...b, id: b.id.slice(0, -1) + 'f' }))];
+  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks,
+    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 85 } }), calls) });
+  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 100, count: 1 }, { starting_block_num: 1, count: 99 }]);
+  assert.ok(snap.blocks.every((b) => b.witness === 'initminer' && b.id === fx.blockId(b.num)));
   assert.equal(snap.blocks.length, 100);
 });
 
-test('refresh replaces the reversible tail even if the head number did not change', async () => {
+test('a timed-out validation keeps the previous window and is not retried in the same refresh', async () => {
   const calls = [];
-  const prevBlocks = Array.from({ length: 100 }, (_, i) => ({ num: i + 1, witness: 'old-fork' }));
-  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks, irreversibleBlock: 80,
-    fetchImpl: fakeNode(fx.handlers({ dgp: { head_block_number: 100, last_irreversible_block_num: 85 } }), calls) });
-  assert.deepEqual(rangeCalls(calls), [{ starting_block_num: 81, count: 20 }]);
-  assert.equal(snap.blocks.at(-1).witness, 'initminer');
+  const inner = fakeNode(fx.handlers({ dgp: { head_block_number: 101 } }), calls);
+  const fetchImpl = (url, init) => (JSON.parse(init.body).some((r) => r.method === 'block_api.get_block_range')
+    ? new Promise((_, reject) => { calls.push({ method: 'block_api.get_block_range' }); init.signal.addEventListener('abort', () => reject(new DOMException('aborted', 'AbortError'))); })
+    : inner(url, init));
+  const prevBlocks = chainBlocks(1, 100);
+  const snap = await fetchSnapshot(NODE, { window: 100, prevBlocks, config: fx.raw().config, timeoutMs: 30, fetchImpl });
+  assert.equal(calls.filter((c) => c.method === 'block_api.get_block_range').length, 1);
+  assert.deepEqual(snap.blocks.map((b) => b.num), Array.from({ length: 99 }, (_, i) => i + 2), 'previous blocks still inside the window');
+  assert.match(snap.errors.join(), /get_block_range: timeout/);
 });
 
 test('snapshot emits account data before delayed blocks and preserves earlier stage snapshots', async () => {

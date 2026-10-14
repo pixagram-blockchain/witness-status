@@ -120,27 +120,36 @@ const EMPTY_EXTRAS = { accounts: null, votes: null, votesTruncated: false, error
 
 // Start config and core together, then extras/blocks as soon as core arrives. Config does
 // not gate those requests. onCore paints with the actual config while extras/blocks finish.
-// Cached blocks are reused, including when the selected window grows or shrinks.
-export async function fetchSnapshot(node, { window = 300, prevBlocks = [], irreversibleBlock = Infinity, blockCache = null, config = null, onCore = null, onUpdate = null, ...opts } = {}) {
+// Previous blocks (from the last refresh, else the persisted cache) are reused, including when
+// the selected window grows or shrinks. They are validated by refetching their newest block:
+// a block id commits to its predecessor, so a matching id proves every earlier block unchanged.
+export async function fetchSnapshot(node, { window = 300, prevBlocks = [], blockCache = null, config = null, onCore = null, onUpdate = null, ...opts } = {}) {
   const errors = [];
   const configPromise = config ? Promise.resolve(config) : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; });
   const core = await fetchCore(node, opts);
   const head = core.dgp.head_block_number;
-  const keep = (blocks, limit) => blocks.filter((b) => b.num > head - window && b.num <= Math.min(head, limit));
-  const kept = keep(prevBlocks, irreversibleBlock === Infinity ? Infinity : Math.min(irreversibleBlock, core.dgp.last_irreversible_block_num));
+  const keep = (blocks) => blocks.filter((b) => b.num > head - window && b.num <= head);
+  const kept = keep(prevBlocks);
   const owners = core.witnesses.map((w) => w.owner);
   const extrasPromise = fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] }));
   // Fetch only missing contiguous ranges, including the older part of an expanded window.
   const blocksPromise = (async () => {
-    let retained = kept;
-    const anchor = blockCache?.blocks?.at(-1);
-    if (!prevBlocks.length && anchor && blockCache.chainId === core.version.chain_id
-      && anchor.num > head - window && anchor.num <= core.dgp.last_irreversible_block_num) {
+    const cached = !prevBlocks.length && blockCache?.chainId === core.version.chain_id ? keep(blockCache.blocks) : [];
+    const candidates = kept.length ? kept : cached;
+    const anchor = candidates.at(-1);
+    let retained = candidates;
+    // Blocks without ids (older CLI snapshots) cannot be validated and are reused as they are.
+    if (anchor?.id) {
       try {
-        // Validate the anchor and fetch the new/reversible tail in the same round trip.
+        // Validate the anchor and fetch everything after it in the same round trip.
         const live = await fetchBlocks(node, anchor.num, head, opts);
-        if (live[0]?.id === anchor.id) retained = keep(blockCache.blocks, core.dgp.last_irreversible_block_num).concat(live.slice(1));
-      } catch { /* Cache validation failure falls back to a fresh window. */ }
+        // On a mismatch (fork, or a replayed chain) the earlier blocks are refetched; the fresh ones are kept.
+        retained = live[0]?.id === anchor.id ? candidates.slice(0, -1).concat(live) : live;
+      } catch (e) {
+        // A timeout would only repeat for the same range: keep what we had and report it.
+        if (e?.kind === 'timeout') { errors.push(`get_block_range: ${e.message}`); return candidates; }
+        retained = [];
+      }
     }
     const fresh = [];
     let from = Math.max(head - window + 1, 1);

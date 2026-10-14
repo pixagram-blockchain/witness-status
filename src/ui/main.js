@@ -74,8 +74,7 @@ async function refresh() {
   const generation = state.generation;
   const windowSize = state.settings.window;
   const current = () => node === state.settings.node && generation === state.generation && windowSize === state.settings.window;
-  const opts = { window: windowSize, prevBlocks: state.blocks, irreversibleBlock: state.model?.network.lib ?? 0,
-    blockCache: state.blockCache, config: state.config ?? loadConfig(node) ?? (node === DEFAULT_NODE ? DEFAULT_CONFIG : null) };
+  const opts = { window: windowSize, prevBlocks: state.blocks, blockCache: state.blockCache, config: state.config ?? loadConfig(node) ?? (node === DEFAULT_NODE ? DEFAULT_CONFIG : null) };
   let configError = null;
   const verifiedConfig = opts.config === DEFAULT_CONFIG
     ? fetchConfig(node).catch((e) => { configError = `get_config: ${e.message}`; return DEFAULT_CONFIG; })
