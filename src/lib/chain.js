@@ -123,7 +123,7 @@ const EMPTY_EXTRAS = { accounts: null, votes: null, votesTruncated: false, error
 // Previous blocks (from the last refresh, else the persisted cache) are reused, including when
 // the selected window grows or shrinks. They are validated by refetching their newest block:
 // a block id commits to its predecessor, so a matching id proves every earlier block unchanged.
-export async function fetchSnapshot(node, { window = 300, prevBlocks = [], blockCache = null, config = null, onCore = null, onUpdate = null, ...opts } = {}) {
+export async function fetchSnapshot(node, { window = 300, prevBlocks = [], blockCache = null, cachedExtras = null, config = null, onCore = null, onUpdate = null, ...opts } = {}) {
   const errors = [];
   const configPromise = config ? Promise.resolve(config) : fetchConfig(node, opts).catch((e) => { errors.push(`get_config: ${e.message}`); return DEFAULT_CONFIG; });
   const core = await fetchCore(node, opts);
@@ -131,7 +131,12 @@ export async function fetchSnapshot(node, { window = 300, prevBlocks = [], block
   const keep = (blocks) => blocks.filter((b) => b.num > head - window && b.num <= head);
   const kept = keep(prevBlocks);
   const owners = core.witnesses.map((w) => w.owner);
-  const extrasPromise = fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] }));
+  // Accounts and votes change slowly and the account objects are large (profile metadata), so a
+  // caller may pass the previous extras; they are reused only if complete and for the same witnesses.
+  const sameOwners = (accounts) => { const names = Object.keys(accounts); return names.length === owners.length && owners.every((o) => o in accounts); };
+  const reuse = cachedExtras?.accounts && cachedExtras.votes && !cachedExtras.errors?.length && sameOwners(cachedExtras.accounts);
+  const extrasPromise = reuse ? Promise.resolve(cachedExtras)
+    : fetchExtras(node, owners, opts).catch((e) => ({ ...EMPTY_EXTRAS, errors: [`extras: ${e.message}`] }));
   // Fetch only missing contiguous ranges, including the older part of an expanded window.
   const blocksPromise = (async () => {
     const cached = !prevBlocks.length && blockCache?.chainId === core.version.chain_id ? keep(blockCache.blocks) : [];

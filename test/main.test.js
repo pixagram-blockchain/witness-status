@@ -206,3 +206,21 @@ test('history and the block cache are written at most every 5 minutes, and alway
   app.persist(true);
   assert.deepEqual([count('history'), count('blocks')], [3, 3], 'a forced flush (tab hidden, page closed, node switch) always writes');
 });
+
+test('account and vote data are reused for 5 minutes, then fetched again', async () => {
+  const passed = [];
+  const app = controller(Promise.resolve(DEFAULT_CONFIG), {
+    fetchSnapshot: async (node, opts) => {
+      passed.push(opts.cachedExtras ?? null);
+      const s = raw();
+      return opts.cachedExtras ? { ...s, extras: opts.cachedExtras } : s;
+    },
+  });
+  await app.refresh();
+  const first = app.state.raw.extras;
+  await app.refresh();
+  assert.deepEqual(passed, [null, first], 'the second refresh offers the first refresh extras');
+  app.state.extrasAt -= 5 * 60_000;
+  await app.refresh();
+  assert.equal(passed[2], null, 'after 5 minutes they are fetched again');
+});

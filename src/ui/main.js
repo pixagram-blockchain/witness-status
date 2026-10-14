@@ -17,6 +17,7 @@ const COLS_KEY = 'witness-status:columns';
 const CONFIG_KEY = (node) => `witness-status:config:${node}`;
 const CONFIG_TTL_MS = 86_400_000; // chain constants only change with a node upgrade; refetch daily
 const CONFIG_RETRY_MS = 600_000; // after a failed get_config, retry in the background at most this often
+const EXTRAS_TTL_MS = 300_000; // witness accounts (~60 KB even compressed) and vote counts are refetched this often
 const PERSIST_MS = 300_000; // history (~0.4 MB after a day) and the block cache are only read on the next load
 
 const state = {
@@ -24,7 +25,7 @@ const state = {
   config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: [],
   expanded: new Set(), voters: new Map(), hidden: new Set(loadHidden()),
   timer: null, nextAt: null, fetching: false, pending: false, lastError: null,
-  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0, configTry: null, persistedAt: 0,
+  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0, configTry: null, persistedAt: 0, extrasAt: 0,
 };
 
 function loadHidden() {
@@ -111,7 +112,8 @@ async function refresh() {
   const current = () => node === state.settings.node && generation === state.generation && windowSize === state.settings.window;
   const plan = configPlan(node);
   const configTry = state.configTry;
-  const opts = { window: windowSize, prevBlocks: state.blocks, blockCache: state.blockCache, config: plan.config };
+  const cachedExtras = state.raw && Date.now() - state.extrasAt < EXTRAS_TTL_MS ? state.raw.extras : null;
+  const opts = { window: windowSize, prevBlocks: state.blocks, blockCache: state.blockCache, cachedExtras, config: plan.config };
   const verifiedConfig = plan.verify ? fetchConfig(node).catch((e) => { configTry.error = `get_config: ${e.message}`; return null; }) : null;
   // Each request updates its section on every refresh. Keep the last completed extras
   // and block data until their replacements arrive; never add partial history samples.
@@ -137,6 +139,7 @@ async function refresh() {
       if (plan.config === null && !fetched) configTry.error = raw.errors.find((e) => e.startsWith('get_config:')) ?? 'get_config failed';
       if (!state.config && configTry?.node === node && configTry.error && !raw.errors.includes(configTry.error)) raw.errors.push(configTry.error);
       state.blocks = raw.blocks;
+      if (raw.extras !== cachedExtras) state.extrasAt = Date.now();
       state.raw = raw;
       state.blockCache = null;
       if (!state.sessionBase) state.sessionBase = Object.fromEntries(raw.core.witnesses.map((w) => [w.owner, w.total_missed]));
@@ -274,7 +277,7 @@ function setNode(url) {
   state.generation++;
   persistSettings();
   Object.assign(state, { config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: loadHistory(url), expanded: new Set(), voters: new Map(), lastError: null,
-    raw: null, displayModel: null, displayHealth: null, blockCache: loadBlockCache(storage, url), persistedAt: 0 });
+    raw: null, displayModel: null, displayHealth: null, blockCache: loadBlockCache(storage, url), persistedAt: 0, extrasAt: 0 });
   for (const id of ['network', 'tiles', 'schedule', 'blocks']) $(id).innerHTML = '';
   for (const id of ['schedule-meta', 'blocks-meta', 'witnesses-meta', 'footer-meta']) $(id).textContent = '';
   $('tbl').querySelector('tbody').innerHTML = '';

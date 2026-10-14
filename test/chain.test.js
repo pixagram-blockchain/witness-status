@@ -411,3 +411,25 @@ test('failed anchor validation falls back to a fresh window', async () => {
   assert.equal(snapshot.blocks.length, 100);
   assert.deepEqual(snapshot.errors, []);
 });
+
+test('fetchSnapshot reuses cached extras when they cover exactly the current witnesses', async () => {
+  const calls = [];
+  const fetchImpl = fakeNode(fx.handlers(), calls);
+  const cachedExtras = await fetchExtras(NODE, ['initminer'], { fetchImpl });
+  calls.length = 0;
+  const snap = await fetchSnapshot(NODE, { cachedExtras, config: DEFAULT_CONFIG, fetchImpl });
+  assert.equal(snap.extras, cachedExtras);
+  assert.deepEqual(calls.filter((c) => /get_accounts|list_witness_votes/.test(c.method)), []);
+});
+
+test('fetchSnapshot refetches extras when the witness set changed or the cached ones were incomplete', async () => {
+  const fetchImpl = fakeNode(fx.handlers({ witnesses: [fx.witness('initminer'), fx.witness('newcomer')] }));
+  const cachedExtras = await fetchExtras(NODE, ['initminer'], { fetchImpl });
+  const changed = await fetchSnapshot(NODE, { cachedExtras, config: DEFAULT_CONFIG, fetchImpl });
+  assert.notEqual(changed.extras, cachedExtras);
+  assert.equal(changed.extras.accounts.newcomer.name, 'newcomer');
+  const partial = { ...changed.extras, votes: null };
+  const refetched = await fetchSnapshot(NODE, { cachedExtras: partial, config: DEFAULT_CONFIG, fetchImpl });
+  assert.notEqual(refetched.extras, partial);
+  assert.ok(refetched.extras.votes);
+});
