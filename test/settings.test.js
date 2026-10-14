@@ -10,7 +10,7 @@ const stored = (o) => storage({ [STORAGE_KEY]: JSON.stringify(o) });
 
 test('readSettings returns defaults with no input', () => {
   assert.deepEqual(readSettings('', null), DEFAULTS);
-  assert.deepEqual(DEFAULTS, { node: 'https://api.pixagram.com', interval: 30, sort: 'rank', dir: 'asc', window: 300, q: '', hideDisabled: false });
+  assert.deepEqual(DEFAULTS, { node: 'https://api.pixagram.com', interval: 30, sort: 'rank', dir: 'asc', window: 300, q: '', showDisabled: false });
 });
 
 test('readSettings prefers URL params over storage over defaults', () => {
@@ -38,10 +38,12 @@ test('readSettings accepts every listed window and a custom node', () => {
   assert.equal(readSettings('?node=http://localhost:8090', null).node, 'http://localhost:8090');
 });
 
-test('readSettings parses hideDisabled and q from URL and storage', () => {
-  assert.equal(readSettings('?hideDisabled=1', null).hideDisabled, true);
-  assert.equal(readSettings('', stored({ hideDisabled: true })).hideDisabled, true);
-  assert.equal(readSettings('?hideDisabled=0', stored({ hideDisabled: true })).hideDisabled, false);
+test('readSettings parses showDisabled and q from URL and storage', () => {
+  assert.equal(readSettings('', null).showDisabled, false, 'disabled witnesses are hidden by default');
+  assert.equal(readSettings('?showDisabled=1', null).showDisabled, true);
+  assert.equal(readSettings('', stored({ showDisabled: true })).showDisabled, true);
+  assert.equal(readSettings('?showDisabled=0', stored({ showDisabled: true })).showDisabled, false);
+  assert.equal(readSettings('?hideDisabled=0', stored({ hideDisabled: false })).showDisabled, false, 'the retired hideDisabled key is ignored');
   assert.equal(readSettings('?q=Init', null).q, 'init');
   assert.equal(readSettings('?q=' + 'x'.repeat(100), null).q.length, 64);
 });
@@ -52,7 +54,7 @@ test('readSettings tolerates corrupt storage JSON', () => {
 
 test('settingsToQuery omits defaults', () => {
   assert.equal(settingsToQuery(DEFAULTS).toString(), '');
-  assert.equal(settingsToQuery({ ...DEFAULTS, interval: 10, sort: 'totalMissed', dir: 'desc', hideDisabled: true }).toString(), 'interval=10&sort=totalMissed&dir=desc&hideDisabled=1');
+  assert.equal(settingsToQuery({ ...DEFAULTS, interval: 10, sort: 'totalMissed', dir: 'desc', showDisabled: true }).toString(), 'interval=10&sort=totalMissed&dir=desc&showDisabled=1');
   assert.equal(settingsToQuery({ ...DEFAULTS, interval: 0 }).toString(), 'interval=0');
 });
 
@@ -65,4 +67,14 @@ test('writeSettings stores JSON and readSettings reads it back', () => {
 
 test('INTERVALS contains the default', () => {
   assert.ok(INTERVALS.includes(30));
+});
+
+test('the witness table hides disabled witnesses unless showDisabled is set', async () => {
+  const { visibleRows } = await import('../src/ui/render.js');
+  const { derive } = await import('../src/lib/derive.js');
+  const { raw, witness, NULL_KEY } = await import('./fixtures.js');
+  const m = derive(raw({ witnesses: [witness('alive'), witness('retired', { signing_key: NULL_KEY })] }));
+  const view = (showDisabled) => ({ sort: 'rank', dir: 'asc', q: '', showDisabled });
+  assert.deepEqual(visibleRows(m, view(false)).map((w) => w.owner), ['alive']);
+  assert.deepEqual(visibleRows(m, view(true)).map((w) => w.owner).sort(), ['alive', 'retired']);
 });

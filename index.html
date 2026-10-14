@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230d0d0d'/%3E%3Crect x='3' y='9' width='2' height='4' fill='%233987e5'/%3E%3Crect x='7' y='5' width='2' height='8' fill='%233987e5'/%3E%3Crect x='11' y='3' width='2' height='10' fill='%230ca30c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://api.pixagram.com" crossorigin>
 <link rel="stylesheet" href="assets/style.css">
-<link rel="modulepreload" href="assets/app.min.js?v=ddb7a7e22464c924">
+<link rel="modulepreload" href="assets/app.min.js?v=663e32c7eb6c9d22">
 </head>
 <body>
 <header class="topbar">
@@ -39,7 +39,7 @@
       <h2>Witnesses</h2><span id="witnesses-meta" class="muted"></span>
       <div class="right toolbar">
         <input id="q" type="search" placeholder="filter by name" size="14">
-        <label><input id="hide-disabled" type="checkbox"> hide disabled</label>
+        <label><input id="show-disabled" type="checkbox"> show disabled</label>
         <details id="columns"><summary>columns</summary><div id="columns-menu" class="menu"></div></details>
       </div>
     </div>
@@ -65,6 +65,6 @@ window.addEventListener('error', function (e) {
   if (el && /loading/.test(el.textContent)) { el.textContent = 'error: ' + (e.message || 'script failed to load') + ' (see diag.html)'; el.className = 'pill err'; }
 });
 </script>
-<script type="module" src="assets/app.min.js?v=ddb7a7e22464c924"></script>
+<script type="module" src="assets/app.min.js?v=663e32c7eb6c9d22"></script>
 </body>
 </html>

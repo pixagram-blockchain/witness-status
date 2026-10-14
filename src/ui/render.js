@@ -165,7 +165,7 @@ function cell(key, w, m, { maxVotes, maxProduced, flags }) {
 export function visibleRows(m, view) {
   let rows = m.witnesses;
   if (view.q) rows = rows.filter((w) => w.owner.includes(view.q));
-  if (view.hideDisabled) rows = rows.filter((w) => w.status !== 'disabled');
+  if (!view.showDisabled) rows = rows.filter((w) => w.status !== 'disabled');
   return sortRows(rows, view.sort, view.dir);
 }
 

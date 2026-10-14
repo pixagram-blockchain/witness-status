@@ -150,7 +150,7 @@ function renderCountdown() {
 }
 
 const view = () => ({
-  sort: state.settings.sort, dir: state.settings.dir, q: state.settings.q, hideDisabled: state.settings.hideDisabled,
+  sort: state.settings.sort, dir: state.settings.dir, q: state.settings.q, showDisabled: state.settings.showDisabled,
   hidden: state.hidden, expanded: state.expanded, voters: state.voters,
 });
 
@@ -270,8 +270,8 @@ function init() {
 
   $('q').value = state.settings.q;
   $('q').addEventListener('input', () => { state.settings.q = $('q').value.trim().toLowerCase().slice(0, 64); persistSettings(); renderTable(); });
-  $('hide-disabled').checked = state.settings.hideDisabled;
-  $('hide-disabled').addEventListener('change', () => { state.settings.hideDisabled = $('hide-disabled').checked; persistSettings(); renderTable(); });
+  $('show-disabled').checked = state.settings.showDisabled;
+  $('show-disabled').addEventListener('change', () => { state.settings.showDisabled = $('show-disabled').checked; persistSettings(); renderTable(); });
 
   $('columns-menu').innerHTML = R.renderColumnsMenu(state.hidden);
   $('columns-menu').addEventListener('change', (e) => {

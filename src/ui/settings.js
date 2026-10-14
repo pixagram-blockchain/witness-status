@@ -4,7 +4,7 @@ import { COLUMNS } from '../lib/columns.js';
 
 export const WINDOWS = [100, 300, 1000];
 export const INTERVALS = [5, 10, 15, 30, 60, 120, 300];
-export const DEFAULTS = { node: DEFAULT_NODE, interval: 30, sort: 'rank', dir: 'asc', window: 300, q: '', hideDisabled: false };
+export const DEFAULTS = { node: DEFAULT_NODE, interval: 30, sort: 'rank', dir: 'asc', window: 300, q: '', showDisabled: false };
 export const STORAGE_KEY = 'witness-status:settings';
 
 export function readSettings(search, storage) {
@@ -29,8 +29,9 @@ export function readSettings(search, storage) {
   if (WINDOWS.includes(window)) s.window = window;
   const q = pick('q');
   if (typeof q === 'string') s.q = q.trim().toLowerCase().slice(0, 64);
-  const hd = pick('hideDisabled');
-  s.hideDisabled = hd === true || hd === '1' || hd === 'true';
+  // Disabled witnesses are hidden unless asked for. The retired hideDisabled key is ignored.
+  const sd = pick('showDisabled');
+  s.showDisabled = sd === true || sd === '1' || sd === 'true';
   return s;
 }
 
@@ -38,7 +39,7 @@ export function settingsToQuery(s) {
   const p = new URLSearchParams();
   for (const k of Object.keys(DEFAULTS)) {
     if (s[k] === DEFAULTS[k] || s[k] === '' || s[k] === false || s[k] == null) continue;
-    p.set(k, k === 'hideDisabled' ? '1' : String(s[k]));
+    p.set(k, k === 'showDisabled' ? '1' : String(s[k]));
   }
   return p;
 }

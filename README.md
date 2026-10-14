@@ -25,7 +25,7 @@ Everything is computed in the browser straight from the public JSON-RPC node
 | RPC node | "Node" field (Enter to apply) | `node=https://api.pixagram.com` | mainnet |
 | Sort | click a column header (again to flip) | `sort=totalMissed&dir=desc` | rank asc |
 | Recent-blocks window | "Window" select | `window=300` | 300 |
-| Name filter / hide disabled | toolbar | `q=init`, `hideDisabled=1` | – |
+| Name filter / show disabled (hidden by default) | toolbar | `q=init`, `showDisabled=1` | – |
 
 Settings persist in the URL (shareable) and in localStorage. Column visibility is in the "columns" menu.
 Network status, accounts/votes and recent blocks update independently as their requests finish.
