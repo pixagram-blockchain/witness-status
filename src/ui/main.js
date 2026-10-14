@@ -17,13 +17,14 @@ const COLS_KEY = 'witness-status:columns';
 const CONFIG_KEY = (node) => `witness-status:config:${node}`;
 const CONFIG_TTL_MS = 86_400_000; // chain constants only change with a node upgrade; refetch daily
 const CONFIG_RETRY_MS = 600_000; // after a failed get_config, retry in the background at most this often
+const PERSIST_MS = 300_000; // history (~0.4 MB after a day) and the block cache are only read on the next load
 
 const state = {
   settings: readSettings(location.search, storage),
   config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: [],
   expanded: new Set(), voters: new Map(), hidden: new Set(loadHidden()),
   timer: null, nextAt: null, fetching: false, pending: false, lastError: null,
-  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0, configTry: null,
+  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0, configTry: null, persistedAt: 0,
 };
 
 function loadHidden() {
@@ -73,6 +74,15 @@ function configPlan(node) {
     }, (e) => { last.error = `get_config: ${e.message}`; });
   }
   return { config: DEFAULT_CONFIG };
+}
+// Write history and the block cache at most every PERSIST_MS. Both are synchronous localStorage
+// writes of up to ~0.5 MB, so not on every refresh; force a flush when the page is hidden or
+// closed and before switching nodes, so a normal exit loses nothing.
+function persist(force = false) {
+  if (!state.raw || (!force && Date.now() - state.persistedAt < PERSIST_MS)) return;
+  state.persistedAt = Date.now();
+  saveHistory(state.settings.node, state.history);
+  saveBlockCache(storage, state.settings.node, state.raw);
 }
 function persistSettings() {
   writeSettings(state.settings, storage);
@@ -129,7 +139,6 @@ async function refresh() {
       state.blocks = raw.blocks;
       state.raw = raw;
       state.blockCache = null;
-      saveBlockCache(storage, node, raw);
       if (!state.sessionBase) state.sessionBase = Object.fromEntries(raw.core.witnesses.map((w) => [w.owner, w.total_missed]));
       const model = derive(raw, { prev: state.model, history: state.history, sessionBase: state.sessionBase });
       state.prev = state.model;
@@ -139,7 +148,7 @@ async function refresh() {
       state.displayHealth = state.health;
       state.lastError = null;
       state.history = addSample(state.history, { t: model.fetchedAt, missed: Object.fromEntries(model.witnesses.map((w) => [w.owner, w.totalMissed])) });
-      saveHistory(node, state.history);
+      persist();
       const icon = { progressing: '▲', lagging: '▲', stalled: '■', not_started: '◔' }[model.network.status] ?? '■';
       document.title = `${icon} #${model.network.headBlock} · Pixagram Witness Status`;
     }
@@ -260,11 +269,12 @@ function syncIntervalControl() {
 function setNode(url) {
   if (!/^https?:\/\/\S+$/.test(url)) { setStatus('node must be an http(s) URL', 'err'); return; }
   if (url === state.settings.node) { refresh(); return; }
+  persist(true);
   state.settings.node = url;
   state.generation++;
   persistSettings();
   Object.assign(state, { config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: loadHistory(url), expanded: new Set(), voters: new Map(), lastError: null,
-    raw: null, displayModel: null, displayHealth: null, blockCache: loadBlockCache(storage, url) });
+    raw: null, displayModel: null, displayHealth: null, blockCache: loadBlockCache(storage, url), persistedAt: 0 });
   for (const id of ['network', 'tiles', 'schedule', 'blocks']) $(id).innerHTML = '';
   for (const id of ['schedule-meta', 'blocks-meta', 'witnesses-meta', 'footer-meta']) $(id).textContent = '';
   $('tbl').querySelector('tbody').innerHTML = '';
@@ -348,8 +358,9 @@ function init() {
     tip.style.left = `${Math.max(4, Math.min(window.innerWidth - tip.offsetWidth - 8, r.left))}px`;
     tip.style.top = `${r.bottom + 6 + window.scrollY}px`;
   });
+  window.addEventListener('pagehide', () => persist(true));
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { clearTimeout(state.timer); state.timer = null; }
+    if (document.hidden) { clearTimeout(state.timer); state.timer = null; persist(true); }
     else if (state.settings.interval && (state.nextAt == null || state.nextAt <= Date.now())) refresh();
     else arm();
   });

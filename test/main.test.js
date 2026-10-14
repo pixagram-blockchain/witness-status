@@ -10,11 +10,11 @@ import { COLUMNS } from '../src/lib/columns.js';
 import { fmtTime } from '../src/lib/format.js';
 import * as R from '../src/ui/render.js';
 import { loadBlockCache, saveBlockCache } from '../src/lib/block-cache.js';
-import { raw, witness } from './fixtures.js';
+import { raw, witness, blockId, blockTime } from './fixtures.js';
 
 const source = (await readFile(new URL('../src/ui/main.js', import.meta.url), 'utf8'))
   .replace(/^import .*;\n/gm, '')
-  .replace(/\ninit\(\);\s*$/, '\nreturn { state, refresh, setNode };');
+  .replace(/\ninit\(\);\s*$/, '\nreturn { state, refresh, setNode, persist };');
 
 function controller(configPromise, overrides = {}) {
   const elements = new Map();
@@ -187,4 +187,22 @@ test('a custom node whose get_config fails waits once, then refreshes with built
   await app.refresh();
   assert.deepEqual(seen, [null, DEFAULT_CONFIG]);
   assert.ok(app.state.model.errors.includes('get_config: boom'));
+});
+
+test('history and the block cache are written at most every 5 minutes, and always on demand', async () => {
+  const writes = [];
+  const blocks = Array.from({ length: 5 }, (_, i) => ({ num: i + 1, id: blockId(i + 1), timestamp: blockTime(i + 1), witness: 'initminer', txCount: 0 }));
+  const app = controller(Promise.resolve(DEFAULT_CONFIG), {
+    window: { localStorage: { getItem: () => null, setItem: (k) => writes.push(k), removeItem() {} } },
+    fetchSnapshot: async () => raw({ dgp: { head_block_number: 5, last_irreversible_block_num: 5 }, blocks }),
+  });
+  const count = (kind) => writes.filter((k) => k.startsWith(`witness-status:${kind}:`)).length;
+  for (let i = 0; i < 3; i++) await app.refresh();
+  assert.deepEqual([count('history'), count('blocks')], [1, 1], 'first refresh persists, the next ones within 5 minutes do not');
+  assert.equal(app.state.history.length, 3, 'samples are still collected in memory');
+  app.state.persistedAt -= 5 * 60_000;
+  await app.refresh();
+  assert.deepEqual([count('history'), count('blocks')], [2, 2]);
+  app.persist(true);
+  assert.deepEqual([count('history'), count('blocks')], [3, 3], 'a forced flush (tab hidden, page closed, node switch) always writes');
 });
