@@ -125,3 +125,21 @@ test('switching nodes clears old block and footer content before new blocks arri
   release();
   await gate;
 });
+
+test('switching nodes during a refresh does not flash the NO DATA banner', async () => {
+  const gates = [];
+  const app = controller(Promise.resolve(DEFAULT_CONFIG), {
+    settingsToQuery: () => new URLSearchParams(), writeSettings() {}, history: { replaceState() {} },
+    fetchSnapshot: (node, opts) => new Promise((resolve) => gates.push(() => { const s = raw(); opts.onUpdate?.(s, 'core'); resolve(s); })),
+  });
+  const first = app.refresh();
+  app.setNode('https://other.test');
+  gates[0]();
+  await first;
+  assert.doesNotMatch(app.elements.get('network').innerHTML ?? '', /NO DATA/, 'the discarded refresh must not paint');
+  assert.equal(gates.length, 2, 'the queued refresh for the new node started');
+  gates[1]();
+  await new Promise((r) => setImmediate(r));
+  assert.match(app.elements.get('network').innerHTML, /net-label/);
+  assert.equal(app.state.model.node, 'https://node.test');
+});

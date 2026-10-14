@@ -121,7 +121,9 @@ async function refresh() {
   }
   state.fetching = false;
   $('main').classList.remove('busy');
-  render();
+  // A refresh for a node or window the user has since left must not paint: its result was
+  // discarded, so it would draw the empty NO DATA state until the queued refresh arrives.
+  if (current()) render();
   if (state.pending) {
     state.pending = false;
     refresh();
