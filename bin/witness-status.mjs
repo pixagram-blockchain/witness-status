@@ -44,4 +44,6 @@ if (args.out) {
 } else {
   console.log(JSON.stringify(doc, null, 2));
 }
-process.exit(args.check ? health.exitCode : 0);
+// Set the code instead of calling process.exit(): exiting immediately drops whatever stdout
+// has not flushed yet, which truncates the JSON at 64 KB when the output goes to a pipe.
+process.exitCode = args.check ? health.exitCode : 0;
