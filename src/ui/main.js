@@ -16,13 +16,14 @@ const HIST_KEY = (node) => `witness-status:history:${node}`;
 const COLS_KEY = 'witness-status:columns';
 const CONFIG_KEY = (node) => `witness-status:config:${node}`;
 const CONFIG_TTL_MS = 86_400_000; // chain constants only change with a node upgrade; refetch daily
+const CONFIG_RETRY_MS = 600_000; // after a failed get_config, retry in the background at most this often
 
 const state = {
   settings: readSettings(location.search, storage),
   config: null, blocks: [], model: null, prev: null, sessionBase: null, health: null, history: [],
   expanded: new Set(), voters: new Map(), hidden: new Set(loadHidden()),
   timer: null, nextAt: null, fetching: false, pending: false, lastError: null,
-  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0,
+  raw: null, displayModel: null, displayHealth: null, blockCache: null, generation: 0, configTry: null,
 };
 
 function loadHidden() {
@@ -49,6 +50,30 @@ function loadConfig(node) {
   return null;
 }
 function saveConfig(node, config) { try { storage?.setItem(CONFIG_KEY(node), JSON.stringify({ savedAt: Date.now(), config })); } catch { /* ignore */ } }
+
+// Chain constants for one refresh. Known constants (this session or the daily cache) are used as
+// they are. The first refresh for a node fetches them: the default node paints from the built-in
+// constants meanwhile, other nodes wait. After a failure, refreshes use the built-in constants
+// without waiting, keep reporting the error, and retry in the background at most every 10 minutes.
+function configPlan(node) {
+  const known = state.config ?? loadConfig(node);
+  if (known) return { config: known };
+  const last = state.configTry?.node === node ? state.configTry : null;
+  if (!last) {
+    state.configTry = { node, at: Date.now(), error: null };
+    return node === DEFAULT_NODE ? { config: DEFAULT_CONFIG, verify: true } : { config: null };
+  }
+  if (Date.now() - last.at >= CONFIG_RETRY_MS) {
+    last.at = Date.now();
+    fetchConfig(node).then((cfg) => {
+      if (node !== state.settings.node) return;
+      state.config = cfg;
+      saveConfig(node, cfg);
+      last.error = null;
+    }, (e) => { last.error = `get_config: ${e.message}`; });
+  }
+  return { config: DEFAULT_CONFIG };
+}
 function persistSettings() {
   writeSettings(state.settings, storage);
   const q = settingsToQuery(state.settings).toString();
@@ -74,11 +99,10 @@ async function refresh() {
   const generation = state.generation;
   const windowSize = state.settings.window;
   const current = () => node === state.settings.node && generation === state.generation && windowSize === state.settings.window;
-  const opts = { window: windowSize, prevBlocks: state.blocks, blockCache: state.blockCache, config: state.config ?? loadConfig(node) ?? (node === DEFAULT_NODE ? DEFAULT_CONFIG : null) };
-  let configError = null;
-  const verifiedConfig = opts.config === DEFAULT_CONFIG
-    ? fetchConfig(node).catch((e) => { configError = `get_config: ${e.message}`; return DEFAULT_CONFIG; })
-    : null;
+  const plan = configPlan(node);
+  const configTry = state.configTry;
+  const opts = { window: windowSize, prevBlocks: state.blocks, blockCache: state.blockCache, config: plan.config };
+  const verifiedConfig = plan.verify ? fetchConfig(node).catch((e) => { configTry.error = `get_config: ${e.message}`; return null; }) : null;
   // Each request updates its section on every refresh. Keep the last completed extras
   // and block data until their replacements arrive; never add partial history samples.
   const ready = new Set();
@@ -95,10 +119,13 @@ async function refresh() {
   try {
     const [raw, cfg] = await Promise.all([fetchSnapshot(node, opts), verifiedConfig]);
     if (cfg) raw.config = cfg;
-    if (configError) raw.errors.push(configError);
     if (current()) {
-      state.config = raw.config === DEFAULT_CONFIG ? null : raw.config;
-      if (state.config && (verifiedConfig || !opts.config)) saveConfig(node, state.config);
+      // Constants fetched by this refresh: verified for the default node, or by fetchSnapshot for another node.
+      const fetched = cfg ?? (plan.config === null && raw.config !== DEFAULT_CONFIG ? raw.config : null);
+      if (fetched) { state.config = fetched; saveConfig(node, fetched); configTry.error = null; }
+      else if (plan.config !== DEFAULT_CONFIG) state.config = plan.config;
+      if (plan.config === null && !fetched) configTry.error = raw.errors.find((e) => e.startsWith('get_config:')) ?? 'get_config failed';
+      if (!state.config && configTry?.node === node && configTry.error && !raw.errors.includes(configTry.error)) raw.errors.push(configTry.error);
       state.blocks = raw.blocks;
       state.raw = raw;
       state.blockCache = null;

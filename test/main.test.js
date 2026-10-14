@@ -143,3 +143,48 @@ test('switching nodes during a refresh does not flash the NO DATA banner', async
   assert.match(app.elements.get('network').innerHTML, /net-label/);
   assert.equal(app.state.model.node, 'https://node.test');
 });
+
+// fetchSnapshot that, like the real one, returns the config it was given (or the built-in
+// constants with an error when it had to fetch them and that failed).
+const snapshotWith = (seen) => async (node, opts) => {
+  seen.push(opts.config);
+  const s = { ...raw(), config: opts.config ?? DEFAULT_CONFIG, errors: opts.config ? [] : ['get_config: boom'] };
+  opts.onUpdate?.(s, 'core');
+  return s;
+};
+const never = () => new Promise(() => {});
+
+test('after a failed get_config, later refreshes neither wait for it nor retry it within 10 minutes', { timeout: 2000 }, async () => {
+  const calls = [];
+  const replies = [Promise.reject(new Error('config unavailable')), never(), Promise.resolve({ ...DEFAULT_CONFIG, blockInterval: 6 })];
+  const app = controller(null, { fetchConfig: () => { calls.push(1); return replies.shift(); }, fetchSnapshot: snapshotWith([]) });
+  await app.refresh();
+  assert.ok(app.state.model.errors.some((e) => e.includes('config unavailable')));
+  await app.refresh();
+  assert.equal(calls.length, 1, 'no retry within 10 minutes');
+  assert.ok(app.state.model.errors.some((e) => e.includes('config unavailable')), 'the error stays visible while built-ins are used');
+  app.state.configTry.at -= 11 * 60_000;
+  await app.refresh();
+  assert.equal(calls.length, 2, 'retried after 10 minutes, without waiting for it');
+  app.state.configTry.at -= 11 * 60_000;
+  await app.refresh();
+  assert.equal(calls.length, 3);
+  await new Promise((r) => setImmediate(r));
+  assert.equal(app.state.config.blockInterval, 6, 'a late success is kept for the next refresh');
+  await app.refresh();
+  assert.equal(app.state.model.chain.blockInterval, 6);
+  assert.ok(!app.state.model.errors.some((e) => e.includes('get_config')));
+});
+
+test('a custom node whose get_config fails waits once, then refreshes with built-in constants', { timeout: 2000 }, async () => {
+  const seen = [];
+  const app = controller(never(), {
+    settingsToQuery: () => new URLSearchParams(), writeSettings() {}, history: { replaceState() {} },
+    fetchSnapshot: snapshotWith(seen),
+  });
+  app.setNode('https://other.test');
+  await new Promise((r) => setImmediate(r));
+  await app.refresh();
+  assert.deepEqual(seen, [null, DEFAULT_CONFIG]);
+  assert.ok(app.state.model.errors.includes('get_config: boom'));
+});
