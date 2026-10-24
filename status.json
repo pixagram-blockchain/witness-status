@@ -1,0 +1,4340 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-10-24T14:50:11.324Z",
+  "node": "https://api.pixagram.com",
+  "health": {
+    "level": "info",
+    "exitCode": 0,
+    "network": [],
+    "witnesses": {
+      "rex": [],
+      "blockforge": [],
+      "boitata": [],
+      "merlion": [],
+      "nodeprime": [],
+      "top.witness": [],
+      "matus": [],
+      "anti": [],
+      "chainguard": [],
+      "initminer": [
+        {
+          "level": "info",
+          "code": "disabled",
+          "message": "signing key disabled (null key)"
+        }
+      ],
+      "elmerlin": [],
+      "whale": [],
+      "waynebockts": [],
+      "juraj04": [],
+      "uykodusan": [],
+      "cleesan": [],
+      "katka7": [],
+      "lukas123654": [],
+      "stormwind": [],
+      "arm.witness": [],
+      "majso": []
+    }
+  },
+  "model": {
+    "fetchedAt": 1792853409898,
+    "node": "https://api.pixagram.com",
+    "latencyMs": 569,
+    "network": {
+      "status": "progressing",
+      "rate": {
+        "observed": 0.33323770369788974,
+        "expected": 0.3333333333333333,
+        "ratio": 0.9997131110936692,
+        "headDelta": 3940,
+        "elapsedSec": 11823.392
+      },
+      "headBlock": 1442079,
+      "headBlockId": "0016011fefced2f4df2ae1921e85c733f2e9b06b",
+      "headTime": "2026-10-24T14:50:09",
+      "headAgeSec": 2.322,
+      "lib": 1442079,
+      "libLag": 0,
+      "currentWitness": "boitata",
+      "currentAslot": 1443403,
+      "missedSlotsTotal": 1324,
+      "participationCount": 128,
+      "participationPct": 100,
+      "recentSlots": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "genesisTime": "2026-09-04T12:00:00",
+      "genesisInSec": null
+    },
+    "chain": {
+      "blockInterval": 3,
+      "maxWitnesses": 21,
+      "shutdownThreshold": 28800,
+      "maxFeedAgeSec": 604800,
+      "addressPrefix": "PIX",
+      "nodeVersion": "1.30.1",
+      "nodeRevision": "7191f1848957d2378691b2cff8a84a37e4c71ad9",
+      "chainId": "706978616772616d000000000000000000000000000000000000000000000000",
+      "majorityVersion": "1.30.1",
+      "hfCurrent": "1.30.0",
+      "hfLast": 30,
+      "hfNext": "1.30.0",
+      "hfNextTime": "2026-10-07T12:00:00",
+      "hardforkRequiredWitnesses": 17,
+      "vestingRatio": 1.000000013130883,
+      "totalVests": 93804125.886269,
+      "totalVestingFundPixa": 93804127.118,
+      "medianFeed": {
+        "price": 51,
+        "base": {
+          "amount": 1,
+          "symbol": "PXS"
+        },
+        "quote": {
+          "amount": 51,
+          "symbol": "PIXA"
+        }
+      },
+      "marketMedian": 51,
+      "minFeed": 52.269,
+      "maxFeed": 45.836,
+      "feedCount": 84,
+      "medianProps": {
+        "accountCreationFee": 20,
+        "maxBlockSize": 2097152,
+        "pxsInterestRate": 0,
+        "subsidyBudget": 797,
+        "subsidyDecay": 347321
+      },
+      "supply": {
+        "pixa": 100845356.653,
+        "pxs": 257835.809,
+        "virtual": 113994982.912
+      },
+      "maxBlockSize": 2097152,
+      "pxsPrintRate": 10000,
+      "pxsInterestRate": 0
+    },
+    "schedule": {
+      "shuffled": [
+        "arm.witness",
+        "elmerlin",
+        "lukas123654",
+        "boitata",
+        "majso",
+        "matus",
+        "stormwind",
+        "waynebockts",
+        "nodeprime",
+        "chainguard",
+        "merlion",
+        "uykodusan",
+        "juraj04",
+        "top.witness",
+        "cleesan",
+        "whale",
+        "anti",
+        "katka7",
+        "rex",
+        "blockforge"
+      ],
+      "n": 20,
+      "currentIndex": 3,
+      "nextIndex": 4,
+      "nextShuffleBlock": 1442091,
+      "blocksToShuffle": 12,
+      "nextShuffleBlockRaw": 1442090,
+      "maxVoted": 20,
+      "maxRunner": 1,
+      "maxMiner": 0,
+      "electedWeight": 1,
+      "timeshareWeight": 5
+    },
+    "counts": {
+      "total": 21,
+      "active": 20,
+      "standby": 0,
+      "disabled": 1,
+      "reported": 21
+    },
+    "witnesses": [
+      {
+        "owner": "rex",
+        "id": 4,
+        "rank": 1,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 12372182373040,
+        "votesVests": 12372182.37304,
+        "votesPixa": 12372182.53549768,
+        "voteShare": 0.11249932747892907,
+        "voters": 13,
+        "votersTruncated": false,
+        "totalMissed": 27,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442074,
+        "blocksSinceConfirmed": 5,
+        "secondsSinceConfirmed": 15,
+        "shutdownRisk": false,
+        "lastAslot": 1443398,
+        "slotsSinceLast": 5,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 46.51,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 46.51,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:41:27",
+          "ageSec": 524.322,
+          "deviationPct": -8.803921568627455,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX58qmKbmaFUa4rfGSpHi3mSuasomdqcLj3qTFvSYj94QC8rgKE5",
+        "url": "https://pixarex.net",
+        "created": "2026-09-04T14:05:18",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749950933100300623583207598815"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 39717.667345,
+          "delegatedVests": 11900,
+          "receivedVests": 0,
+          "pixa": 63738.42,
+          "pxs": 2293.726,
+          "witnessesVotedFor": 1,
+          "proxy": "",
+          "created": "2026-09-04T12:31:03"
+        }
+      },
+      {
+        "owner": "blockforge",
+        "id": 3,
+        "rank": 2,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 12316555090006,
+        "votesVests": 12316555.090006,
+        "votesPixa": 12316555.251733243,
+        "voteShare": 0.11199351276151577,
+        "voters": 10,
+        "votersTruncated": false,
+        "totalMissed": 252,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442075,
+        "blocksSinceConfirmed": 4,
+        "secondsSinceConfirmed": 12,
+        "shutdownRisk": false,
+        "lastAslot": 1443399,
+        "slotsSinceLast": 4,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 52.949,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 52.949,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:40:51",
+          "ageSec": 560.322,
+          "deviationPct": 3.8215686274509766,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX658BQQbHk6y8BoVvfkLbK7E4PMCms2uddZKEyWWVEfaAxAYQ5C",
+        "url": "https://blockforge.lol",
+        "created": "2026-09-04T12:51:27",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749951057320358326033327542228"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 41998.865679,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 6379.302,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:05:57"
+        }
+      },
+      {
+        "owner": "boitata",
+        "id": 5,
+        "rank": 3,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": true,
+        "votes": 12316555090006,
+        "votesVests": 12316555.090006,
+        "votesPixa": 12316555.251733243,
+        "voteShare": 0.11199351276151577,
+        "voters": 11,
+        "votersTruncated": false,
+        "totalMissed": 118,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442079,
+        "blocksSinceConfirmed": 0,
+        "secondsSinceConfirmed": 0,
+        "shutdownRisk": false,
+        "lastAslot": 1443403,
+        "slotsSinceLast": 0,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 35.193,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 35.193,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:41:15",
+          "ageSec": 536.322,
+          "deviationPct": -30.99411764705883,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6qMDRD9NUAx3tWPVBaiN2Cf23VRrMzGzTbYPLPvg42ZxsUenME",
+        "url": "https://boitata.quest",
+        "created": "2026-09-05T10:57:18",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749951057320358326033327542228"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 45161.760995,
+          "delegatedVests": 0,
+          "receivedVests": 1100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-05T10:02:45"
+        }
+      },
+      {
+        "owner": "merlion",
+        "id": 1,
+        "rank": 4,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 12316555090006,
+        "votesVests": 12316555.090006,
+        "votesPixa": 12316555.251733243,
+        "voteShare": 0.11199351276151577,
+        "voters": 10,
+        "votersTruncated": false,
+        "totalMissed": 170,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442065,
+        "blocksSinceConfirmed": 14,
+        "secondsSinceConfirmed": 42,
+        "shutdownRisk": false,
+        "lastAslot": 1443389,
+        "slotsSinceLast": 14,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 43.193,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 43.193,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:41:00",
+          "ageSec": 551.322,
+          "deviationPct": -15.307843137254906,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5D4hSCFsMvtguFaumscPSijQLY6hrcsyJowFxdRdZoaGTyVffW",
+        "url": "https://merlion.surf",
+        "created": "2026-09-04T12:43:00",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749951057320358326033327542228"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 48372.813212,
+          "delegatedVests": 0,
+          "receivedVests": 1000,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:31:36"
+        }
+      },
+      {
+        "owner": "nodeprime",
+        "id": 6,
+        "rank": 5,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 12316555090006,
+        "votesVests": 12316555.090006,
+        "votesPixa": 12316555.251733243,
+        "voteShare": 0.11199351276151577,
+        "voters": 10,
+        "votersTruncated": false,
+        "totalMissed": 93,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442069,
+        "blocksSinceConfirmed": 10,
+        "secondsSinceConfirmed": 30,
+        "shutdownRisk": false,
+        "lastAslot": 1443393,
+        "slotsSinceLast": 10,
+        "producedInWindow": 14,
+        "windowShare": 0.04666666666666667,
+        "feed": {
+          "price": 38.692,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 38.692,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:40:45",
+          "ageSec": 566.322,
+          "deviationPct": -24.133333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5BgiXYPHG4syCumdLFeNDDsjzoYhVVLn7uRydnYroFqNXVWLVu",
+        "url": "https://pixa-dubai.xyz",
+        "created": "2026-09-05T17:11:06",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749951057320358326033327542228"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 38770.071443,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 5790.658,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:06:00"
+        }
+      },
+      {
+        "owner": "top.witness",
+        "id": 8,
+        "rank": 6,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 12314148262773,
+        "votesVests": 12314148.262773,
+        "votesPixa": 12314148.42446864,
+        "voteShare": 0.1119716276617891,
+        "voters": 9,
+        "votersTruncated": false,
+        "totalMissed": 13,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442051,
+        "blocksSinceConfirmed": 28,
+        "secondsSinceConfirmed": 84,
+        "shutdownRisk": false,
+        "lastAslot": 1443375,
+        "slotsSinceLast": 28,
+        "producedInWindow": 14,
+        "windowShare": 0.04666666666666667,
+        "feed": {
+          "price": 46.522,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 46.522,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T13:53:09",
+          "ageSec": 3422.322,
+          "deviationPct": -8.78039215686275,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX8ZMVZiEhRX3yacJQ5PrwhsAxCx5fXDzVV9zMWDoQfhEmbnBCS6",
+        "url": "https://pixagram.com",
+        "created": "2026-09-24T10:23:39",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749951062720320652297669865891"
+        },
+        "availableSubsidies": 8826629,
+        "account": {
+          "vests": 17981.545982,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 2514.792,
+          "pxs": 0.001,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-24T10:15:09"
+        }
+      },
+      {
+        "owner": "matus",
+        "id": 2,
+        "rank": 7,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 4754999272804,
+        "votesVests": 4754999.272804,
+        "votesPixa": 4754999.33524134,
+        "voteShare": 0.04323685217564464,
+        "voters": 12,
+        "votersTruncated": false,
+        "totalMissed": 245,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442060,
+        "blocksSinceConfirmed": 19,
+        "secondsSinceConfirmed": 57,
+        "shutdownRisk": false,
+        "lastAslot": 1443384,
+        "slotsSinceLast": 19,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 52.949,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 52.949,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:40:48",
+          "ageSec": 563.322,
+          "deviationPct": 3.8215686274509766,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6Ee3LPfGKktEa7bhVEuVbRY7Mg9HLQQVjLHwkodPhyMr9m3PSb",
+        "url": "https://pixagram.com/witness-status/",
+        "created": "2026-09-04T12:45:39",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749994992347472049674160484912"
+        },
+        "availableSubsidies": 9378942,
+        "account": {
+          "vests": 1680043.892393,
+          "delegatedVests": 500050,
+          "receivedVests": 1000,
+          "pixa": 840295.402,
+          "pxs": 0,
+          "witnessesVotedFor": 20,
+          "proxy": "",
+          "created": "2026-09-04T12:05:54"
+        }
+      },
+      {
+        "owner": "anti",
+        "id": 9,
+        "rank": 8,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 4734481705874,
+        "votesVests": 4734481.705874,
+        "votesPixa": 4734481.7680419255,
+        "voteShare": 0.043050287476585666,
+        "voters": 10,
+        "votersTruncated": false,
+        "totalMissed": 28,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442072,
+        "blocksSinceConfirmed": 7,
+        "secondsSinceConfirmed": 21,
+        "shutdownRisk": false,
+        "lastAslot": 1443396,
+        "slotsSinceLast": 7,
+        "producedInWindow": 16,
+        "windowShare": 0.05333333333333334,
+        "feed": {
+          "price": 51,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:30:36",
+          "ageSec": 1175.322,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX8i4C9aejiX361wSkPgs52w7VwcZ8mmX4meH4qSyEfTpLjg7Fow",
+        "url": "https://anti.witness",
+        "created": "2026-10-12T18:19:03",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749995302476491602787671041396"
+        },
+        "availableSubsidies": 6860976,
+        "account": {
+          "vests": 6774.77313,
+          "delegatedVests": 9.999999,
+          "receivedVests": 100,
+          "pixa": 33.206,
+          "pxs": 0,
+          "witnessesVotedFor": 11,
+          "proxy": "",
+          "created": "2026-10-12T15:40:27"
+        }
+      },
+      {
+        "owner": "chainguard",
+        "id": 7,
+        "rank": 9,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 4730864931953,
+        "votesVests": 4730864.931953,
+        "votesPixa": 4730864.994073434,
+        "voteShare": 0.043017400422265935,
+        "voters": 8,
+        "votersTruncated": false,
+        "totalMissed": 10,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442062,
+        "blocksSinceConfirmed": 17,
+        "secondsSinceConfirmed": 51,
+        "shutdownRisk": false,
+        "lastAslot": 1443386,
+        "slotsSinceLast": 17,
+        "producedInWindow": 14,
+        "windowShare": 0.04666666666666667,
+        "feed": {
+          "price": 43.488,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 43.488,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:45:42",
+          "ageSec": 269.322,
+          "deviationPct": -14.729411764705883,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX4xUyVYosxiYRscrXPxM42sUsVFobziw8e5bADwQXFEBCJNtwuc",
+        "url": "https://pixagram.com/witness-status/",
+        "created": "2026-09-06T05:11:15",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "749995357423976181077558629500"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 43714.840213,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:06:06"
+        }
+      },
+      {
+        "owner": "initminer",
+        "id": 0,
+        "rank": 10,
+        "status": "disabled",
+        "disabled": true,
+        "isCurrentProducer": false,
+        "votes": 2944615384610,
+        "votesVests": 2944615.38461,
+        "votesPixa": 2944615.4232754004,
+        "voteShare": 0.02677516710185194,
+        "voters": 1,
+        "votersTruncated": false,
+        "totalMissed": 29,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 970717,
+        "blocksSinceConfirmed": 471362,
+        "secondsSinceConfirmed": 1414086,
+        "shutdownRisk": false,
+        "lastAslot": 971787,
+        "slotsSinceLast": 471616,
+        "producedInWindow": 0,
+        "windowShare": 0,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-08T05:38:54",
+          "ageSec": 1415477.322,
+          "deviationPct": 1.63333333333333,
+          "stale": true
+        },
+        "version": {
+          "running": "1.30.0",
+          "behind": true
+        },
+        "hfVote": {
+          "version": "1.30.0",
+          "time": "2026-10-07T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX1111111111111111111111111111111114T1Anm",
+        "url": "https://pixagram.com/witness-status/",
+        "created": null,
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750038990160440264093730870367"
+        },
+        "availableSubsidies": 9384019,
+        "account": {
+          "vests": 42014.302387,
+          "delegatedVests": 0,
+          "receivedVests": 0,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-09-04T12:00:00"
+        }
+      },
+      {
+        "owner": "elmerlin",
+        "id": 15,
+        "rank": 11,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1798128090893,
+        "votesVests": 1798128.090893,
+        "votesPixa": 1798128.1145040095,
+        "voteShare": 0.01635024402705506,
+        "voters": 8,
+        "votersTruncated": false,
+        "totalMissed": 0,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442077,
+        "blocksSinceConfirmed": 2,
+        "secondsSinceConfirmed": 6,
+        "shutdownRisk": false,
+        "lastAslot": 1443401,
+        "slotsSinceLast": 2,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:14:33",
+          "ageSec": 2138.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX7Xc7DV96LiVZYcC1T72iXbbGTGWe3Lnf86B55g23eba2fXz1QL",
+        "url": "https://liketu.social",
+        "created": "2026-10-15T05:50:48",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750112671835141245951018772512"
+        },
+        "availableSubsidies": 6448144,
+        "account": {
+          "vests": 1947.874254,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0.001,
+          "witnessesVotedFor": 2,
+          "proxy": "",
+          "created": "2026-10-15T04:29:27"
+        }
+      },
+      {
+        "owner": "whale",
+        "id": 13,
+        "rank": 12,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1786494868317,
+        "votesVests": 1786494.868317,
+        "votesPixa": 1786494.8917752553,
+        "voteShare": 0.01624446400565281,
+        "voters": 10,
+        "votersTruncated": false,
+        "totalMissed": 2,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442071,
+        "blocksSinceConfirmed": 8,
+        "secondsSinceConfirmed": 24,
+        "shutdownRisk": false,
+        "lastAslot": 1443395,
+        "slotsSinceLast": 8,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 51,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:19:42",
+          "ageSec": 1829.322,
+          "deviationPct": 0,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6fks3R5EmmsgHqeVURrk1AK5iVXu7iFe1RWfhtUM7WhjpTAqQB",
+        "url": "https://whaleapi.net",
+        "created": "2026-10-14T14:14:57",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750113904136943455541341786003"
+        },
+        "availableSubsidies": 5519287,
+        "account": {
+          "vests": 2277.0048,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0.117,
+          "pxs": 0,
+          "witnessesVotedFor": 20,
+          "proxy": "",
+          "created": "2026-10-13T14:27:27"
+        }
+      },
+      {
+        "owner": "waynebockts",
+        "id": 18,
+        "rank": 13,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1786473906330,
+        "votesVests": 1786473.90633,
+        "votesPixa": 1786473.92978798,
+        "voteShare": 0.016244273399875348,
+        "voters": 8,
+        "votersTruncated": false,
+        "totalMissed": 2,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442056,
+        "blocksSinceConfirmed": 23,
+        "secondsSinceConfirmed": 69,
+        "shutdownRisk": false,
+        "lastAslot": 1443380,
+        "slotsSinceLast": 23,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:27:45",
+          "ageSec": 1346.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX57U2D3ycyEj5tr6L6LEvHckF3sLudK2pmfquQgpGjmnhDYgFru",
+        "url": "https://pixagram.com/@waynebockts",
+        "created": "2026-10-16T12:45:21",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750113906371922431155713715811"
+        },
+        "availableSubsidies": 4451440,
+        "account": {
+          "vests": 2406.827233,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0.157,
+          "pxs": 22.964,
+          "witnessesVotedFor": 10,
+          "proxy": "",
+          "created": "2026-10-13T22:12:27"
+        }
+      },
+      {
+        "owner": "juraj04",
+        "id": 12,
+        "rank": 14,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1689153488942,
+        "votesVests": 1689153.488942,
+        "votesPixa": 1689153.511122077,
+        "voteShare": 0.01535934613514505,
+        "voters": 5,
+        "votersTruncated": false,
+        "totalMissed": 55,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442057,
+        "blocksSinceConfirmed": 22,
+        "secondsSinceConfirmed": 66,
+        "shutdownRisk": false,
+        "lastAslot": 1443381,
+        "slotsSinceLast": 22,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:25:51",
+          "ageSec": 1460.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX7mUA8Snf5ceuMHBJpw4PkniX84Rdkop1faaQ6Zj89fpBcTHt8T",
+        "url": "https://pixagram.com/@juraj04",
+        "created": "2026-10-14T08:36:21",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750124880691833671227112495165"
+        },
+        "availableSubsidies": 6676449,
+        "account": {
+          "vests": 2408.12599,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 1,
+          "proxy": "",
+          "created": "2026-10-14T08:28:09"
+        }
+      },
+      {
+        "owner": "uykodusan",
+        "id": 14,
+        "rank": 15,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1687440877019,
+        "votesVests": 1687440.877019,
+        "votesPixa": 1687440.8991765887,
+        "voteShare": 0.015343773483226361,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 124,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442067,
+        "blocksSinceConfirmed": 12,
+        "secondsSinceConfirmed": 36,
+        "shutdownRisk": false,
+        "lastAslot": 1443391,
+        "slotsSinceLast": 12,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T13:53:54",
+          "ageSec": 3377.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX8dqWgYHE6DGVRj4pzhg2No7aKuLZ8qwhGieikA1doZVapS3GX3",
+        "url": "https://pixagram.com/@uykodusan",
+        "created": "2026-10-14T20:53:51",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125085148242451522156699164"
+        },
+        "availableSubsidies": 6566869,
+        "account": {
+          "vests": 2064.160429,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-10-14T20:24:57"
+        }
+      },
+      {
+        "owner": "cleesan",
+        "id": 11,
+        "rank": 16,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1686441635106,
+        "votesVests": 1686441.635106,
+        "votesPixa": 1686441.6572504677,
+        "voteShare": 0.015334687451367809,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 0,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442061,
+        "blocksSinceConfirmed": 18,
+        "secondsSinceConfirmed": 54,
+        "shutdownRisk": false,
+        "lastAslot": 1443385,
+        "slotsSinceLast": 18,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 46.522,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 46.522,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:40:06",
+          "ageSec": 605.322,
+          "deviationPct": -8.78039215686275,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX6PmJxypKpStX9P67kB9ETHWMKChnh1dwochoUzzEuyVM2k4vWm",
+        "url": "https://cleesan.wtf",
+        "created": "2026-10-13T21:38:09",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125204632367082936655803404"
+        },
+        "availableSubsidies": 6723772,
+        "account": {
+          "vests": 2576.172798,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-10-13T21:37:00"
+        }
+      },
+      {
+        "owner": "katka7",
+        "id": 17,
+        "rank": 17,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1686441635106,
+        "votesVests": 1686441.635106,
+        "votesPixa": 1686441.6572504677,
+        "voteShare": 0.015334687451367809,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 1,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442073,
+        "blocksSinceConfirmed": 6,
+        "secondsSinceConfirmed": 18,
+        "shutdownRisk": false,
+        "lastAslot": 1443397,
+        "slotsSinceLast": 6,
+        "producedInWindow": 16,
+        "windowShare": 0.05333333333333334,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:32:54",
+          "ageSec": 1037.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5ZjNEYoDqzErJBWhNsA9DW7NxLb3G3FBZymQagdASVkJaxJA5Y",
+        "url": "https://pixagram.com/@katka7",
+        "created": "2026-10-15T11:08:45",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125204632367082936655803404"
+        },
+        "availableSubsidies": 6590840,
+        "account": {
+          "vests": 2043.385577,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 15,
+          "proxy": "",
+          "created": "2026-10-15T11:03:42"
+        }
+      },
+      {
+        "owner": "lukas123654",
+        "id": 16,
+        "rank": 18,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1686441635106,
+        "votesVests": 1686441.635106,
+        "votesPixa": 1686441.6572504677,
+        "voteShare": 0.015334687451367809,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 1,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442078,
+        "blocksSinceConfirmed": 1,
+        "secondsSinceConfirmed": 3,
+        "shutdownRisk": false,
+        "lastAslot": 1443402,
+        "slotsSinceLast": 1,
+        "producedInWindow": 16,
+        "windowShare": 0.05333333333333334,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:32:33",
+          "ageSec": 1058.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5ZjNEYoDqzErJBWhNsA9DW7NxLb3G3FBZymQagdASVkJaxJA5Y",
+        "url": "https://pixagram.com/@lukas123654",
+        "created": "2026-10-15T08:05:57",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125204632367082936655803404"
+        },
+        "availableSubsidies": 6588610,
+        "account": {
+          "vests": 2077.352336,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 15,
+          "proxy": "",
+          "created": "2026-10-15T07:41:09"
+        }
+      },
+      {
+        "owner": "stormwind",
+        "id": 10,
+        "rank": 19,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1686441635106,
+        "votesVests": 1686441.635106,
+        "votesPixa": 1686441.6572504677,
+        "voteShare": 0.015334687451367809,
+        "voters": 4,
+        "votersTruncated": false,
+        "totalMissed": 17,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442055,
+        "blocksSinceConfirmed": 24,
+        "secondsSinceConfirmed": 72,
+        "shutdownRisk": false,
+        "lastAslot": 1443379,
+        "slotsSinceLast": 24,
+        "producedInWindow": 14,
+        "windowShare": 0.04666666666666667,
+        "feed": {
+          "price": 51.833,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 51.833,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T13:53:51",
+          "ageSec": 3380.322,
+          "deviationPct": 1.63333333333333,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX5vTsMmAe5tiv7wr77TXf9nzv1CaQZhcXqq14zGP9ZLkMsqsjH3",
+        "url": "https://pixagram.com/@stormwind",
+        "created": "2026-10-13T14:36:06",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125204632367082936655803404"
+        },
+        "availableSubsidies": 6770809,
+        "account": {
+          "vests": 2711.853836,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 2,
+          "proxy": "",
+          "created": "2026-10-13T11:47:57"
+        }
+      },
+      {
+        "owner": "arm.witness",
+        "id": 19,
+        "rank": 20,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1682320897193,
+        "votesVests": 1682320.897193,
+        "votesPixa": 1682320.9192833588,
+        "voteShare": 0.015297217890222347,
+        "voters": 2,
+        "votersTruncated": false,
+        "totalMissed": 0,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442076,
+        "blocksSinceConfirmed": 3,
+        "secondsSinceConfirmed": 9,
+        "shutdownRisk": false,
+        "lastAslot": 1443400,
+        "slotsSinceLast": 3,
+        "producedInWindow": 16,
+        "windowShare": 0.05333333333333334,
+        "feed": {
+          "price": 46.522,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 46.522,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:28:24",
+          "ageSec": 1307.322,
+          "deviationPct": -8.78039215686275,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX8E1mAZ7fiFz5rrSLxYaer9Gj32WUBH4482WrkgBGHjjykVhWpa",
+        "url": "https://pixagram.com/@arm.witness",
+        "created": "2026-10-17T20:27:51",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125698868261380553281154930"
+        },
+        "availableSubsidies": 5504135,
+        "account": {
+          "vests": 1434.056891,
+          "delegatedVests": 0,
+          "receivedVests": 0,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-10-17T20:22:00"
+        }
+      },
+      {
+        "owner": "majso",
+        "id": 20,
+        "rank": 21,
+        "status": "active",
+        "disabled": false,
+        "isCurrentProducer": false,
+        "votes": 1682320897193,
+        "votesVests": 1682320.897193,
+        "votesPixa": 1682320.9192833588,
+        "voteShare": 0.015297217890222347,
+        "voters": 2,
+        "votersTruncated": false,
+        "totalMissed": 0,
+        "missedSincePrev": 0,
+        "missedSinceLoad": null,
+        "missed1h": null,
+        "missed24h": null,
+        "lastConfirmedBlock": 1442070,
+        "blocksSinceConfirmed": 9,
+        "secondsSinceConfirmed": 27,
+        "shutdownRisk": false,
+        "lastAslot": 1443394,
+        "slotsSinceLast": 9,
+        "producedInWindow": 15,
+        "windowShare": 0.05,
+        "feed": {
+          "price": 46.522,
+          "base": {
+            "amount": 1,
+            "symbol": "PXS"
+          },
+          "quote": {
+            "amount": 46.522,
+            "symbol": "PIXA"
+          },
+          "updatedAt": "2026-10-24T14:07:18",
+          "ageSec": 2573.322,
+          "deviationPct": -8.78039215686275,
+          "stale": false
+        },
+        "version": {
+          "running": "1.30.1",
+          "behind": false
+        },
+        "hfVote": {
+          "version": "0.0.0",
+          "time": "2026-09-04T12:00:00"
+        },
+        "props": {
+          "accountCreationFee": 20,
+          "maxBlockSize": 2097152,
+          "pxsInterestRate": 0,
+          "subsidyBudget": 797,
+          "subsidyDecay": 347321,
+          "maxBlockSizeDiffers": false
+        },
+        "signingKey": "PIX7Z7BWbkKu3SL21kAHX2xp4Hvywb9AdWaQhP5wWyLiWqLMWARCT",
+        "url": "https://pixagram.com/@majso",
+        "created": "2026-10-21T19:06:51",
+        "virtual": {
+          "lastUpdate": "749923429273032249804399466848",
+          "position": "0",
+          "scheduledTime": "750125698868261380553281154930"
+        },
+        "availableSubsidies": 1635762,
+        "account": {
+          "vests": 564.304026,
+          "delegatedVests": 0,
+          "receivedVests": 100,
+          "pixa": 0,
+          "pxs": 0,
+          "witnessesVotedFor": 0,
+          "proxy": "",
+          "created": "2026-10-21T19:03:21"
+        }
+      }
+    ],
+    "blocks": {
+      "window": [
+        {
+          "num": 1441780,
+          "id": "0015fff4958918f6d6d9591cd7434e7b8001cf14",
+          "timestamp": "2026-10-24T14:35:12",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441781,
+          "id": "0015fff5e2132643d89fbb99a4b1a11c5546a2d4",
+          "timestamp": "2026-10-24T14:35:15",
+          "witness": "cleesan",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441782,
+          "id": "0015fff624e9a9d90211fa05ea6ab327af83973f",
+          "timestamp": "2026-10-24T14:35:18",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441783,
+          "id": "0015fff7aa8134dbbfd5347d1158f28b30735fd2",
+          "timestamp": "2026-10-24T14:35:21",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441784,
+          "id": "0015fff8dcfc5bfc39ddd81adbd99a7e4b8cd38b",
+          "timestamp": "2026-10-24T14:35:24",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441785,
+          "id": "0015fff9b143224f7334aafea3ad30edb83a070d",
+          "timestamp": "2026-10-24T14:35:27",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441786,
+          "id": "0015fffad41ca7b1044c874de193a47c9a032b47",
+          "timestamp": "2026-10-24T14:35:30",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441787,
+          "id": "0015fffbe84a19a485c657bf0f10099608eb9508",
+          "timestamp": "2026-10-24T14:35:33",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441788,
+          "id": "0015fffca901d9333352bb69bb190b766d3e1c97",
+          "timestamp": "2026-10-24T14:35:36",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441789,
+          "id": "0015fffd6a642f35c98cdc72500191eae3cb7e41",
+          "timestamp": "2026-10-24T14:35:39",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441790,
+          "id": "0015fffe24540a5974e376a461a8253378ea3cd0",
+          "timestamp": "2026-10-24T14:35:42",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441791,
+          "id": "0015ffff8c667290b082adf40e0c4757b27afc69",
+          "timestamp": "2026-10-24T14:35:45",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441792,
+          "id": "0016000019d3875a52766a940832365c577aebfd",
+          "timestamp": "2026-10-24T14:35:48",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441793,
+          "id": "00160001572b2a7c99f2d1bae101cd13fc336bbb",
+          "timestamp": "2026-10-24T14:35:51",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441794,
+          "id": "00160002d2a21cb7802339792adf444987ef232a",
+          "timestamp": "2026-10-24T14:35:54",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441795,
+          "id": "00160003e559eeb85b7dd7173042a7854424ab75",
+          "timestamp": "2026-10-24T14:35:57",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441796,
+          "id": "00160004525f1880cd2412b2656caf42aab81bd1",
+          "timestamp": "2026-10-24T14:36:00",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441797,
+          "id": "00160005383c157e1f3efc1f58aa441925b71344",
+          "timestamp": "2026-10-24T14:36:03",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441798,
+          "id": "00160006d31c85f20febbb1c8b068df8e591cd7e",
+          "timestamp": "2026-10-24T14:36:06",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441799,
+          "id": "00160007aa4cdc399df41d1cda8e06a4d8a2ec83",
+          "timestamp": "2026-10-24T14:36:09",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441800,
+          "id": "001600085889903d6972983f8ddf492f0a5187f0",
+          "timestamp": "2026-10-24T14:36:12",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441801,
+          "id": "00160009ff8f298669b0fd18795a899fd2402771",
+          "timestamp": "2026-10-24T14:36:15",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441802,
+          "id": "0016000a1f75d39e3d827ad36a55ed1ff726f2ba",
+          "timestamp": "2026-10-24T14:36:18",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441803,
+          "id": "0016000be7144459f09bc7d825c398310e65f68e",
+          "timestamp": "2026-10-24T14:36:21",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441804,
+          "id": "0016000c6605f209fe2182e791b538df6dee7fa1",
+          "timestamp": "2026-10-24T14:36:24",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441805,
+          "id": "0016000d7ed0b0487516f814fd6c0bb45cd6d446",
+          "timestamp": "2026-10-24T14:36:27",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441806,
+          "id": "0016000e62d2a01549a48c6242c49702ed3d8c76",
+          "timestamp": "2026-10-24T14:36:30",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441807,
+          "id": "0016000f2978a698cc018aad3f1c1b5ae8f70075",
+          "timestamp": "2026-10-24T14:36:33",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441808,
+          "id": "00160010e9957a27e01fa52bd6307157e63b0d6a",
+          "timestamp": "2026-10-24T14:36:36",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441809,
+          "id": "001600113d40824360ef620fae34aa2f7b483cc0",
+          "timestamp": "2026-10-24T14:36:39",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441810,
+          "id": "00160012f2801ddef21f1a41c2c1789286a6e55e",
+          "timestamp": "2026-10-24T14:36:42",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441811,
+          "id": "0016001327d54b5d5e00592b8d52362567100495",
+          "timestamp": "2026-10-24T14:36:45",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441812,
+          "id": "001600140925cfc433dc2d76619a3e6a370843e1",
+          "timestamp": "2026-10-24T14:36:48",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441813,
+          "id": "0016001593d024f9850a43d56c5ed6685db0287d",
+          "timestamp": "2026-10-24T14:36:51",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441814,
+          "id": "001600162d9e76da724ee3ac9bd69b5d2eb71a09",
+          "timestamp": "2026-10-24T14:36:54",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441815,
+          "id": "001600176845563afb3c020b1eff429c24dfe1b0",
+          "timestamp": "2026-10-24T14:36:57",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441816,
+          "id": "001600181806dade34a3fe1cb96ca06b310e523f",
+          "timestamp": "2026-10-24T14:37:00",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441817,
+          "id": "00160019f371e196b8732012fdbcb173a1c8534a",
+          "timestamp": "2026-10-24T14:37:03",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441818,
+          "id": "0016001abf3b5bc452d07c7d8c3e844b91ab1f02",
+          "timestamp": "2026-10-24T14:37:06",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441819,
+          "id": "0016001b54587bf274555c34e974eaeb5bda92ac",
+          "timestamp": "2026-10-24T14:37:09",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441820,
+          "id": "0016001c3a244d7f9678eb700bbcdf9e8a632e59",
+          "timestamp": "2026-10-24T14:37:12",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441821,
+          "id": "0016001d363d78d5645ad96c0e3e9a46df228242",
+          "timestamp": "2026-10-24T14:37:15",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441822,
+          "id": "0016001e81564e242e99b8db8de7fa6ecff1a6fe",
+          "timestamp": "2026-10-24T14:37:18",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441823,
+          "id": "0016001f3d9f65c029e14d3523f19db1f95eb10d",
+          "timestamp": "2026-10-24T14:37:21",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441824,
+          "id": "00160020d37420ab2c8d7fe64d72f721fd7b64b0",
+          "timestamp": "2026-10-24T14:37:24",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441825,
+          "id": "001600214ebe8bcb8eb572f1992871b49e966887",
+          "timestamp": "2026-10-24T14:37:27",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441826,
+          "id": "001600223ec58b90391d3c0b603d7f10bdce3537",
+          "timestamp": "2026-10-24T14:37:30",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441827,
+          "id": "001600235da54e3abecfed0e47865e1621e974d2",
+          "timestamp": "2026-10-24T14:37:33",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441828,
+          "id": "001600246978618cf7a0c5afc44aaee8bc6070f5",
+          "timestamp": "2026-10-24T14:37:36",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441829,
+          "id": "00160025e08e8caad20985be6eb1fc57be38d1a5",
+          "timestamp": "2026-10-24T14:37:39",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441830,
+          "id": "001600264602e5d376812cf6d98a5c0f76733c0b",
+          "timestamp": "2026-10-24T14:37:42",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441831,
+          "id": "00160027c19017394c1de2d7b16a89973c40ed6d",
+          "timestamp": "2026-10-24T14:37:45",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441832,
+          "id": "001600281e7ecce1b21dd914c137cc07bf194478",
+          "timestamp": "2026-10-24T14:37:48",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441833,
+          "id": "00160029d0df3051382e3ddb5cd6003cfdb4aaa2",
+          "timestamp": "2026-10-24T14:37:51",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441834,
+          "id": "0016002a2f26783c3f97c9ede17aa454455a6a8c",
+          "timestamp": "2026-10-24T14:37:54",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441835,
+          "id": "0016002b80fde3412efb996971eb91fdb2c18cd9",
+          "timestamp": "2026-10-24T14:37:57",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441836,
+          "id": "0016002c2fa8043675454520732600491563349d",
+          "timestamp": "2026-10-24T14:38:00",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441837,
+          "id": "0016002d1219a2fe734a001671dcd00fcaa83684",
+          "timestamp": "2026-10-24T14:38:03",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441838,
+          "id": "0016002ebd457c69651b4bba8bde03aa355cda28",
+          "timestamp": "2026-10-24T14:38:06",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441839,
+          "id": "0016002f8fe20c80fad8e448ff66993fb90029fc",
+          "timestamp": "2026-10-24T14:38:09",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441840,
+          "id": "00160030398941e3db69673573e182d12c27b944",
+          "timestamp": "2026-10-24T14:38:12",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441841,
+          "id": "00160031dc724d4a084296a4f7e1ae1be9d356e1",
+          "timestamp": "2026-10-24T14:38:15",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441842,
+          "id": "00160032c7471a07465979b8acde50c987ed084c",
+          "timestamp": "2026-10-24T14:38:18",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441843,
+          "id": "00160033fb3c6636c5aa40bc708ca9599ee07eee",
+          "timestamp": "2026-10-24T14:38:21",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441844,
+          "id": "001600341193ef7af1c21137f777c71c0b8a2264",
+          "timestamp": "2026-10-24T14:38:24",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441845,
+          "id": "0016003554caa8425a88f1f6cb55e5e01eb69feb",
+          "timestamp": "2026-10-24T14:38:27",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441846,
+          "id": "001600362ee8ef243a34c0beb504dd3c570170df",
+          "timestamp": "2026-10-24T14:38:30",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441847,
+          "id": "001600371b20a68208ac5c2d4651eea892d1a92d",
+          "timestamp": "2026-10-24T14:38:33",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441848,
+          "id": "001600383d1aae719a2f22700a801f093be9f469",
+          "timestamp": "2026-10-24T14:38:36",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441849,
+          "id": "00160039de0c10aafb3a0b03a7e36cde4c04eb6f",
+          "timestamp": "2026-10-24T14:38:39",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441850,
+          "id": "0016003a6b7cb3810fd5469093155f0d490cb010",
+          "timestamp": "2026-10-24T14:38:42",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441851,
+          "id": "0016003b727192f5244c033171da46c17e985a75",
+          "timestamp": "2026-10-24T14:38:45",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441852,
+          "id": "0016003cfc2ff4d43311a7289497855632891c4f",
+          "timestamp": "2026-10-24T14:38:48",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441853,
+          "id": "0016003d63b5d344bbaf21fbcd02b22131de4a4d",
+          "timestamp": "2026-10-24T14:38:51",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441854,
+          "id": "0016003e293eaae92790b88ed635a7c0a7dfcead",
+          "timestamp": "2026-10-24T14:38:54",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441855,
+          "id": "0016003f24c56d82ec75474b3c733b3dc02131e0",
+          "timestamp": "2026-10-24T14:38:57",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441856,
+          "id": "00160040d79514728cb83f360fb306e8adc7f811",
+          "timestamp": "2026-10-24T14:39:00",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441857,
+          "id": "00160041b0bdb66cd47245b095f1e64dc2c78e65",
+          "timestamp": "2026-10-24T14:39:03",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441858,
+          "id": "001600420ec77a25baa3c4f2f37e978eb8abddd6",
+          "timestamp": "2026-10-24T14:39:06",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441859,
+          "id": "00160043d6a58c53a5b20c98d00834b02b3c113d",
+          "timestamp": "2026-10-24T14:39:09",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441860,
+          "id": "00160044c3b827dd0ca91857ef7862dd8a923528",
+          "timestamp": "2026-10-24T14:39:12",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441861,
+          "id": "00160045eac99d721f448d6005f00fe247f40606",
+          "timestamp": "2026-10-24T14:39:15",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441862,
+          "id": "001600462bd259df9cf8d5218cba2695a5108cd3",
+          "timestamp": "2026-10-24T14:39:18",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441863,
+          "id": "00160047a00a1ea56ff80ecc519b893c0a4b4307",
+          "timestamp": "2026-10-24T14:39:21",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441864,
+          "id": "00160048f4ec5059bfdf0fed30d930dc3dd6e6a0",
+          "timestamp": "2026-10-24T14:39:24",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441865,
+          "id": "001600495478b964735988d1a166bb8e5c98aafb",
+          "timestamp": "2026-10-24T14:39:27",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441866,
+          "id": "0016004ad58f43971c37e02040794b7285264eb8",
+          "timestamp": "2026-10-24T14:39:30",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441867,
+          "id": "0016004bb8fa59469048c2fb8a079532c5714402",
+          "timestamp": "2026-10-24T14:39:33",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441868,
+          "id": "0016004cff19f13d82eb77f991f03ecd1eca94f8",
+          "timestamp": "2026-10-24T14:39:36",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441869,
+          "id": "0016004d8f0c84ebb2b10e6e84cc893c02dc7b75",
+          "timestamp": "2026-10-24T14:39:39",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441870,
+          "id": "0016004ef58dd8c60285ed575e3d0793278e7755",
+          "timestamp": "2026-10-24T14:39:42",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441871,
+          "id": "0016004f8746161cac33935805d80374a46de30d",
+          "timestamp": "2026-10-24T14:39:45",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441872,
+          "id": "00160050a7c4b3d73e2e46f9f0bc280614ee455f",
+          "timestamp": "2026-10-24T14:39:48",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441873,
+          "id": "00160051705f02a1c6198863850d0a2625db5fcd",
+          "timestamp": "2026-10-24T14:39:51",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441874,
+          "id": "001600521ab2d071334827e4f0ad5df1f701862b",
+          "timestamp": "2026-10-24T14:39:54",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441875,
+          "id": "00160053dd3516942d33e40c672e52b9bbe873b8",
+          "timestamp": "2026-10-24T14:39:57",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441876,
+          "id": "00160054a9a17c91c68bfb33b4c9742b8d15204e",
+          "timestamp": "2026-10-24T14:40:00",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441877,
+          "id": "00160055c73cfa6b0e8b30fd92ff8b185df7a16e",
+          "timestamp": "2026-10-24T14:40:03",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441878,
+          "id": "001600560fd5b73d7d1ffa10fdfc0e6cb59ba667",
+          "timestamp": "2026-10-24T14:40:06",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441879,
+          "id": "001600571cdd27e0e6ddcd99c7941ba42d116e93",
+          "timestamp": "2026-10-24T14:40:09",
+          "witness": "anti",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441880,
+          "id": "001600580dbffad9d31ce9aaf10a1c809c7346c3",
+          "timestamp": "2026-10-24T14:40:12",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441881,
+          "id": "00160059734179c668b5bfd4545c0cf3e56776c8",
+          "timestamp": "2026-10-24T14:40:15",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441882,
+          "id": "0016005aab449185f1e596e59726e76848717419",
+          "timestamp": "2026-10-24T14:40:18",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441883,
+          "id": "0016005b71ffe14c97877cbabb4de500cbc6e834",
+          "timestamp": "2026-10-24T14:40:21",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441884,
+          "id": "0016005c4d113d1c94193fea5f6465032ee8cc07",
+          "timestamp": "2026-10-24T14:40:24",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441885,
+          "id": "0016005d1b02b6f18249365c1c10bab8389f0274",
+          "timestamp": "2026-10-24T14:40:27",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441886,
+          "id": "0016005eced8d4b7e04ca15fcb8c8e0ad3c175e7",
+          "timestamp": "2026-10-24T14:40:30",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441887,
+          "id": "0016005f1c4ed3b96c25ade99c468147bc8f3de5",
+          "timestamp": "2026-10-24T14:40:33",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441888,
+          "id": "00160060d1f6101d83e9c9d5ec2807bfccea1fd2",
+          "timestamp": "2026-10-24T14:40:36",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441889,
+          "id": "00160061a13378d21c6d6d00e5f44ecf9f9f65a2",
+          "timestamp": "2026-10-24T14:40:39",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441890,
+          "id": "00160062fd47862efafa4f660957db68f0f8ddbc",
+          "timestamp": "2026-10-24T14:40:42",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441891,
+          "id": "00160063e2f7c06fecba7f77b7bd2733ea550944",
+          "timestamp": "2026-10-24T14:40:45",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441892,
+          "id": "001600643b2850568fdfe42486f9e0596ea6c502",
+          "timestamp": "2026-10-24T14:40:48",
+          "witness": "anti",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441893,
+          "id": "00160065d6829008f736dd0acb21f66749502486",
+          "timestamp": "2026-10-24T14:40:51",
+          "witness": "elmerlin",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441894,
+          "id": "00160066e71c5758a5cc5d21717232269e7100e6",
+          "timestamp": "2026-10-24T14:40:54",
+          "witness": "uykodusan",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441895,
+          "id": "001600677bc84ebaedc0becbd6ca961196ca0fb0",
+          "timestamp": "2026-10-24T14:40:57",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441896,
+          "id": "00160068dbd96ee1227ab1f7a8eea1dbef285062",
+          "timestamp": "2026-10-24T14:41:00",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441897,
+          "id": "0016006913f273ead5984b57b4917aacd631ef29",
+          "timestamp": "2026-10-24T14:41:03",
+          "witness": "waynebockts",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441898,
+          "id": "0016006a5139565e1d72e104413055c5252462d9",
+          "timestamp": "2026-10-24T14:41:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441899,
+          "id": "0016006b6036369de7809b687d711d59644dbdad",
+          "timestamp": "2026-10-24T14:41:09",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441900,
+          "id": "0016006cecee879f1c7a018761f6b0fecd0055cb",
+          "timestamp": "2026-10-24T14:41:12",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441901,
+          "id": "0016006d701ae95a2a704504fd872e6b72d25007",
+          "timestamp": "2026-10-24T14:41:15",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441902,
+          "id": "0016006e6383176371c8a3da2b5a86bfcc00b9a7",
+          "timestamp": "2026-10-24T14:41:18",
+          "witness": "lukas123654",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441903,
+          "id": "0016006f537ebae4da5978d546b337a640700f18",
+          "timestamp": "2026-10-24T14:41:21",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441904,
+          "id": "001600701794df63e440e10b9f9a141a35a10213",
+          "timestamp": "2026-10-24T14:41:24",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441905,
+          "id": "001600711bae8c8816a3b48a0109cf1e9a654fe1",
+          "timestamp": "2026-10-24T14:41:27",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441906,
+          "id": "00160072f3cb16c5ee7dfadaa8789f3760675ceb",
+          "timestamp": "2026-10-24T14:41:30",
+          "witness": "top.witness",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441907,
+          "id": "001600733ba510468e7da186a4369609dabcd8d5",
+          "timestamp": "2026-10-24T14:41:33",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441908,
+          "id": "00160074ea29d17f980db11b6f29ba6b78ee0819",
+          "timestamp": "2026-10-24T14:41:36",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441909,
+          "id": "001600758088103158150a3a272f9478d7717c1d",
+          "timestamp": "2026-10-24T14:41:39",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441910,
+          "id": "00160076d983a19af1e91cd9a019372438dfa6b7",
+          "timestamp": "2026-10-24T14:41:42",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441911,
+          "id": "0016007719745f2c61fd104695906cbbd8ee5691",
+          "timestamp": "2026-10-24T14:41:45",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441912,
+          "id": "0016007856231bf2cd33f4eab3601c37ad4e83e4",
+          "timestamp": "2026-10-24T14:41:48",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441913,
+          "id": "001600791c12fe34b6a4fd77dd9480f1f4b8787c",
+          "timestamp": "2026-10-24T14:41:51",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441914,
+          "id": "0016007a404983c6c9ef4a82efc1dd3afafe277e",
+          "timestamp": "2026-10-24T14:41:54",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441915,
+          "id": "0016007bbda7b6a0b65e143d77e4b3083cee5d80",
+          "timestamp": "2026-10-24T14:41:57",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441916,
+          "id": "0016007c2929ca55d765410dd0691257a8296d25",
+          "timestamp": "2026-10-24T14:42:00",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441917,
+          "id": "0016007db5c402a61df814f5f51fdc17c429afd6",
+          "timestamp": "2026-10-24T14:42:03",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441918,
+          "id": "0016007ef934258cabc9682b2d63db3286758e24",
+          "timestamp": "2026-10-24T14:42:06",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441919,
+          "id": "0016007ffa9b8b3dc751cac950832f710f734d90",
+          "timestamp": "2026-10-24T14:42:09",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441920,
+          "id": "00160080bc541b85eb84201e352b38935fa87ea9",
+          "timestamp": "2026-10-24T14:42:12",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441921,
+          "id": "001600811be3a15db7dcebfe17cd33f42914999d",
+          "timestamp": "2026-10-24T14:42:15",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441922,
+          "id": "00160082a8104f84041e5c1cb6adfd9f401d97e1",
+          "timestamp": "2026-10-24T14:42:18",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441923,
+          "id": "0016008373b7b24d2d361b3b721baf14a093d04a",
+          "timestamp": "2026-10-24T14:42:21",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441924,
+          "id": "00160084426cd6633245cf7cd2bd83221dba175e",
+          "timestamp": "2026-10-24T14:42:24",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441925,
+          "id": "00160085c87d7570aef558a2a4b782d4d534a1bf",
+          "timestamp": "2026-10-24T14:42:27",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441926,
+          "id": "001600866869a37b1887a5acfd93cd6a26bf13e4",
+          "timestamp": "2026-10-24T14:42:30",
+          "witness": "blockforge",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441927,
+          "id": "0016008711b456549d59959b5529395ad667adf5",
+          "timestamp": "2026-10-24T14:42:33",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441928,
+          "id": "0016008876ad46ebc1b27702b326764db8314e00",
+          "timestamp": "2026-10-24T14:42:36",
+          "witness": "lukas123654",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441929,
+          "id": "00160089172948bf40435c00c8b17ed7de74690f",
+          "timestamp": "2026-10-24T14:42:39",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441930,
+          "id": "0016008a2042ce459779f04741d0db8c0897515a",
+          "timestamp": "2026-10-24T14:42:42",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441931,
+          "id": "0016008b3bb363d0cc3eb97411387364fff86d12",
+          "timestamp": "2026-10-24T14:42:45",
+          "witness": "arm.witness",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441932,
+          "id": "0016008ca864baa55a93a27b55c3bed6b31400bb",
+          "timestamp": "2026-10-24T14:42:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441933,
+          "id": "0016008dc02d066104238217a1eaa29ebba3f529",
+          "timestamp": "2026-10-24T14:42:51",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441934,
+          "id": "0016008e3f90ed80e9a1acd9980ac4417802c444",
+          "timestamp": "2026-10-24T14:42:54",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441935,
+          "id": "0016008f6026b79231f32dd0d24dc728cb10f087",
+          "timestamp": "2026-10-24T14:42:57",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441936,
+          "id": "00160090fc00f14a6048ea5782ee4f26261e538c",
+          "timestamp": "2026-10-24T14:43:00",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441937,
+          "id": "001600913a275297e737bd84ee26c9b7bcf81413",
+          "timestamp": "2026-10-24T14:43:03",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441938,
+          "id": "00160092b14cb0b4fcb2b5d2750dd80076455ec5",
+          "timestamp": "2026-10-24T14:43:06",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441939,
+          "id": "001600936a89151bcfd1d05e4c16303b34edec82",
+          "timestamp": "2026-10-24T14:43:09",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441940,
+          "id": "00160094299ea96e1be0237335aa5fdba23d5524",
+          "timestamp": "2026-10-24T14:43:12",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441941,
+          "id": "00160095af09440b8e650c7c829269b13027fa76",
+          "timestamp": "2026-10-24T14:43:15",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441942,
+          "id": "00160096c3bf63bf8b521cba239422bdab75fad8",
+          "timestamp": "2026-10-24T14:43:18",
+          "witness": "elmerlin",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441943,
+          "id": "00160097bd5ae58c210a08263b7a2cbaf92379a5",
+          "timestamp": "2026-10-24T14:43:21",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441944,
+          "id": "001600988ef7a806551fc520b5fc393a1649e7c4",
+          "timestamp": "2026-10-24T14:43:24",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441945,
+          "id": "00160099a2f1c0cf962ce0ac72884c3b8b79b77c",
+          "timestamp": "2026-10-24T14:43:27",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441946,
+          "id": "0016009a6dc02e1dd543ea83159a7749d558dcec",
+          "timestamp": "2026-10-24T14:43:30",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441947,
+          "id": "0016009b437ce98bff2a531a7d01e0cbbb86cbec",
+          "timestamp": "2026-10-24T14:43:33",
+          "witness": "arm.witness",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441948,
+          "id": "0016009c954a7e357123e00f8ad03cbab496e38c",
+          "timestamp": "2026-10-24T14:43:36",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441949,
+          "id": "0016009d9ee119a86702e1d417a13ccc08e65bb8",
+          "timestamp": "2026-10-24T14:43:39",
+          "witness": "lukas123654",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441950,
+          "id": "0016009efc2683247f6a1e022fcdb622f392c5ff",
+          "timestamp": "2026-10-24T14:43:42",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441951,
+          "id": "0016009f3c32e4cf23608037af42878f7ef89f80",
+          "timestamp": "2026-10-24T14:43:45",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441952,
+          "id": "001600a0f28cb6add476b158f6b690fcb207fd41",
+          "timestamp": "2026-10-24T14:43:48",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441953,
+          "id": "001600a1b102995fd0bff939b56fd3dbf074017e",
+          "timestamp": "2026-10-24T14:43:51",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441954,
+          "id": "001600a221d4a7b64e95573634326d74867c3947",
+          "timestamp": "2026-10-24T14:43:54",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441955,
+          "id": "001600a300b315231d895f38303e3df7e5bd4a69",
+          "timestamp": "2026-10-24T14:43:57",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441956,
+          "id": "001600a4b991e696f98b1c3617028304c07cd288",
+          "timestamp": "2026-10-24T14:44:00",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441957,
+          "id": "001600a5c743197008e796c289b16ffa69afeee3",
+          "timestamp": "2026-10-24T14:44:03",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441958,
+          "id": "001600a6aa54e2d3e46d2d00eceb59c8dfd4d06d",
+          "timestamp": "2026-10-24T14:44:06",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441959,
+          "id": "001600a713758fde2103f4a38ca68b1fecf3ed68",
+          "timestamp": "2026-10-24T14:44:09",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441960,
+          "id": "001600a8051a293ab93bf7da74be339bfedc91fd",
+          "timestamp": "2026-10-24T14:44:12",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441961,
+          "id": "001600a9b77a8263ab22cbba9b90a72bf2fbe2a9",
+          "timestamp": "2026-10-24T14:44:15",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441962,
+          "id": "001600aa7da4690768ac50ba4e7b8a7fad88f7d7",
+          "timestamp": "2026-10-24T14:44:18",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441963,
+          "id": "001600ab59f319efa85ec247b842e727b938e877",
+          "timestamp": "2026-10-24T14:44:21",
+          "witness": "matus",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441964,
+          "id": "001600acff22df37cb38765aa5800206f94c0830",
+          "timestamp": "2026-10-24T14:44:24",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441965,
+          "id": "001600ad016ee21cf3d476bf58027bb05196de8c",
+          "timestamp": "2026-10-24T14:44:27",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441966,
+          "id": "001600ae2d40161d3c4c67f3b92850130c5359df",
+          "timestamp": "2026-10-24T14:44:30",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441967,
+          "id": "001600affff3707ff95b9dc58a3603f8636cc072",
+          "timestamp": "2026-10-24T14:44:33",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441968,
+          "id": "001600b041918c86ef4f2f7436ed764c8108f876",
+          "timestamp": "2026-10-24T14:44:36",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441969,
+          "id": "001600b1b0225e48ed1de5e21eaf7ac7411fd342",
+          "timestamp": "2026-10-24T14:44:39",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441970,
+          "id": "001600b297f535a238a74f02fd0335ea9f9f520c",
+          "timestamp": "2026-10-24T14:44:42",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441971,
+          "id": "001600b3b61a8cb6b80c3a37e082fdab17b460e7",
+          "timestamp": "2026-10-24T14:44:45",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441972,
+          "id": "001600b47a3b20e7d476e79539e0841a0a580056",
+          "timestamp": "2026-10-24T14:44:48",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441973,
+          "id": "001600b52494bdb2f19d18ac99e4a1344bab81a5",
+          "timestamp": "2026-10-24T14:44:51",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441974,
+          "id": "001600b62928915a864e8f99e628ffaebac8692a",
+          "timestamp": "2026-10-24T14:44:54",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441975,
+          "id": "001600b7d119fd88a43f93889918aa82f4fd4760",
+          "timestamp": "2026-10-24T14:44:57",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441976,
+          "id": "001600b84035ab9b50f64efb11f15ae73b7df19c",
+          "timestamp": "2026-10-24T14:45:00",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441977,
+          "id": "001600b9b60a4890ae59d8f7afca58880e25254d",
+          "timestamp": "2026-10-24T14:45:03",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441978,
+          "id": "001600bab75891e496527838297ede27f0e48ca7",
+          "timestamp": "2026-10-24T14:45:06",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441979,
+          "id": "001600bb143627534bb5206e5b69ebe670e411bc",
+          "timestamp": "2026-10-24T14:45:09",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441980,
+          "id": "001600bcd345fe078eb48f6c7f03d8fca7cced97",
+          "timestamp": "2026-10-24T14:45:12",
+          "witness": "merlion",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441981,
+          "id": "001600bdbdad6050a54e3ac4ace2145adb04c9ed",
+          "timestamp": "2026-10-24T14:45:15",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441982,
+          "id": "001600beb68951e225c0cdfc819c07060421688e",
+          "timestamp": "2026-10-24T14:45:18",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441983,
+          "id": "001600bf6491a5c7b4b50945c6992ac0762d7175",
+          "timestamp": "2026-10-24T14:45:21",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441984,
+          "id": "001600c0b60537f2b4d3d77b314f5e0c0c03c782",
+          "timestamp": "2026-10-24T14:45:24",
+          "witness": "uykodusan",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441985,
+          "id": "001600c18cd76cd5d352dfb45c62240dc0ce4389",
+          "timestamp": "2026-10-24T14:45:27",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441986,
+          "id": "001600c206bc11b23b2bfe948c9cff177a8dd8ad",
+          "timestamp": "2026-10-24T14:45:30",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441987,
+          "id": "001600c3e40b4ac3830ac2bc43f45a10c0748555",
+          "timestamp": "2026-10-24T14:45:33",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441988,
+          "id": "001600c4a24f9c0142a14bdb8fa4d85fdab44b1b",
+          "timestamp": "2026-10-24T14:45:36",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441989,
+          "id": "001600c52c3ca25f8899dede52d06bb714f947ed",
+          "timestamp": "2026-10-24T14:45:39",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441990,
+          "id": "001600c658efc8d64c63e901c5f12ea3f2bd003e",
+          "timestamp": "2026-10-24T14:45:42",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441991,
+          "id": "001600c7d337913d2e9eb68f460eb22428425b64",
+          "timestamp": "2026-10-24T14:45:45",
+          "witness": "boitata",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441992,
+          "id": "001600c89d6f0691f0634364161ab68d626043c3",
+          "timestamp": "2026-10-24T14:45:48",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441993,
+          "id": "001600c94d56c542bd9b48ef859e050f83462bf1",
+          "timestamp": "2026-10-24T14:45:51",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441994,
+          "id": "001600caff1d1b4cf04f887017cbf75864e07449",
+          "timestamp": "2026-10-24T14:45:54",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441995,
+          "id": "001600cb2ad543a98bc340e764adb1e47cffc692",
+          "timestamp": "2026-10-24T14:45:57",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441996,
+          "id": "001600cc594a3675c6a2cf83d2cb625e4c8463b8",
+          "timestamp": "2026-10-24T14:46:00",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441997,
+          "id": "001600cd9f09eec0b1243b392aa96f8a00328222",
+          "timestamp": "2026-10-24T14:46:03",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441998,
+          "id": "001600ce2d7f3d5387a0b3e75062c9e7d73b3851",
+          "timestamp": "2026-10-24T14:46:06",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1441999,
+          "id": "001600cf5cb9fd8d482145234ae4ce366ae2c866",
+          "timestamp": "2026-10-24T14:46:09",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442000,
+          "id": "001600d0e73124b44f883652866be23bbf4bb5d0",
+          "timestamp": "2026-10-24T14:46:12",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442001,
+          "id": "001600d1353b6fd9671e9552390b33e242b10883",
+          "timestamp": "2026-10-24T14:46:15",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442002,
+          "id": "001600d249afd00a308d15c08b2ccb6c74b4722a",
+          "timestamp": "2026-10-24T14:46:18",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442003,
+          "id": "001600d3e4ddac2aaa7a341b80ac941753f4e84b",
+          "timestamp": "2026-10-24T14:46:21",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442004,
+          "id": "001600d46b793e27f32d691901a6d7508fc6b982",
+          "timestamp": "2026-10-24T14:46:24",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442005,
+          "id": "001600d523b99eda031405a31771d76a1730a30b",
+          "timestamp": "2026-10-24T14:46:27",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442006,
+          "id": "001600d613fa8caccdaa5bfc7f4c3ee6debe2f9b",
+          "timestamp": "2026-10-24T14:46:30",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442007,
+          "id": "001600d7ad4a991bddc467ca8ef637b2b1eb3ea9",
+          "timestamp": "2026-10-24T14:46:33",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442008,
+          "id": "001600d8342224795a6477e61821808be739af80",
+          "timestamp": "2026-10-24T14:46:36",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442009,
+          "id": "001600d9317b73bb2e3b9c6156ae7a6d92a7fe9f",
+          "timestamp": "2026-10-24T14:46:39",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442010,
+          "id": "001600da94b15ac616c9398b9bcc339b7ac64df9",
+          "timestamp": "2026-10-24T14:46:42",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442011,
+          "id": "001600dbffbd467d0d3db2237fdb9720bb049665",
+          "timestamp": "2026-10-24T14:46:45",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442012,
+          "id": "001600dc71b2c17849f110aba95ce716af9cdb25",
+          "timestamp": "2026-10-24T14:46:48",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442013,
+          "id": "001600dd0fad87edef3b49ffc5bfa9768911afa1",
+          "timestamp": "2026-10-24T14:46:51",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442014,
+          "id": "001600de7bf97b834ca191aa52e38cac11bab0cb",
+          "timestamp": "2026-10-24T14:46:54",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442015,
+          "id": "001600df4cea571cac79eb727144fc316eb97e59",
+          "timestamp": "2026-10-24T14:46:57",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442016,
+          "id": "001600e0d61375b84c199c0ad1c11868786e31d6",
+          "timestamp": "2026-10-24T14:47:00",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442017,
+          "id": "001600e1b2b08ce2b6c1b7f134ce543b9326c4a4",
+          "timestamp": "2026-10-24T14:47:03",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442018,
+          "id": "001600e25dd5db4a6319233d03725af7ee3b463f",
+          "timestamp": "2026-10-24T14:47:06",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442019,
+          "id": "001600e373782303749b8798036a68379bc7dea6",
+          "timestamp": "2026-10-24T14:47:09",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442020,
+          "id": "001600e4780b87142ca96ddffb7d92e08cf68222",
+          "timestamp": "2026-10-24T14:47:12",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442021,
+          "id": "001600e5448d20b7501492ce5ca8b40104b903dd",
+          "timestamp": "2026-10-24T14:47:15",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442022,
+          "id": "001600e673e72367621695131effc825c1567966",
+          "timestamp": "2026-10-24T14:47:18",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442023,
+          "id": "001600e7c1e834a26590e0aad87c4b2b344add15",
+          "timestamp": "2026-10-24T14:47:21",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442024,
+          "id": "001600e85110219e66cd0ce91256e9492b0cc43c",
+          "timestamp": "2026-10-24T14:47:24",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442025,
+          "id": "001600e9196359dab7350a1ab75a4e38361c8e46",
+          "timestamp": "2026-10-24T14:47:27",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442026,
+          "id": "001600ead63b32738723a93ec2824a631b0addac",
+          "timestamp": "2026-10-24T14:47:30",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442027,
+          "id": "001600eb18ee7c0fa0ccf855197a84b9e856f918",
+          "timestamp": "2026-10-24T14:47:33",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442028,
+          "id": "001600ecc202205f52ffc248352738a1268f1e36",
+          "timestamp": "2026-10-24T14:47:36",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442029,
+          "id": "001600edaf1e9e0b746512389b1b6d0948a9a6a3",
+          "timestamp": "2026-10-24T14:47:39",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442030,
+          "id": "001600ee9195f10ac7efe4d67c5999b15676def9",
+          "timestamp": "2026-10-24T14:47:42",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442031,
+          "id": "001600efd391e9b59a99e11aa73ba59354758a8c",
+          "timestamp": "2026-10-24T14:47:45",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442032,
+          "id": "001600f07a8c7c402db261c067a81ddf43015dfa",
+          "timestamp": "2026-10-24T14:47:48",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442033,
+          "id": "001600f1e77651d16d59b235a7d735a17e01a7cf",
+          "timestamp": "2026-10-24T14:47:51",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442034,
+          "id": "001600f22967329a1d9e25c4b707bac85974c3b0",
+          "timestamp": "2026-10-24T14:47:54",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442035,
+          "id": "001600f3b2c33e6d72beed5684868c475d323150",
+          "timestamp": "2026-10-24T14:47:57",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442036,
+          "id": "001600f43d0d0d16672755b14cf088b400001f1f",
+          "timestamp": "2026-10-24T14:48:00",
+          "witness": "stormwind",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442037,
+          "id": "001600f5ab2c14bd115ab68294e28a7a3963b79b",
+          "timestamp": "2026-10-24T14:48:03",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442038,
+          "id": "001600f61bb9c74a3bd79d482814f0396d54e519",
+          "timestamp": "2026-10-24T14:48:06",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442039,
+          "id": "001600f7d1be092d48ec0b4df5ede5879441bfd3",
+          "timestamp": "2026-10-24T14:48:09",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442040,
+          "id": "001600f85fc16f41337b1de1a2eb49c2afdc96ec",
+          "timestamp": "2026-10-24T14:48:12",
+          "witness": "matus",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442041,
+          "id": "001600f91f0f52ea3c148f67c3766180f15a13c1",
+          "timestamp": "2026-10-24T14:48:15",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442042,
+          "id": "001600fab616576cf912476c7773b65bfde5e520",
+          "timestamp": "2026-10-24T14:48:18",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442043,
+          "id": "001600fb77c423d514e0f9092e6cd4cce25f5945",
+          "timestamp": "2026-10-24T14:48:21",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442044,
+          "id": "001600fc6a0296839d1a88b8c923b281d8dac663",
+          "timestamp": "2026-10-24T14:48:24",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442045,
+          "id": "001600fda652e48adb9d6fa42ac5d0509f873848",
+          "timestamp": "2026-10-24T14:48:27",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442046,
+          "id": "001600fe664c8fcef98661c4caba2689416eaabf",
+          "timestamp": "2026-10-24T14:48:30",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442047,
+          "id": "001600ff3c73c7e5c2ceb5d184442f2206eb6ca9",
+          "timestamp": "2026-10-24T14:48:33",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442048,
+          "id": "00160100ee98eb0621f4c7a9c5aa181fbb3cdaf8",
+          "timestamp": "2026-10-24T14:48:36",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442049,
+          "id": "001601018205d7417d3bc0a9adbb0a834152d150",
+          "timestamp": "2026-10-24T14:48:39",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442050,
+          "id": "001601026949369aed33e46bed75fc54de9eb04e",
+          "timestamp": "2026-10-24T14:48:42",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442051,
+          "id": "001601032a7feed12457ae857fd3a4b52baf4e0a",
+          "timestamp": "2026-10-24T14:48:45",
+          "witness": "top.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442052,
+          "id": "0016010477134210a3135aaf47763822e548789f",
+          "timestamp": "2026-10-24T14:48:48",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442053,
+          "id": "001601054fbc1897ec77566be4d130700fc02d24",
+          "timestamp": "2026-10-24T14:48:51",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442054,
+          "id": "0016010636bce9fdd295f4d48d0857c5fbbc8629",
+          "timestamp": "2026-10-24T14:48:54",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442055,
+          "id": "001601073829fb00d7fa9aa7c2e95d29cbde9b9c",
+          "timestamp": "2026-10-24T14:48:57",
+          "witness": "stormwind",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442056,
+          "id": "00160108c65ef5b0176604220f25065b61f4e65e",
+          "timestamp": "2026-10-24T14:49:00",
+          "witness": "waynebockts",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442057,
+          "id": "001601097ef37d049fc8700af21ff6997c2905cb",
+          "timestamp": "2026-10-24T14:49:03",
+          "witness": "juraj04",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442058,
+          "id": "0016010ab4b9beef0dbc69f1dc1f180c8468e144",
+          "timestamp": "2026-10-24T14:49:06",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442059,
+          "id": "0016010b67698650fe8b8693f9b67502dd4187a0",
+          "timestamp": "2026-10-24T14:49:09",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442060,
+          "id": "0016010c2a6a51f7b40680f48c34d80b865f97dc",
+          "timestamp": "2026-10-24T14:49:12",
+          "witness": "matus",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442061,
+          "id": "0016010d86442320f844745b567f814a05a9609f",
+          "timestamp": "2026-10-24T14:49:15",
+          "witness": "cleesan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442062,
+          "id": "0016010e7982dcc6543d3f460013d8b0ce7cb606",
+          "timestamp": "2026-10-24T14:49:18",
+          "witness": "chainguard",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442063,
+          "id": "0016010f7d8ca388dd0a12f632946b239f68250d",
+          "timestamp": "2026-10-24T14:49:21",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442064,
+          "id": "00160110a7c5635646e313b1f4dda269930821d5",
+          "timestamp": "2026-10-24T14:49:24",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442065,
+          "id": "00160111315c5d108075f5a75a7969a2f8744ed3",
+          "timestamp": "2026-10-24T14:49:27",
+          "witness": "merlion",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442066,
+          "id": "00160112a44ebde7e17cfe863e62c339cab16a70",
+          "timestamp": "2026-10-24T14:49:30",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442067,
+          "id": "00160113377ec3586583131517b9fdd741d5ff65",
+          "timestamp": "2026-10-24T14:49:33",
+          "witness": "uykodusan",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442068,
+          "id": "0016011450b40fe73cecd1f2873b24c1bcac6aeb",
+          "timestamp": "2026-10-24T14:49:36",
+          "witness": "anti",
+          "txCount": 1,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442069,
+          "id": "0016011536189afbcef78f8dc64dbee685f3f768",
+          "timestamp": "2026-10-24T14:49:39",
+          "witness": "nodeprime",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442070,
+          "id": "00160116db11dc09ebc08cfcd2fbe9755d61cf6d",
+          "timestamp": "2026-10-24T14:49:42",
+          "witness": "majso",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442071,
+          "id": "00160117875be66db95232ff3d7b246419ff002b",
+          "timestamp": "2026-10-24T14:49:45",
+          "witness": "whale",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442072,
+          "id": "0016011821d2707d1f25013eeb1aeaebc686e6af",
+          "timestamp": "2026-10-24T14:49:48",
+          "witness": "anti",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442073,
+          "id": "00160119c85af277968533aadfd88c6aee1d3000",
+          "timestamp": "2026-10-24T14:49:51",
+          "witness": "katka7",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442074,
+          "id": "0016011ac431ec2008723298315e7034334c873d",
+          "timestamp": "2026-10-24T14:49:54",
+          "witness": "rex",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442075,
+          "id": "0016011b6aa86ed91da82b99e5be9ceedaa4d3c6",
+          "timestamp": "2026-10-24T14:49:57",
+          "witness": "blockforge",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442076,
+          "id": "0016011c4fd3a9bc4cd99799d7025211de796d7f",
+          "timestamp": "2026-10-24T14:50:00",
+          "witness": "arm.witness",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442077,
+          "id": "0016011db1769b5a3e083cf483f409726bb34520",
+          "timestamp": "2026-10-24T14:50:03",
+          "witness": "elmerlin",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442078,
+          "id": "0016011e0ee240d5a76f4f148dfead6051ead05e",
+          "timestamp": "2026-10-24T14:50:06",
+          "witness": "lukas123654",
+          "txCount": 0,
+          "gapBefore": 0
+        },
+        {
+          "num": 1442079,
+          "id": "0016011fefced2f4df2ae1921e85c733f2e9b06b",
+          "timestamp": "2026-10-24T14:50:09",
+          "witness": "boitata",
+          "txCount": 0,
+          "gapBefore": 0
+        }
+      ],
+      "perWitness": {
+        "lukas123654": 16,
+        "cleesan": 15,
+        "matus": 15,
+        "nodeprime": 14,
+        "anti": 16,
+        "rex": 15,
+        "merlion": 15,
+        "blockforge": 15,
+        "whale": 15,
+        "chainguard": 14,
+        "katka7": 16,
+        "elmerlin": 15,
+        "juraj04": 15,
+        "waynebockts": 15,
+        "boitata": 15,
+        "top.witness": 14,
+        "majso": 15,
+        "stormwind": 14,
+        "arm.witness": 16,
+        "uykodusan": 15
+      },
+      "txTotal": 21,
+      "missedSlotsInWindow": 0,
+      "spanSec": 897,
+      "first": 1441780,
+      "last": 1442079,
+      "windowSize": 300
+    },
+    "errors": []
+  }
+}
