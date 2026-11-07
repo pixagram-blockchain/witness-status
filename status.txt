@@ -1,0 +1,32 @@
+Pixagram witness status  https://api.pixagram.com  2026-11-07 11:00:17 UTC  (rpc 556 ms)
+NETWORK  PROGRESSING  head #1,840,641 (2s ago)  LIB #1,840,641 (lag 0)  producer boitata  aslot 1,842,005 missed-slots 1,364  participation 100.0% (128/128)  rate 0.333 blk/s (100% of expected, 8224 blocks in 6h 51m)
+CHAIN    hived 1.30.1  majority 1.30.1  HF 1.30.0  median feed 50.236 PIXA/PXS (84 feeds, min 51.833 max 49.958)  VESTS:PIXA 1.000000  scheduled 21/21  witnesses 23 (21 active, 1 standby, 1 disabled)
+BLOCKS   window 300 (#1,840,342–#1,840,641, 14m 57s)  txs 10  missed slots in window 0
+SCHEDULE waynebockts top.witness chainguard anti matus lukas123654 rex whale nodeprime cleesan aliento [boitata] >larry blockforge majso elmerlin stormwind juraj04 arm.witness katka7 merlion  (reshuffle every 21 blocks, next at #1,840,650 in 9)
+HEALTH   INFO (exit 0)
+WITNESSES
+   #  witness      status    votes(M)       ≈PIXA  share  missed  Δprev  produced  last block               feed     feed age  version  flags   
+   1  rex          active      11.836  11,835,898  10.9%      27     +0        15  #1,840,636 (15s ago)     49.777   32m 53s   1.30.1   -       
+   2  blockforge   active      11.777  11,777,071  10.9%     252     +0        14  #1,840,618 (1m 9s ago)   107.751  19m 26s   1.30.1   -       
+   3  boitata*     active      11.777  11,777,071  10.9%     119     +0        14  #1,840,641 (0s ago)      36.188   36m 5s    1.30.1   -       
+   4  merlion      active      11.777  11,777,071  10.9%     172     +0        14  #1,840,629 (36s ago)     48.442   36m 38s   1.30.1   -       
+   5  nodeprime    active      11.777  11,777,071  10.9%      93     +0        15  #1,840,638 (9s ago)      78.738   19m 32s   1.30.1   -       
+   6  top.witness  active      11.770  11,770,319  10.9%      13     +0        15  #1,840,631 (30s ago)     94.673   7m 8s     1.30.1   -       
+   7  matus        active       4.355   4,354,849   4.0%     245     +0        15  #1,840,634 (21s ago)     107.751  19m 29s   1.30.1   -       
+   8  anti         active       4.315   4,315,043   4.0%      34     +0        14  #1,840,633 (24s ago)     49.900   17h 38m   1.30.1   -       
+   9  chainguard   active       4.315   4,314,551   4.0%      10     +0        14  #1,840,632 (27s ago)     48.403   35m 41s   1.30.1   -       
+  10  aliento      active       2.825   2,824,548   2.6%       8     +0        15  #1,840,640 (3s ago)      57.750   7h 1m     1.30.1   -       
+  11  initminer    disabled     2.690   2,690,291   2.5%      29     +0         0  #970,717 (30d 4h ago)    51.833   30d 5h    1.30.0   disabled
+  12  elmerlin     active       1.636   1,635,888   1.5%       0     +0        14  #1,840,626 (45s ago)     51.833   53m 17s   1.30.1   -       
+  13  whale        active       1.633   1,632,910   1.5%      11     +0        15  #1,840,637 (12s ago)     51.000   45m 11s   1.30.1   -       
+  14  juraj04      active       1.623   1,622,569   1.5%      58     +0        14  #1,840,620 (1m 3s ago)   51.833   34m 29s   1.30.1   -       
+  15  cleesan      active       1.608   1,607,597   1.5%       0     +0        14  #1,840,639 (6s ago)      94.673   20m 11s   1.30.1   -       
+  16  arm.witness  active       1.598   1,597,559   1.5%       5     +0        14  #1,840,623 (54s ago)     94.673   31m 53s   1.30.1   -       
+  17  larry        active       1.598   1,597,559   1.5%       1     +0        14  #1,840,627 (42s ago)     94.673   50m 44s   1.30.1   -       
+  18  majso        active       1.598   1,597,559   1.5%       4     +0        13  #1,840,622 (57s ago)     94.673   52m 59s   1.30.1   -       
+  19  waynebockts  active       1.527   1,526,733   1.4%       2     +0        15  #1,840,630 (33s ago)     51.833   32m 32s   1.30.1   -       
+  20  stormwind    active       1.526   1,525,918   1.4%      17     +0        14  #1,840,613 (1m 24s ago)  51.833   6m 26s    1.30.1   -       
+  21  lukas123654  active       1.520   1,520,472   1.4%       1     +0        15  #1,840,635 (18s ago)     51.833   27m 44s   1.30.1   -       
+  22  katka7       active       1.520   1,520,348   1.4%       1     +0         6  #1,840,594 (2m 21s ago)  51.833   27m 23s   1.30.1   -       
+  23  uykodusan    standby      1.505   1,505,464   1.4%     125     +0         7  #1,840,612 (1m 27s ago)  51.833   6m 23s    1.30.1   -       
+  (* = current producer; Δprev = blocks missed since the previous snapshot)
